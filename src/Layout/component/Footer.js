@@ -9,7 +9,7 @@ export default function Footer()
         <div id="footer">
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-3 col-md-6">
+                    <div className="col-lg-3 col-md-12 pb-md-5 footer-section">
                         <div className="pharma-logo">
                             <img src={"./transparent-logo.png"} alt="Pharma Logo"/>
                         </div>
@@ -20,7 +20,8 @@ export default function Footer()
                             <span><i className="far fa-envelope"> </i>Contact@clinic.pharma</span>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-md-6">
+
+                    <div className="col-lg-3 col-md-6 footer-section">
                         <h5 className="title">Department</h5>
                         <div className="line"> </div>
                         <div className="list">
@@ -32,7 +33,8 @@ export default function Footer()
                             <a href="/">Certified Clinic</a>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-md-6">
+
+                    <div className="col-lg-3 col-md-6 footer-section">
                         <h5 className="title">Quick links</h5>
                         <div className="line"> </div>
                         <div className="list">
@@ -44,7 +46,8 @@ export default function Footer()
                             <a href="/">24/7 Support</a>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-md-6">
+
+                    <div className="col-lg-3 col-md-6 pt-md-5 footer-section">
                         <h5 className="title">Stay informed</h5>
                         <div className="line"> </div>
                         <div className="contact-us">

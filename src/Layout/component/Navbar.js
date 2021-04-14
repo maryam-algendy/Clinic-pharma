@@ -9,6 +9,7 @@ import "./style/Navbar.scss";
 
 export default function MainNavbar()
 {
+    const [authenticatedUser, setAuthenticatedUser] = useState(true);
     const [userSection, setUserSection] = useState(false);
 
     useEffect(() => {
@@ -22,16 +23,20 @@ export default function MainNavbar()
         <div id="navbar">
             <Navbar expand="lg">
                 <div className="container">
-                    <div className="logo">
-                        <img className="clinic-logo" src={"./background-logo.jpg"} alt="Clinic Logo" />
-                    </div>
+                    <Navbar.Brand href="/">
+                        <img
+                            src="./background-logo.jpg"
+                            width="50"
+                            className="d-inline-block align-top"
+                            alt="React Bootstrap logo"
+                        />
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <div className="blocks">
                             <ul className="nav-list">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/">About</a></li>
-                                <li><a href="/">Departments</a></li>
                                 <li><a href="/">Doctors</a></li>
                                 <li><a href="/">Shop Medicines</a></li>
                                 <li><a href="/">Blogs</a></li>
@@ -39,26 +44,28 @@ export default function MainNavbar()
                             </ul>
                         </div>
                         <div className="icons">
-                            <button className="icon"><i className="flaticon-search"> </i></button>
-                            <button className="icon"><i className="flaticon-shopping-cart"> </i></button>
-                            <span className="counter">2</span>
-                            <button className="btn">Appointment</button>
-                            <img
+                            <button className="icon">
+                                <i className="flaticon-search"> </i>
+                            </button>
+                            <button className="icon">
+                                <i className="flaticon-shopping-cart"> </i>
+                                <span className="counter">2</span>
+                            </button>
+                            {!authenticatedUser ? <button className="btn">Appointment</button> : null}
+                            {authenticatedUser ? <><img
                                 className="user-logo"
                                 src={"./user.png"}
                                 alt="User Section"
                                 onClick={(e) => {
-                                    if(userSection)
-                                    {
+                                    if (userSection) {
                                         setUserSection(true);
-                                    } else
-                                        {
-                                            e.stopPropagation();
-                                        }
+                                    } else {
+                                        e.stopPropagation();
+                                    }
                                     setUserSection(!userSection);
                                 }}
                             />
-                            <UserSection userSection={userSection} />
+                                <UserSection userSection={userSection}/></> : null}
                         </div>
                     </Navbar.Collapse>
                 </div>
