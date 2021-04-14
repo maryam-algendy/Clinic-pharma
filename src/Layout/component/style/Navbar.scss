@@ -1,0 +1,136 @@
+@import "../../variables";
+
+#navbar
+{
+    margin: 20px 0;
+    .container
+    {
+        display: flex;
+        .logo
+        {
+            flex: 1;
+            .clinic-logo
+            {
+                width: 150%;
+                @media (max-width: 800px)
+                {
+                    width: 50px;
+                }
+            }
+        }
+        .blocks
+        {
+            flex: 2;
+            .nav-list
+            {
+                margin: auto;
+                li
+                {
+                    display: inline-block;
+                    margin: 0 8px;
+                    @media (max-width: 800px)
+                    {
+                        padding-left: 12px;
+                        margin-bottom: 20px;
+                    }
+                    @media (max-width: 414px)
+                    {
+                        display: block;
+                        padding-left: 120px;
+                        margin-bottom: 10px;
+                    }
+                    @media (max-width: 375px)
+                    {
+                        padding-left: 100px;
+                    }
+                    a
+                    {
+                        font-size: 15px;
+                        color: $darkerColor;
+                        font-weight: 500;
+                        text-decoration: none;
+                    }
+
+                }
+            }
+        }
+        .icons
+        {
+            flex: 1;
+            @media (max-width: 800px)
+            {
+                padding-left: 30px;
+            }
+            @media (max-width: 414px)
+            {
+                text-align: center;
+            }
+            .icon
+            {
+                background: none;
+                border: none;
+            }
+            .counter
+            {
+                position: absolute;
+                right: 28%;
+                width: 15px;
+                height: 17px;
+                font-size: 12px;
+                padding: 0 4px;
+                border-radius: 50%;
+                background: $mainColor;
+                color: $lightColor;
+                @media (min-width: 1920px)
+                {
+                    right: 33.9%;
+                }
+                @media (max-width: 1280px)
+                {
+                    right: 25.9%;
+                }
+                @media (max-width: 800px)
+                {
+                    left: 21%;
+                }
+                @media (max-width: 768px)
+                {
+                    left: 19.8%;
+                }
+                @media (max-width: 414px)
+                {
+                    left: 43%;
+                }
+            }
+            .btn
+            {
+                margin-left: 10px;
+                font-size: 14px;
+                font-weight: 500;
+                color: $lightColor;
+                background: $mainColor;
+                border: 1px solid $mainColor;box-shadow: none;
+                transition: .3s ease-in-out;
+                &:hover
+                {
+                    color: $mainColor;
+                    background: $lightColor;
+                }
+            }
+            .user-logo
+            {
+                width: 10%;
+                margin-left: 20px;
+                cursor: pointer;
+                @media (max-width: 800px)
+                {
+                    width: 5%;
+                }
+                @media (max-width: 414px)
+                {
+                    width: 10%;
+                }
+            }
+        }
+    }
+}
