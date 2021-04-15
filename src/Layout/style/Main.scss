@@ -1,2 +1,113 @@
 @import "../variables.scss";
 @import "./assets/flaticons.css";
+
+
+//fonts
+@font-face {
+  font-family: "Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-Regular"), url("assets/fonts/Poppins-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ExtraLight";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-ExtraLight"), url("assets/fonts/Poppins-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-Light"), url("assets/fonts/Poppins-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-Bold"), url("assets/fonts/Poppins-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SemiBold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-SemiBold"), url("assets/fonts/Poppins-SemiBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ExtraBold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-Bold"), url("assets/fonts/Poppins-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Black";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Poppins-Black"), url("assets/fonts/Poppins-Black.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'icons';
+  src: url('assets/fonts/icons.eot');
+  src: url('assets/fonts/icons.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/icons.woff') format('woff'),
+  url('assets/fonts/icons.ttf') format('truetype'),
+  url('assets/fonts/icons.svg#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body, h1, h2, h3, h4, h5, h6, input, a, textarea, button {
+  font-family: "Regular", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: normal;
+}
+
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+::-moz-selection {
+  color: $lightColor;
+  background: rgba(57, 108, 240, 0.76);
+}
+
+::selection {
+  color: $lightColor;
+  background: rgba(57, 108, 240, 0.76);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $lightColor;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(85, 85, 85, 0.54);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
