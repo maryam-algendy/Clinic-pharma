@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+
 //style
 import "./style/WelcomeBadge.scss";
 
@@ -11,6 +12,7 @@ export default function WelcomeBadge() {
                     <div className="col-lg-3 col-sm-6 img-side">
                         <img alt="not found" src="/about1.png"/>
                     </div>
+
                     <div className="col-lg-5 col-sm-6 text-side">
                         <h2>welcome to clinic pharma platform</h2>
                         <p>
@@ -23,36 +25,39 @@ export default function WelcomeBadge() {
                         </span>
                         <img alt="not found" src="/sign1.png"/>
                     </div>
+
                     <div className="col-lg-4 rhs">
                         <Link to="/">
-                            <i className="far fa-calendar-alt"></i>
+                            <i className="far fa-calendar-alt"> </i>
                             request appointment
                             <span className="float-right">
-                                <i className="fas fa-angle-right"></i>
-                            </span>
-                        </Link>
-                        <Link to="/">
-                            <i className="far fa-user"></i>
-                            find doctors
-                            <span className="float-right">
-                                <i className="fas fa-angle-right"></i>
-                            </span>
-                        </Link>
-                        <Link to="/">
-                            <i className="fas fa-map-marker-alt"></i>
-                            find locations
-                            <span className="float-right">
-                                <i className="fas fa-angle-right"></i>
-                            </span>
-                        </Link>
-                        <Link to="/">
-                            <i className="fas fa-phone"></i>
-                            emergency contact
-                            <span className="float-right">
-                                <i className="fas fa-angle-right"></i>
+                                <i className="fas fa-angle-right"> </i>
                             </span>
                         </Link>
 
+                        <Link to="/">
+                            <i className="far fa-user"> </i>
+                            find doctors
+                            <span className="float-right">
+                                <i className="fas fa-angle-right"> </i>
+                            </span>
+                        </Link>
+
+                        <Link to="/">
+                            <i className="fas fa-map-marker-alt"> </i>
+                            find locations
+                            <span className="float-right">
+                                <i className="fas fa-angle-right"> </i>
+                            </span>
+                        </Link>
+
+                        <Link to="/">
+                            <i className="fas fa-phone"> </i>
+                            emergency contact
+                            <span className="float-right">
+                                <i className="fas fa-angle-right"> </i>
+                            </span>
+                        </Link>
                     </div>
                 </div>
             </div>

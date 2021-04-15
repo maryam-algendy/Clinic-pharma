@@ -6,7 +6,7 @@ import "./style/Slider.scss";
 export default function Slider(props) {
     return (
         <div id="slider">
-            <Carousel>
+            <Carousel controls={props.controls !== true} indicators={props.indicators !== false} fade={props.fade !== false}>
                 {props?.slides?.map((slide, id) =>
                     <Carousel.Item key={id}>
                         <img src={slide.image} alt="not found" className="img-fluid"/>
@@ -17,7 +17,10 @@ export default function Slider(props) {
                                         <h1>we take care of your healthy health</h1>
                                         <p>the quickest, easiest way to get your medicines , book and keep track of your
                                             appointments</p>
-                                        <Button>know more</Button>
+                                        <Button>
+                                            <span>Read more</span>
+                                            <i className="fa fa-chevron-right"> </i>
+                                        </Button>
                                     </div>
                                 </div>
                             </div>

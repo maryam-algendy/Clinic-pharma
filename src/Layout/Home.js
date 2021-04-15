@@ -13,8 +13,7 @@ export default function Home() {
 
 
     return <div id="home">
-        <Slider slides={slides}/>
+        <Slider slides={slides} fade={true}/>
         <WelcomeBadge/>
-        Clinic Pharma - Home
     </div>
 }
