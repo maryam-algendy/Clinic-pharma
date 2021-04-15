@@ -7,6 +7,10 @@ import "./style/Home.scss";
 import Slider from "./component/Slider";
 import WelcomeBadge from "./component/WelcomeBadge";
 import OurDepartments from "./component/OurDeprtments";
+import BenefitsSection from "./component/BenefitsSection";
+import EmergencySection from "./component/EmergencySection";
+import LatestBlogs from "./component/LatestBlogs";
+import Testimonial from "./component/Testimonial";
 
 export default function Home() {
 
@@ -17,5 +21,18 @@ export default function Home() {
         <Slider slides={slides} fade={true}/>
         <WelcomeBadge/>
         <OurDepartments />
+        <BenefitsSection />
+        <EmergencySection />
+
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-12 col-md-6">
+                    <LatestBlogs />
+                </div>
+                <div className="col-12 col-md-6">
+                    <Testimonial />
+                </div>
+            </div>
+        </div>
     </div>
 }
