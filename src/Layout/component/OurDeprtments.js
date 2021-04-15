@@ -4,6 +4,8 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 // style
 import './style/OurDeprtments.scss';
+
+// block
 import DepartmentBox from "./Block/DepartmentBox";
 
 export default function OurDepartments()
@@ -20,12 +22,12 @@ export default function OurDepartments()
     const {galleryItems, currentIndex} = state;
 
     const departments = [
-        {name: "Medicine", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-pills icon-med"},
-        {name: "Cardeology", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical-5 icon-med"},
         {name: "Dental Care", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical icon-med"},
         {name: "Medicine", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-pills icon-med"},
-        {name: "Cardeology", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-human-hip icon-med"},
-        {name: "Dental Care", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical icon-med"}
+        {name: "Cardeology", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical-5 icon-med"},
+        {name: "Orthopedic", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-human-hip icon-med"},
+        {name: "Dental Care", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical icon-med"},
+        {name: "Medicine", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-pills icon-med"}
     ]
 
     return(
