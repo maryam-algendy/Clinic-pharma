@@ -10,6 +10,7 @@ export default function DoctorBlock(props)
             <div className="doctors-card">
                 <div className="doc-img">
                     <img src={props.image} alt={props.alter}/>
+                    <div className="overlay">+</div>
                 </div>
                 <div className="content">
                     <h5 className="title">{props.title}</h5>
