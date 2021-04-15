@@ -10,7 +10,7 @@ import "./style/Navbar.scss";
 
 export default function MainNavbar()
 {
-    const [authenticatedUser, setAuthenticatedUser] = useState(true);
+    const [authenticatedUser, setAuthenticatedUser] = useState(false);
     const [userSection, setUserSection] = useState(false);
     const [searchBar, setSearchBar] = useState(false);
 

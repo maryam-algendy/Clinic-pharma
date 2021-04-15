@@ -6,6 +6,7 @@ import "./style/Home.scss";
 //components
 import Slider from "./component/Slider";
 import WelcomeBadge from "./component/WelcomeBadge";
+import OurDepartments from "./component/OurDeprtments";
 
 export default function Home() {
 
@@ -15,5 +16,6 @@ export default function Home() {
     return <div id="home">
         <Slider slides={slides} fade={true}/>
         <WelcomeBadge/>
+        <OurDepartments />
     </div>
 }
