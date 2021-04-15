@@ -47,7 +47,7 @@ export default function Footer()
                         </div>
                     </div>
 
-                    <div className="col-lg-3 col-md-6 pt-md-5 footer-section">
+                    <div className="col-lg-3 col-md-6 footer-section">
                         <h5 className="title">Stay informed</h5>
                         <div className="line"> </div>
                         <div className="contact-us">

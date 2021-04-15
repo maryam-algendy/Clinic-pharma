@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Navbar} from 'react-bootstrap';
 
 // block
-import UserSection from './Block/UserSection'
+import UserSection from './Block/UserSection';
+import SearchBar from './Block/SearchBar';
 
 // style
 import "./style/Navbar.scss";
@@ -11,13 +12,15 @@ export default function MainNavbar()
 {
     const [authenticatedUser, setAuthenticatedUser] = useState(true);
     const [userSection, setUserSection] = useState(false);
+    const [searchBar, setSearchBar] = useState(false);
 
     useEffect(() => {
         document.addEventListener("click", () => {
-            if(userSection)
+            if(userSection || searchBar)
                 setUserSection(false);
+                setSearchBar(false);
         });
-    }, [userSection]);
+    }, [userSection, searchBar]);
 
     return(
         <div id="navbar">
@@ -45,7 +48,19 @@ export default function MainNavbar()
                         </div>
                         <div className="icons">
                             <button className="icon">
-                                <i className="flaticon-search"> </i>
+                                <i
+                                    className="flaticon-search"
+                                    onClick={(e) => {
+                                        if (searchBar || userSection) {
+                                            setSearchBar(true);
+                                            setUserSection(false);
+                                        } else {
+                                            e.stopPropagation();
+                                        }
+                                        setSearchBar(!searchBar);
+                                    }}
+                                > </i>
+                                <SearchBar searchBar={searchBar} />
                             </button>
                             <button className="icon">
                                 <i className="flaticon-shopping-cart"> </i>
@@ -57,8 +72,9 @@ export default function MainNavbar()
                                 src={"./user.png"}
                                 alt="User Section"
                                 onClick={(e) => {
-                                    if (userSection) {
+                                    if (userSection || searchBar) {
                                         setUserSection(true);
+                                        setSearchBar(false);
                                     } else {
                                         e.stopPropagation();
                                     }
