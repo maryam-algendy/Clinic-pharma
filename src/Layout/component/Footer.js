@@ -40,7 +40,7 @@ export default function Footer()
                         <div className="list">
                             <a href="/">About Us</a>
                             <a href="/">What We Do</a>
-                            <a href="/">Faq's</a>
+                            <a href="/">FaQ's</a>
                             <a href="/">Appointment</a>
                             <a href="/">Contact</a>
                             <a href="/">24/7 Support</a>
