@@ -4,13 +4,13 @@ import {Switch, Route} from "react-router";
 
 // pages
 import Home from "./Layout/Home";
-import Navbar from "./Layout/component/Navbar";
+import MainNavbar from "./Layout/component/Navbar";
 import Footer from "./Layout/component/Footer";
 
 export default function App() {
     return (
         <div id="clinic-pharma">
-            <Navbar />
+            <MainNavbar />
 
             <BrowserRouter>
                 <Switch>

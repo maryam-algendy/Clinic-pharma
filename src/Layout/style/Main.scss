@@ -1,7 +1,6 @@
 @import "../variables.scss";
 @import "./assets/flaticons.css";
 
-
 //fonts
 @font-face {
   font-family: "Regular";
@@ -110,4 +109,24 @@ img {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+// fade-in animation
+@keyframes animation
+{
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+    }
 }

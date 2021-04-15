@@ -1,0 +1,42 @@
+@import '../../../variables';
+
+#userSection
+{
+    position: absolute;
+    background: #fff;
+    top: 60px;
+    right: 50%;
+    width: 170px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+    z-index: 100;
+
+    @media (max-width: 800px) {
+        left: 15%;
+    }
+
+    @media (max-width: 414px) {
+        left: 30%;
+    }
+
+    .user-list
+    {
+
+        a
+        {
+            display: block;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: $darkerColor;
+            border-bottom: 1px solid #d7d7d7;
+            text-decoration: none;
+            transition: .3s ease-in-out;
+
+            &:hover {
+                color: $mainColor;
+            }
+        }
+    }
+}

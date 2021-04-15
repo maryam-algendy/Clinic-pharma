@@ -1,0 +1,117 @@
+@import "../../variables";
+
+#footer
+{
+    margin-top: 20px;
+    background: $darkerColor;
+    padding: 20px;
+    color: #999;
+    font-weight: 500;
+
+    .container
+    {
+        padding: 40px 0;
+
+        .footer-section
+        {
+            margin-bottom: 30px;
+
+            .pharma-logo
+            {
+                img {
+                    width: 30%;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .content
+            {
+                span {
+                    display: block;
+                    font-size: 15px;
+                    margin-bottom: 10px;
+
+                    @media (max-width: 768px) {
+                        margin: 20px 0;
+                    }
+                }
+
+                i {
+                    margin-right: 10px;
+                }
+            }
+
+            .title {
+                font-size: 25px;
+            }
+
+            .line {
+                display: block;
+                width: 60px;
+                height: 4px;
+                background: $mainColor;
+            }
+
+            .list
+            {
+                padding-top: 45px;
+
+                @media (max-width: 414px) {
+                    padding-top: 20px;
+                }
+
+                a
+                {
+                    display: block;
+                    margin-bottom: 6px;
+                    text-decoration: none;
+                    color: #999;
+                    transition: .3s ease-in-out;
+
+                    &:hover {
+                        color: $mainColor;
+                        padding-left: 10px;
+                    }
+                }
+            }
+
+            .contact-us
+            {
+                display: flex;
+                padding-top: 45px;
+
+                @media (max-width: 1024px) {
+                    flex-direction: column;
+                }
+
+                .input-text {
+                    background: $darkColor;
+                    color: $lightColor;
+                    padding: 10px 15px;
+                    font-size: 14px;
+                    outline: none;
+                    border: 1px solid #396cf0;
+                    border-radius: 25px 0 0 25px;
+
+                    @media (max-width: 1024px) {
+                        margin: 0 0 20px 0;
+                        border-radius: 10px;
+                    }
+                }
+
+                .btn {
+                    background: $mainColor;
+                    color: $lightColor;
+                    border-radius: 0 25px 25px 0;
+                    box-shadow: none;
+                    font-size: 15px;
+                    font-weight: 500;
+
+                    @media (max-width: 1024px) {
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
