@@ -6,19 +6,19 @@ import {Switch, Route} from "react-router";
 import Home from "./Layout/Home";
 import MainNavbar from "./Layout/component/Navbar";
 import Footer from "./Layout/component/Footer";
+import GitAuthenticate from "./Layout/GitAuthenticate";
 
 export default function App() {
     return (
         <div id="clinic-pharma">
-            <MainNavbar />
-
             <BrowserRouter>
+                <MainNavbar />
                 <Switch>
                     <Route path="/" exact component={Home} />
+                    <Route path="/account/:page" exact component={GitAuthenticate} />
                 </Switch>
+                <Footer />
             </BrowserRouter>
-
-            <Footer />
         </div>
     );
 }

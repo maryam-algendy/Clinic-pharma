@@ -49,6 +49,9 @@
         {
             flex: 1;
             position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-content: flex-end;
 
             @media (max-width: 800px) {
                 display: flex;

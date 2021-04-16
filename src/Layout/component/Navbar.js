@@ -8,6 +8,7 @@ import SearchBar from './Block/SearchBar';
 // style
 import "./style/Navbar.scss";
 import storage from "../../utilize/storage";
+import {Link} from "react-router-dom";
 
 export default function MainNavbar()
 {
@@ -30,7 +31,7 @@ export default function MainNavbar()
                 <div className="container">
                     <Navbar.Brand href="/">
                         <img
-                            src="./background-logo.jpg"
+                            src="/background-logo.jpg"
                             width="50"
                             className="d-inline-block align-top"
                             alt="React Bootstrap logo"
@@ -40,12 +41,12 @@ export default function MainNavbar()
                     <Navbar.Collapse id="basic-navbar-nav">
                         <div className="blocks">
                             <ul className="nav-list">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/">About</a></li>
-                                <li><a href="/">Doctors</a></li>
-                                <li><a href="/">Shop Medicines</a></li>
-                                <li><a href="/">Blogs</a></li>
-                                <li><a href="/">Contact</a></li>
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/">About</Link></li>
+                                <li><Link to="/">Doctors</Link></li>
+                                <li><Link to="/">Shop Medicines</Link></li>
+                                <li><Link to="/">Blogs</Link></li>
+                                <li><Link to="/">Contact</Link></li>
                             </ul>
                         </div>
                         <div className="icons">
@@ -68,7 +69,7 @@ export default function MainNavbar()
                                 <i className="flaticon-shopping-cart"> </i>
                                 <span className="counter">2</span>
                             </button>
-                            {!authenticatedUser ? <button className="btn">Appointment</button> : null}
+                            {!authenticatedUser ? <button onClick={() => window.location.replace("/account/login")} className="btn">Appointment</button> : null}
                             {authenticatedUser ? <><img
                                 className="user-logo"
                                 src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png"

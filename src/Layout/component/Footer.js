@@ -11,7 +11,7 @@ export default function Footer()
                 <div className="row">
                     <div className="col-lg-3 col-md-12 pb-md-5 footer-section">
                         <div className="pharma-logo">
-                            <img src={"./transparent-logo.png"} alt="Pharma Logo"/>
+                            <img src="/transparent-logo.png" alt="Pharma Logo"/>
                         </div>
                         <div className="content">
                             <span>We are ipsum dolor sit amet consectetuer adipiscing elitseder diam nonummy.</span>

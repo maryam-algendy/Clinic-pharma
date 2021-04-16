@@ -1,0 +1,118 @@
+@import "../variables.scss";
+
+#page-content
+{
+    margin: 20px 10px;
+
+    .boxes
+    {
+        box-shadow: 0 0 6px #dbdbdb;
+
+        .alert-danger {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid rgba(114, 28, 36, 0.6);
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: normal;
+            font-family: "SemiBold", sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        p {
+            margin: 20px 0;
+            font-weight: normal;
+            font-family: "Regular", sans-serif;
+            font-size: 14px;
+            color: $darkColor;
+            text-align: center;
+        }
+
+        a,
+        button
+        {
+            background: transparent;
+            color: $mainColor;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: "Regular", sans-serif;
+            text-transform: uppercase;
+            border: 1px solid $mainColor;
+            border-radius: 10px;
+            outline: none;
+            transition: .3s ease-in-out;
+
+            &:hover {
+                background: $mainColor;
+                color: $lightColor;
+                text-decoration: none;
+            }
+        }
+    }
+
+    form
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        label {
+            font-weight: normal;
+            font-family: "SemiBold", sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            line-height: 2.8px;
+            margin: 0 0 25px 0;
+            padding: 10px;
+            background: #f7f8fa;
+            color: #777777;
+            border: 1px solid #f7f8fa;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+
+            &:focus {
+                background: #FFFFFF;
+                border-color: $mainColor;
+            }
+
+            &::placeholder {
+                font-family: "Regular", sans-serif;
+            }
+        }
+    }
+
+    .actions
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .lost-pass-link {
+            padding: 0;
+            margin: 0;
+            display: block;
+            float: right;
+            font-family: "Regular", sans-serif;
+            font-size: 13px;
+            border: 0;
+            background: transparent;
+
+            &:hover {
+                background: transparent;
+                color: #000000;
+                border: 0;
+            }
+        }
+    }
+}
