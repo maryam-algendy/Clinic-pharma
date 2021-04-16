@@ -1,0 +1,120 @@
+@import '../variables';
+
+#all-doctors
+{
+    background: #ecfcfa;
+    .header-content
+    {
+        padding: 60px 0 30px;
+        text-align: center;
+
+        @media (max-width: 800px) {
+            padding-bottom: 10px;
+        }
+
+        .title {
+            font-family: "SemiBold", sans-serif;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #777777;
+        }
+    }
+    .department
+    {
+        text-align: center;
+
+        .department-list
+        {
+            list-style: none;
+
+            @media (max-width: 800px) {
+                display: none;
+            }
+
+            li
+            {
+                display: inline-block;
+                margin: 0 5px 10px 5px;
+
+                button
+                {
+                    background: $lightColor;
+                    padding: 5px 10px;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    transition: .3s ease-in-out;
+
+                    &:hover {
+                        color: $lightColor;
+                        background: $mainColor;
+                    }
+
+                }
+
+                .active {
+                    color: $lightColor;
+                    background: $mainColor;
+                }
+            }
+        }
+
+        .dropdown-btn
+        {
+            background: transparent;
+            border: none;
+            width: 30%;
+            margin-left: 35%;
+
+            .dropdown
+            {
+                display: none;
+                border: 1px solid $mainColor;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+                background: $lightColor;
+                transition: .3s ease-in-out;
+
+                .dropdown-toggle::after {
+                    display: none;
+                }
+
+                @media (max-width: 800px) {
+                    display: block;
+                }
+
+                .dropdown-list
+                {
+                    a
+                    {
+                        display: block;
+                        text-decoration: none;
+                        color: $darkColor;
+                        background: $lightColor;
+                        margin: 10px;
+                        padding: 5px 10px;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 14px;
+                        cursor: pointer;
+                        transition: .3s ease-in-out;
+
+                        &:hover {
+                            color: $lightColor;
+                            background: $mainColor;
+                        }
+
+                    }
+
+                    .active {
+                        color: $lightColor;
+                        background: $mainColor;
+                    }
+                }
+            }
+        }
+    }
+}
