@@ -15,5 +15,5 @@ import "./Layout/style/Main.scss";
 ReactDOM.render(<App />, document.getElementById('root'));
 
 reportWebVitals();
-serviceWorkerRegistration.register();
+serviceWorkerRegistration.unregister();
 
