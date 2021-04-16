@@ -8,6 +8,7 @@ import Slider from "./component/Slider";
 import WelcomeBadge from "./component/WelcomeBadge";
 import OurDepartments from "./component/OurDeprtments";
 import BenefitsSection from "./component/BenefitsSection";
+import TopDoctors from "./component/TopDoctors";
 import EmergencySection from "./component/EmergencySection";
 import LatestBlogs from "./component/LatestBlogs";
 import Testimonial from "./component/Testimonial";
@@ -22,6 +23,7 @@ export default function Home() {
         <WelcomeBadge/>
         <OurDepartments />
         <BenefitsSection />
+        <TopDoctors />
         <EmergencySection />
 
         <div className="container-fluid">
@@ -34,5 +36,6 @@ export default function Home() {
                 </div>
             </div>
         </div>
+
     </div>
 }

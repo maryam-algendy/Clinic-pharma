@@ -1,0 +1,137 @@
+@import '../../../variables';
+
+#doctors-block
+{
+    .doctors-card
+    {
+        padding: 20px;
+        text-align: center;
+        background: $lightColor;
+        margin-right: 15px;
+
+        .doc-img
+        {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+                background: #ecfcfa;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .overlay {
+                position: absolute;
+                bottom: 0;
+                background: rgba(57, 108, 240, .8);
+                color: $lightColor;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                font-size: 35px;
+                padding: 40% 0;
+                text-align: center;
+                border-radius: 50%;
+                font-family: "SemiBold", sans-serif;
+                transition: .3s ease-in-out;
+                cursor: pointer;
+            }
+
+            &:hover
+            {
+                .overlay {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .content
+        {
+            .title {
+                margin-top: 15px;
+                font-size: 22px;
+                font-family: "SemiBold", sans-serif;
+            }
+
+            span {
+                color: $mainColor;
+                font-size: 15px;
+            }
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #cdcdcd;
+        }
+
+        .date-time
+        {
+            display: flex;
+            font-size: 14px;
+            color: #777777;
+            padding: 10px 0 10px 25px;
+
+            @media (max-width: 800px) {
+                padding-left: 43px;
+            }
+
+            @media (max-width: 414px) {
+                padding-left: 65px;
+            }
+
+            @media (max-width: 375px) {
+                padding-left: 55px;
+            }
+
+            @media (max-width: 360px) {
+                padding-left: 45px;
+            }
+
+            .date {
+                text-align: left;
+            }
+
+            span
+            {
+                display: block;
+                margin-right: 22px;
+
+                @media (max-width: 800px) {
+                    margin-right: 50px;
+                }
+
+                @media (max-width: 375px) {
+                    margin-right: 35px;
+                }
+            }
+        }
+
+        .btn
+        {
+            button
+            {
+                background: transparent;
+                border: 1px solid $mainColor;
+                padding: 10px 20px;
+                font-size: 13px;
+                color: $darkColor;
+                text-transform: uppercase;
+                font-family: "SemiBold", sans-serif;
+                border-radius: 5px;
+                transition: .3s ease-in-out;
+
+                &:hover {
+                    background: $mainColor;
+                    color: $lightColor;
+                }
+            }
+        }
+    }
+}
