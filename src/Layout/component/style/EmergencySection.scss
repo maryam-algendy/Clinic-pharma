@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+#emergency
+{
+  background: url("figure6.jpg") no-repeat;
+  background-position-y: 20%;
+  background-size: cover;
+  height: 440px;
+  position: relative;
+
+  .inner-text
+  {
+    color: $lightColor;
+    max-width: 400px;
+    padding: 30px 40px;
+    position: absolute;
+    left: 16%;
+    background: rgba(57, 108, 240,.6);
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+
+    @media (max-width: 570px) {
+      left: 0;
+      right: 0;
+    }
+
+    h3 {
+      text-transform: capitalize;
+      margin-bottom: 14px;
+    }
+
+    span {
+      font-family: "SemiBold", sans-serif;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 14px 0 0;
+      font-size: 13px;
+    }
+  }
+}
