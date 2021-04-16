@@ -18,6 +18,12 @@ export default function AllDoctor()
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573392/Assets/team/team14_lxncqp.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team12_njoetd.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573392/Assets/team/team14_lxncqp.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"}
     ]
 
@@ -60,8 +66,8 @@ export default function AllDoctor()
                 <div className="row">
                         {allDoctors?.map((doctors, i) => {
                             return (
-                                <div key={i} className="col-12 col-md-4 col-lg-3">
-                                    <DoctorBlock doctors={i + 1} img={doctors.image} alt={doctors.alter} title={doctors.title} span={doctors.span} />
+                                <div key={i} className="col-12 col-md-6 col-lg-3">
+                                    <DoctorBlock doctors={i + 1} image={doctors.image} alt={doctors.alter} title={doctors.title} span={doctors.span} />
                                 </div>
                             );
                         })}
