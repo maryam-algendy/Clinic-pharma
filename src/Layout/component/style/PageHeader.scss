@@ -5,17 +5,12 @@
     background: url('assets/figure2.jpg') center no-repeat;
     background-size: cover;
 
-    .content
+    .container
     {
-
-        padding: 5% 0 5% 20%;
-
-        @media (min-width: 1920px) {
-            padding-left: 30%;
-        }
+        padding: 5% 0;
 
         @media (max-width: 414px) {
-            padding: 10%;
+            padding: 10% 5%;
         }
 
         .title {

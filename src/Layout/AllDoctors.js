@@ -16,20 +16,20 @@ export default function AllDoctor()
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team11_xvpcka.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team12_njoetd.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573392/Assets/team/team14_lxncqp.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team12_njoetd.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573392/Assets/team/team14_lxncqp.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"}
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team07_et2olk.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573385/Assets/team/team02_x1btip.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team06_mhot7v.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team09_zzi6bf.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573384/Assets/team/team01_yttlb4.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573384/Assets/team/team05_qfsdl3.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573382/Assets/team/team03_neii3v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"}
     ]
 
     return(
         <div id="all-doctors">
-            <PageHeader />
+            <PageHeader title="All Doctors" firstLocation="All Doctors" />
             <div className="container">
                 <div className="header-content">
                     <h2 className="title">Find A Doctor</h2>
