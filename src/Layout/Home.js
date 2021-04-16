@@ -26,12 +26,12 @@ export default function Home() {
         <TopDoctors />
         <EmergencySection />
 
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-12 col-md-6">
+        <div className="container-fluid p-0">
+            <div className="row m-0">
+                <div className="col-12 col-md-6 p-0">
                     <LatestBlogs />
                 </div>
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-md-6 p-0">
                     <Testimonial />
                 </div>
             </div>

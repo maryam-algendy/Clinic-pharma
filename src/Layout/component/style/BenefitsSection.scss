@@ -1,0 +1,74 @@
+@import "../../variables.scss";
+
+#benefits
+{
+  .row {
+    margin: 0;
+  }
+
+  .text-side
+  {
+    padding: 0;
+    background: $mainColor;
+    color: $lightColor;
+    text-transform: capitalize;
+    min-height: 350px;
+
+    .inner-text
+    {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: fit-content;
+      width: 50%;
+
+      @media (max-width: 992px) {
+        width: 80%;
+      }
+
+      @media (max-width: 768px) {
+        position: relative;
+        padding: 30px;
+        width: 100%;
+      }
+
+      h2 {
+        font-family: "SemiBold", sans-serif;
+      }
+
+      p {
+        font-size: 14px;
+        text-transform: none;
+      }
+
+      ul
+      {
+        li
+        {
+          font-size: 13px;
+          margin-bottom: 12px;
+
+          i {
+            margin-right: 15px;
+            padding: 5px 8px;
+            border-radius: 50%;
+            background: #fff;
+            color: $darkColor;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+
+  .img-side {
+    padding: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}
