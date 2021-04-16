@@ -37,7 +37,7 @@ export default function BenefitsSection() {
                     </div>
                 </div>
                 <div className="col-md-6 img-side">
-                    <Image src="/figure8.jpg"/>
+                    <Image src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573369/Assets/figures/figure8_vp0fwd.jpg"/>
                 </div>
             </div>
         </div>

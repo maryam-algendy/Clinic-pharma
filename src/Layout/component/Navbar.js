@@ -7,6 +7,7 @@ import SearchBar from './Block/SearchBar';
 
 // style
 import "./style/Navbar.scss";
+import storage from "../../utilize/storage";
 
 export default function MainNavbar()
 {
@@ -15,6 +16,7 @@ export default function MainNavbar()
     const [searchBar, setSearchBar] = useState(false);
 
     useEffect(() => {
+        storage("access-token") ? setAuthenticatedUser(true) : setAuthenticatedUser(false);
         document.addEventListener("click", () => {
             if(userSection || searchBar)
                 setUserSection(false);
@@ -69,7 +71,7 @@ export default function MainNavbar()
                             {!authenticatedUser ? <button className="btn">Appointment</button> : null}
                             {authenticatedUser ? <><img
                                 className="user-logo"
-                                src={"./user.png"}
+                                src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png"
                                 alt="User Section"
                                 onClick={(e) => {
                                     if (userSection || searchBar) {

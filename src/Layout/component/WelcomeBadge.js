@@ -10,7 +10,7 @@ export default function WelcomeBadge() {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 img-side">
-                        <img alt="not found" src="/about1.png"/>
+                        <img alt="not found" src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573350/Assets/about/about1_qmakho.png"/>
                     </div>
 
                     <div className="col-lg-5 col-sm-6 text-side">
@@ -23,7 +23,7 @@ export default function WelcomeBadge() {
                             , online and at the comfort of your home
                             get your medicines delivered to your home
                         </span>
-                        <img alt="not found" src="/sign1.png"/>
+                        <img alt="not found" src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573349/Assets/about/sign1_ht7col.png"/>
                     </div>
 
                     <div className="col-lg-4 rhs">

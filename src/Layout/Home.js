@@ -15,7 +15,10 @@ import Testimonial from "./component/Testimonial";
 
 export default function Home() {
 
-    const slides = [{image: "/slide1-1.jpg"}, {image: "/slide1-2.jpg"}, {image: "/slide1-3.jpg"}];
+    const slides = [{image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573380/Assets/slides/slide1-1_wcspqu.jpg"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573380/Assets/slides/slide1-2_bzwsju.jpg"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573381/Assets/slides/slide1-3_qmcsr6.jpg"}
+    ];
 
 
     return <div id="home">

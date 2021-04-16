@@ -22,12 +22,12 @@ export default function TopDoctors()
     const {galleryItems, currentIndex} = state;
 
     const doctors = [
-        {image: "./team11.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "./team12.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "./team13.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
-        {image: "./team14.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
-        {image: "./team11.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "./team12.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"}
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team11_xvpcka.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team12_njoetd.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573392/Assets/team/team14_lxncqp.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team08_r24q5v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"}
     ]
 
     return(
