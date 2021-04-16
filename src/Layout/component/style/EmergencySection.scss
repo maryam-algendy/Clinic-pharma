@@ -17,9 +17,9 @@
     left: 16%;
     background: rgba(57, 108, 240,.6);
     margin: auto;
-    top: 0;
-    bottom: 0;
     height: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
 
     @media (max-width: 570px) {
       left: 0;

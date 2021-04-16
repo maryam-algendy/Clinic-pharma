@@ -8,8 +8,9 @@
   {
     background: url("assets/figure9.png");
     background-size: cover;
-    min-height: 560px;
-    @media (max-width: 300px) {
+    min-height: 600px;
+
+    @media (max-width: 768px) {
       min-height: 750px;
     }
   }
@@ -19,11 +20,12 @@
     position: absolute;
     height: max-content;
     width: 60%;
-    top: 0;
-    bottom: 0;
+    top: 40%;
+    transform: translateY(-40%);
     left: 80px;
     margin: auto;
     color: $lightColor;
+
     @media (max-width: 500px) {
       width: 100%;
       padding: 40px;
@@ -51,12 +53,15 @@
       position: absolute;
       top: 0;
       right: -50px;
+
       @media (max-width: 768px) {
-        right: 0;
+        display: none;
       }
+
       @media (max-width: 500px) {
         top: 40px;
       }
+
       @media (max-width: 300px) {
         top: 20px;
       }

@@ -79,9 +79,15 @@
       }
 
       &:hover {
+        background: $mainColor;
+        color: $lightColor;
         border: 1px solid $mainColor;
         text-decoration: none;
         transition: .3s ease-in-out;
+
+        i {
+          color: $lightColor;
+        }
       }
     }
   }

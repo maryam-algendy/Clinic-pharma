@@ -49,9 +49,8 @@
     position: absolute;
     width: 100%;
     margin: auto;
-    top: 0;
-    height: max-content;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
 
     h1
     {
