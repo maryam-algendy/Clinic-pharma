@@ -69,7 +69,7 @@ export default function MainNavbar()
                                 <i className="flaticon-shopping-cart"> </i>
                                 <span className="counter">2</span>
                             </button>
-                            {!authenticatedUser ? <button onClick={() => window.location.replace("/account/login")} className="btn">Appointment</button> : null}
+                            {!authenticatedUser ? <button onClick={() => window.location.replace("/account/login")} className="btn">Login/Register</button> : null}
                             {authenticatedUser ? <><img
                                 className="user-logo"
                                 src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png"

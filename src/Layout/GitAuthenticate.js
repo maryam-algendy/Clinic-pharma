@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import API from "../utilize/API";
 import storage from "../utilize/storage";
@@ -7,6 +7,12 @@ import storage from "../utilize/storage";
 import "./style/GitAuthenticate.scss";
 
 export default function GitAuthenticate() {
+    useEffect(() => {
+        if (storage("access-token")) {
+            window.location.replace("/");
+        }
+    })
+
     const [form, setForm] = useState({ name: "", username: "", email: "", password: "", government: "", counter: "", phone: ""});
     const [error, setError] = useState();
     function handleLogin() {
@@ -30,7 +36,7 @@ export default function GitAuthenticate() {
                     {window.location.pathname.replace("/account/", "") === "login" ?
                         <div className="col-12">
                             <h1>Login</h1>
-                            <p>If you have an account with us, please log in.</p>
+                            <p>If you have an account with us, please log in. If not, <Link to="/account/register">Register</Link> now.</p>
 
                             <div className="container">
                                 <div className="row">
