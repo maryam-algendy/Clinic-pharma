@@ -4,7 +4,6 @@
 {
     background: url("./Departments.png") top no-repeat;
     background-size: cover;
-    text-transform: capitalize;
 
     .container
     {
@@ -25,14 +24,6 @@
             .sub-title {
                 color: #666;
                 margin-bottom: 15px;
-            }
-
-            .line {
-                display: block;
-                width: 60px;
-                height: 4px;
-                margin-top: 15px;
-                background: $mainColor;
             }
         }
 

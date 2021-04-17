@@ -1,0 +1,31 @@
+@import '../../variables';
+
+#page-header
+{
+    background: url('assets/figure2.jpg') center no-repeat;
+    background-size: cover;
+
+    .container
+    {
+        padding: 5% 0;
+
+        @media (max-width: 414px) {
+            padding: 10% 5%;
+        }
+
+        .title {
+            font-size: 30px;
+            font-family: "SemiBold", sans-serif;
+        }
+
+        span
+        {
+            font-size: 15px;
+
+            .fas {
+                margin: 0 5px;
+                color: $mainColor;
+            }
+        }
+    }
+}
