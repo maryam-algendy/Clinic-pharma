@@ -5,6 +5,10 @@
   background: #f1f7fb;
   padding: 3rem;
 
+  @media (max-width: 800px) {
+    padding: 0;
+  }
+
   .lhs, .rhs
   {
     padding: 12px;
@@ -169,6 +173,11 @@
           {
             border: none;
             vertical-align: middle;
+
+            @media (max-width: 800px) {
+              white-space: nowrap;
+            }
+
             @media (max-width: 560px) {
               padding: .5rem;
             }
