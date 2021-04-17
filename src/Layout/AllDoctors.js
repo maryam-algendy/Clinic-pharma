@@ -55,15 +55,37 @@ export default function AllDoctor()
                                     Filter
                                 </label>
                                 <ul>
-                                    <li><a className="active" href="/">All</a></li>
-                                    <li><a href="/">Dental</a></li>
-                                    <li><a href="/">Gynaecology</a></li>
-                                    <li><a href="/">Eye</a></li>
-                                    <li><a href="/">Cardiology</a></li>
-                                    <li><a href="/">Orthopaedics</a></li>
-                                    <li><a href="/">Gastroenterology</a></li>
-                                    <li><a href="/">Neurology</a></li>
-                                    <li><a href="/">Medicine</a></li>
+                                    <li>
+                                        <h1>Departments</h1>
+                                        <div className="line"> </div>
+                                    </li>
+                                    <li>
+                                        <a className="active" href="/">All</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Dental</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Gynaecology</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Eye</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Cardiology</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Orthopaedics</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Gastroenterology</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Neurology</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Medicine</a>
+                                    </li>
                                 </ul>
                         </nav>
                     </div>
