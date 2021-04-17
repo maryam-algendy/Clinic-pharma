@@ -4,11 +4,13 @@ import {Link} from "react-router-dom";
 
 //style
 import "./style/SingleDoctor.scss";
+import PageHeader from "./component/PageHeader";
 
 // todo: create request onLoad to get doctor data
 export default function SingleDoctor() {
     return (
         <div id="single-doctor">
+            <PageHeader title="Doctor Name" firstLocation="Doctor Name" />
             <div className="container p-4">
                 <div className="row">
                     <div className="col-lg-3 lhs">
