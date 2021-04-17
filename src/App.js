@@ -7,6 +7,7 @@ import Home from "./Layout/Home";
 import MainNavbar from "./Layout/component/Navbar";
 import Footer from "./Layout/component/Footer";
 import GitAuthenticate from "./Layout/GitAuthenticate";
+import SingleDoctor from "./Layout/SingleDoctor";
 
 export default function App() {
     return (
@@ -16,6 +17,7 @@ export default function App() {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/account/:page" exact component={GitAuthenticate} />
+                    <Route path="/doctor/:doc" exact component={SingleDoctor} />
                 </Switch>
                 <Footer />
             </BrowserRouter>
