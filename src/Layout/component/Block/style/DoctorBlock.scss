@@ -78,37 +78,25 @@
             color: #777777;
             padding: 10px 0 10px 25px;
 
-            @media (max-width: 800px) {
-                padding-left: 43px;
-            }
-
-            @media (max-width: 414px) {
-                padding-left: 65px;
-            }
-
-            @media (max-width: 375px) {
-                padding-left: 55px;
-            }
-
-            @media (max-width: 360px) {
-                padding-left: 45px;
-            }
-
             .date {
                 text-align: left;
             }
 
             span
             {
-                display: block;
-                margin-right: 22px;
+                display: inline-flex;
 
                 @media (max-width: 800px) {
-                    margin-right: 50px;
+                    display: block;
+                    margin: 0 20px;
+                }
+
+                @media (max-width: 414px) {
+                    margin-right: 35px;
                 }
 
                 @media (max-width: 375px) {
-                    margin-right: 35px;
+                    margin-right: 10px;
                 }
             }
         }

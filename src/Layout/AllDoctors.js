@@ -13,18 +13,18 @@ import DoctorBlock from "./component/Block/DoctorBlock";
 export default function AllDoctor()
 {
     const allDoctors = [
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team11_xvpcka.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team12_njoetd.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team07_et2olk.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573385/Assets/team/team02_x1btip.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team06_mhot7v.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team09_zzi6bf.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
         {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573384/Assets/team/team01_yttlb4.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Gynaecology"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573384/Assets/team/team05_qfsdl3.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573382/Assets/team/team03_neii3v.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"}
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573404/Assets/team/team13_stxxn5.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Orthopaedics"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573382/Assets/team/team03_neii3v.png", alter: "Rihana", title: "Dr. Rihana Roy", span: "Lense Expert"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png", alter: "Steven", title: "Dr. Steven Jobs", span: "Cardiology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573385/Assets/team/team02_x1btip.png", alter: "Johora", title: "Dr. Johora Ray", span: "Dental Consult"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team06_mhot7v.png", alter: "Jason", title: "Dr. Jason Roy", span: "Associate Eye"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573384/Assets/team/team05_qfsdl3.png", alter: "Maria", title: "Dr. Maria", span: "Gastroenterology"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team07_et2olk.png", alter: "Tina", title: "Dr. Tina Rahman", span: "Gastroenterology"},
+        {image: "/team08.png", alter: "Mark", title: "Dr. Mark Willy", span: "Gastroenterology"},
+        {image: "/team14.png", alter: "Zinia", title: "Dr. Zinia Zara", span: "Associate Eye"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team09_zzi6bf.png", alter: "Nadim", title: "Dr. Nadim Kamal", span: "Associate Eye"},
+        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573387/Assets/team/team10_fb2mmd.png", alter: "Johora", title: "Dr. Johora Ray", span: "Associate Eye"}
     ]
 
     return(
@@ -47,20 +47,25 @@ export default function AllDoctor()
                         <li><button>Neurology</button></li>
                         <li><button>Medicine</button></li>
                     </ul>
-                    <div className="dropdown-btn">
-                        <NavDropdown className="dropdown" title="Filter" id="basic-nav-dropdown">
-                            <div className="dropdown-list">
-                                <a href="/" className="active">All</a>
-                                <a href="/">Dental</a>
-                                <a href="/">Gynaecology</a>
-                                <a href="/">Eye</a>
-                                <a href="/">Cardiology</a>
-                                <a href="/">Orthopaedics</a>
-                                <a href="/">Gastroenterology</a>
-                                <a href="/">Neurology</a>
-                                <a href="/">Medicine</a>
-                            </div>
-                        </NavDropdown>
+                    <div className="sidebar">
+                        <nav>
+                            <input type="checkbox" id="check" />
+                                <label htmlFor="check" className="check-btn">
+                                    <i className="fas fa-filter"> </i>
+                                    Filter
+                                </label>
+                                <ul>
+                                    <li><a className="active" href="/">All</a></li>
+                                    <li><a href="/">Dental</a></li>
+                                    <li><a href="/">Gynaecology</a></li>
+                                    <li><a href="/">Eye</a></li>
+                                    <li><a href="/">Cardiology</a></li>
+                                    <li><a href="/">Orthopaedics</a></li>
+                                    <li><a href="/">Gastroenterology</a></li>
+                                    <li><a href="/">Neurology</a></li>
+                                    <li><a href="/">Medicine</a></li>
+                                </ul>
+                        </nav>
                     </div>
                 </div>
                 <div className="row">
