@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 //style
 import "./style/SingleDoctor.scss";
 
+// todo: create request onLoad to get doctor data
 export default function SingleDoctor() {
     return (
         <div id="single-doctor">
@@ -12,7 +13,7 @@ export default function SingleDoctor() {
                 <div className="row">
                     <div className="col-lg-3 lhs">
                         <div className="name-card">
-                            <Image src="/figure7.png"/>
+                            <Image src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573380/Assets/figures/figure7_rm6aie.png"/>
                             <h4>Dr. zinia zara</h4>
                             <span>Cardiology</span>
                             <p>MBBS, M.D of medicine</p>
@@ -25,23 +26,23 @@ export default function SingleDoctor() {
                             <p>social:
                                 <span>
                                     <Link to="/">
-                                        <i className="fab fa-facebook-f"></i>
+                                        <i className="fab fa-facebook-f"> </i>
                                     </Link>
                                     <Link to="/">
-                                    <i className="fab fa-twitter"></i>
+                                    <i className="fab fa-twitter"> </i>
                                     </Link>
                                     <Link to="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                    <i className="fab fa-linkedin-in"> </i>
                                     </Link>
                                     <Link to="/">
-                                    <i className="fab fa-skype"></i>
+                                    <i className="fab fa-skype"> </i>
                                     </Link>
                             </span>
                             </p>
                         </div>
                         <div className="emergency row">
                             <div className="col-3">
-                                <Image src="figure1.png"/>
+                                <Image src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573353/Assets/figures/figure1_bxuaga.png"/>
                             </div>
                             <div className="col-9">
                                 <p>emergency cases</p>
@@ -114,7 +115,7 @@ export default function SingleDoctor() {
                                     <tr>
                                         <th>day</th>
                                         <th>time</th>
-                                        <th></th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

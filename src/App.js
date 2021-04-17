@@ -17,7 +17,7 @@ export default function App() {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/account/:page" exact component={GitAuthenticate} />
-                    <Route path="/single-doctor" exact component={SingleDoctor} />
+                    <Route path="/doctor/:doc" exact component={SingleDoctor} />
                 </Switch>
                 <Footer />
             </BrowserRouter>
