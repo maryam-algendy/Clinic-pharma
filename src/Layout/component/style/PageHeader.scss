@@ -16,6 +16,10 @@
         .title {
             font-size: 30px;
             font-family: "SemiBold", sans-serif;
+
+            @media (max-width: 414px) {
+                font-size: 22px;
+            }
         }
 
         span
