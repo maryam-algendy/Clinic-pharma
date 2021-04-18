@@ -10,7 +10,9 @@ export default function Medicine(props)
             <div className="products-img">
                 <img className="shop-img" src={props.image} alt={props.alter} />
                 <div className="overlay">
-                    <i className="flaticon-shopping-cart"> </i>
+                    <button>
+                        <i className="flaticon-shopping-cart"> </i>
+                    </button>
                 </div>
             </div>
             <div className="content">
