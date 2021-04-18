@@ -16,11 +16,23 @@
         .title {
             font-size: 30px;
             font-family: "SemiBold", sans-serif;
+
+            @media (min-width: 1900px) {
+                padding: 0 0 0 10px;
+            }
+
+            @media (max-width: 414px) {
+                font-size: 22px;
+            }
         }
 
         span
         {
             font-size: 15px;
+
+            @media (min-width: 1900px) {
+                padding: 0 0 0 10px;
+            }
 
             .fas {
                 margin: 0 5px;

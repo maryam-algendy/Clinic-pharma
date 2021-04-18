@@ -103,6 +103,50 @@
                 font-family: "Regular", sans-serif;
             }
         }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        select {
+            width: 100%;
+            margin: 0 0 35px 0;
+            padding: 10px 5px;
+            border: 1px solid #B7B7B7;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .upload
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin: 0 0 35px 0;
+            padding: 10px 5px;
+            font-size: 16px;
+            font-family: "Regular", sans-serif;
+            border: 1px solid #B7B7B7;
+            border-radius: 5px;
+            cursor: pointer;
+
+            span {
+                white-space: nowrap;
+                width: 40%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    .required {
+        display: block;
+        margin: 0 0 20px 0;
+        font-size: 14px;
+        font-family: "Light", sans-serif;
+        text-decoration: underline;
+        user-select: none;
     }
 
     .actions
