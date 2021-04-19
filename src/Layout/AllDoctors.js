@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavDropdown} from 'react-bootstrap';
 
 // style
 import './style/AllDoctors.scss';
