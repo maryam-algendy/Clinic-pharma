@@ -1,0 +1,81 @@
+@import "../variables.scss";
+
+#contact
+{
+  h3
+  {
+    text-transform: capitalize;
+    font-family: "SemiBold", sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+
+    &::after {
+      content: '';
+      width: 45px;
+      height: 3px;
+      background: $mainColor;
+      display: block;
+      margin-top: 15px;
+    }
+  }
+
+  .lhs
+  {
+    @media (max-width: 992px) {
+      margin-bottom: 50px;
+    }
+
+    input, textarea, select
+    {
+      margin-bottom: 15px;
+      padding: 20px;
+      font-size: 14px;
+      border-radius: 3px;
+
+      &:focus {
+        box-shadow: none;
+        border: 1px solid #ced4da;
+      }
+    }
+
+    select
+    {
+      height: 42px;
+      padding: 10px 20px;
+
+      &:focus {
+        box-shadow: none;
+        border: 1px solid #ced4da;
+      }
+    }
+
+    button
+    {
+      box-shadow: 0 0 8px $mainColor;
+      background: $mainColor;
+      font-size: 14px;
+      padding: 9px 20px;
+      font-family: "SemiBold", sans-serif;
+      border-color: $mainColor;
+
+      &:hover {
+        background: $lightColor;
+        color: $mainColor;
+      }
+    }
+
+  }
+
+
+  .rhs {
+    p {
+      font-size: 14px;
+
+      i {
+        color: $mainColor;
+        margin-right: 14px;
+        font-size: 16px;
+      }
+    }
+  }
+}
