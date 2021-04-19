@@ -45,7 +45,7 @@ export default function Contact() {
                     </p>
                     <p>
                         <i className="fas fa-phone"></i>
-                        (+123) 88 44400
+                        (+123) 884-4400
                     </p>
                 </div>
             </div>
