@@ -105,7 +105,7 @@ export default function MedicineDetails()
                                     <li>Overall: 24" H x 17" W x 14" D</li>
                                 </ul>
                             </Tab>
-                            <Tab eventKey="reviews" title="Reviews(3)">
+                            <Tab eventKey="reviews" title="Reviews(1)">
                                 <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur dolore doloribus eveniet molestiae odit officiis unde voluptate! Accusamus atque aut commodi dignissimos enim et nam nostrum saepe tempora temporibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet assumenda commodi in mollitia nisi obcaecati quas quasi ratione soluta.</p>
                             </Tab>
                             <Tab eventKey="contraindicationsAndWarnings" title="Contraindications and Warnings">
@@ -120,10 +120,7 @@ export default function MedicineDetails()
                         </Tabs>
                     </div>
                     <div className="leave-comment-box">
-                        <h5 className="title">
-                            Leave a Comment
-                            <span>*Doctors/Pharmacist</span>
-                        </h5>
+                        <h5 className="title">Leave a Comment</h5>
                         <div className="line"> </div>
 
                         <textarea name="leave-comment" id="leave-comment" />
