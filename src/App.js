@@ -22,7 +22,7 @@ export default function App() {
                     <Route path="/" exact component={Home} />
                     <Route path="/account/:page" exact component={GitAuthenticate} />
                     <Route path="/doctors" exact component={AllDoctors} />
-                    <Route path="/medicine-details" exact component={MedicineDetails} />
+                    <Route path="/shop/:slug" exact component={MedicineDetails} />
                     <Route path="/shop" exact component={Shop} />
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="*" exact component={NotFound} />

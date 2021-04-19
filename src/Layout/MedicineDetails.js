@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Tabs, Tab} from "react-bootstrap";
-import AliceCarousel from "react-alice-carousel";
 
 // style
 import './style/MedicineDetails.scss';
@@ -11,26 +10,7 @@ import PageHeader from "./component/PageHeader";
 export default function MedicineDetails()
 {
     const [quantity, setQuantity] = useState(1);
-
-    const state = { galleryItems: [4], currentIndex: 0};
-
-    const responsive = {
-        0: {items: 1},
-        576: {items: 2},
-        768: {items: 2},
-        1024: {items: 4}
-    }
-
-    const {galleryItems, currentIndex} = state;
-
-    const products = [
-        {image: "./shop1.png", alter: "Medical Bottle", title: "Medical Bottle", price: "$60.00"},
-        {image: "./shop2.png", alter: "Medical Bottle", title: "Medical Bottle", price: "$60.00"},
-        {image: "./shop3.png", alter: "Medical Bottle", title: "Medical Bottle", price: "$60.00"},
-        {image: "./shop4.png", alter: "Medical Bottle", title: "Medical Bottle", price: "$60.00"},
-        {image: "./shop1.png", alter: "Medical Bottle", title: "Medical Bottle", price: "$60.00"},
-        {image: "./shop2.png", alter: "Medical Bottle", title: "Medical Bottle", price: "$60.00"}
-    ]
+    const [displayedImage, setDisplayedImage] = useState("/shop1-01.png")
 
     return(
         <div id="medicine-details">
@@ -39,16 +19,16 @@ export default function MedicineDetails()
                 <div className="row">
                     <div className="col-12 col-lg-6">
                         <div className="img-view">
-                            <img className="active" src="/shop1-01.png" alt="Shop"/>
+                            <img className="active" src={displayedImage} alt="Shop"/>
                         </div>
                         <div className="sub-img">
-                            <div className="img">
-                                <img src="/shop2.png" alt="Shop"/>
+                            <div onClick={() => setDisplayedImage("/shop1-01.png")} className="img">
+                                <img src="/shop1-01.png" alt="Shop"/>
                             </div>
-                            <div className="img">
+                            <div onClick={() => setDisplayedImage("/shop3.png")} className="img">
                                 <img src="/shop3.png" alt="Shop"/>
                             </div>
-                            <div className="img">
+                            <div onClick={() => setDisplayedImage("/shop4.png")} className="img">
                                 <img src="/shop4.png" alt="Shop"/>
                             </div>
                         </div>
@@ -96,66 +76,58 @@ export default function MedicineDetails()
                         </div>
                     </div>
                     <div className="tabs">
-                        <Tabs defaultActiveKey="description" id="uncontrolled-tab-example">
+                        <Tabs defaultActiveKey="description" id="clinic-pharma-tab">
                             <Tab eventKey="description" title="Description">
                                 <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur dolore doloribus eveniet molestiae odit officiis unde voluptate! Accusamus atque aut commodi dignissimos enim et nam nostrum saepe tempora temporibus?</p>
-                                <div className="tab-list">
-                                    <ul className="list">
-                                        <li>Seat Height - Floor to Seat: 24"</li>
-                                        <li>Frame Material: Wood</li>
-                                        <li>Seat Material: Wood</li>
-                                        <li>Adjustable Height: No</li>
-                                        <li>Overall: 24" H x 17" W x 14" D</li>
-                                    </ul>
-                                </div>
+                                <ul className="list">
+                                    <li>Seat Height - Floor to Seat: 24"</li>
+                                    <li>Frame Material: Wood</li>
+                                    <li>Seat Material: Wood</li>
+                                    <li>Adjustable Height: No</li>
+                                    <li>Overall: 24" H x 17" W x 14" D</li>
+                                </ul>
+                            </Tab>
+                            <Tab eventKey="indications" title="Indications">
+                                <ul className="list">
+                                    <li>Seat Height - Floor to Seat: 24"</li>
+                                    <li>Frame Material: Wood</li>
+                                    <li>Seat Material: Wood</li>
+                                    <li>Adjustable Height: No</li>
+                                    <li>Overall: 24" H x 17" W x 14" D</li>
+                                </ul>
+                            </Tab>
+                            <Tab eventKey="sideEffects" title="Side Effects">
+                                <ul className="list">
+                                    <li>Seat Height - Floor to Seat: 24"</li>
+                                    <li>Frame Material: Wood</li>
+                                    <li>Seat Material: Wood</li>
+                                    <li>Adjustable Height: No</li>
+                                    <li>Overall: 24" H x 17" W x 14" D</li>
+                                </ul>
                             </Tab>
                             <Tab eventKey="reviews" title="Reviews(3)">
                                 <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur dolore doloribus eveniet molestiae odit officiis unde voluptate! Accusamus atque aut commodi dignissimos enim et nam nostrum saepe tempora temporibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet assumenda commodi in mollitia nisi obcaecati quas quasi ratione soluta.</p>
                             </Tab>
+                            <Tab eventKey="contraindicationsAndWarnings" title="Contraindications and Warnings">
+                                <ul className="list">
+                                    <li>Seat Height - Floor to Seat: 24"</li>
+                                    <li>Frame Material: Wood</li>
+                                    <li>Seat Material: Wood</li>
+                                    <li>Adjustable Height: No</li>
+                                    <li>Overall: 24" H x 17" W x 14" D</li>
+                                </ul>
+                            </Tab>
                         </Tabs>
                     </div>
-                    <div className="carousel">
-                        <div className="carousel-description">
-                            <h5 className="title">Related Products</h5>
-                            <div className="line"> </div>
-                        </div>
-                        <AliceCarousel
-                            items={galleryItems}
-                            responsive={responsive}
-                            autoPlayInterval={1000}
-                            fadeOutAnimation={false}
-                            dotsDisabled={true}
-                            buttonsDisabled={true}
-                            touchTrackingEnabled={true}
-                            mouseTrackingEnabled={true}
-                            slideToIndex={currentIndex}
-                        >
-                            {products.map((product, id) => {
-                                return(
-                                    <div key={id} className="carousel-products">
-                                        <div className="products">
-                                            <img className="shop-img" src={product.image} alt={product.alter} />
-                                            <div className="overlay">
-                                                <button>
-                                                    <i className="flaticon-shopping-cart"> </i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div className="content">
-                                            <h5 className="title">{product.title}</h5>
-                                            <div className="icons">
-                                                <i className="fas fa-star"> </i>
-                                                <i className="fas fa-star"> </i>
-                                                <i className="fas fa-star"> </i>
-                                                <i className="fas fa-star"> </i>
-                                                <i className="fas fa-star"> </i>
-                                            </div>
-                                            <span className="price">{product.price}</span>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </AliceCarousel>
+                    <div className="leave-comment-box">
+                        <h5 className="title">
+                            Leave a Comment
+                            <span>*Doctors/Pharmacist</span>
+                        </h5>
+                        <div className="line"> </div>
+
+                        <textarea name="leave-comment" id="leave-comment" />
+                        <button>Send</button>
                     </div>
                 </div>
             </div>

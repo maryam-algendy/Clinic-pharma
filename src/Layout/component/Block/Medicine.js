@@ -2,6 +2,7 @@ import React from 'react';
 
 // style
 import './style/Medicine.scss';
+import {Link} from "react-router-dom";
 
 export default function Medicine(props)
 {
@@ -16,7 +17,9 @@ export default function Medicine(props)
                 </div>
             </div>
             <div className="content">
-                <h5 className="title">{props.title}</h5>
+                <Link to={`/shop/${props.title.toLowerCase().replace(" ", "-")}`}>
+                    <h5 className="title">{props.title}</h5>
+                </Link>
                 <div className="icons">
                     <i className="fas fa-star"> </i>
                     <i className="fas fa-star"> </i>

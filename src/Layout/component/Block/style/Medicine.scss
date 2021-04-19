@@ -70,9 +70,18 @@
             text-align: center;
         }
 
-        .title {
-            font-size: 16px;
-            font-family: "SemiBold", sans-serif;
+        a
+        {
+            color: $darkColor;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            .title {
+                font-size: 16px;
+                font-family: "SemiBold", sans-serif;
+            }
         }
 
         .icons
