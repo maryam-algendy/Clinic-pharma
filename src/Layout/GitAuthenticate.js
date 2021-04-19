@@ -68,7 +68,7 @@ export default function GitAuthenticate() {
 
                                             <label htmlFor="password">Password*</label>
                                             <input type="password" name="password" placeholder="Enter Password"
-                                                   id="password" inputMode="none" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })}
+                                                   id="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })}
                                             />
                                         </form>
 
