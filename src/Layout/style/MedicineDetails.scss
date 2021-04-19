@@ -1,0 +1,281 @@
+@import '../variables';
+
+#medicine-details
+{
+    .container
+    {
+        margin-top: 40px;
+
+        .col-12
+        {
+            .img-view
+            {
+                text-align: center;
+                background: #eee;
+
+                .active {
+                    padding: 30px 0;
+                    width: 40%;
+                }
+            }
+
+            .sub-img
+            {
+                margin: 10px 0 30px;
+                display: flex;
+                text-align: center;
+                cursor: pointer;
+
+                .img
+                {
+                    margin-right: 10px;
+                    background: #eee;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                    img {
+                        flex: 1;
+                        width: 40%;
+                        padding: 25px 0;
+                    }
+                }
+            }
+
+            .content
+            {
+                .title {
+                    font-size: 30px;
+                    font-family: "SemiBold", sans-serif;
+                }
+
+                span {
+                    display: block;
+                    margin: 20px 0;
+                    color: $darkColor;
+                }
+
+                .code,
+                .Availability {
+                    display: inline;
+                    font-family: "SemiBold", sans-serif;
+                }
+
+                .icons
+                {
+                    margin-bottom: 8px;
+
+                    .fas
+                    {
+                        color: #ffd700;
+                        font-size: 14px;
+                        padding-right: 5px;
+                        cursor: pointer;
+                    }
+                }
+
+                .details
+                {
+                    .price {
+                        color: $mainColor;
+                        font-family: "SemiBold", sans-serif;
+                    }
+
+                    .seller
+                    {
+                        a {
+                            font-family: "SemiBold", sans-serif;
+                            text-decoration: none;
+                        }
+                    }
+
+                    .description {
+                        font-size: 15px;
+                        color: #777777;
+                    }
+                }
+
+                .btn
+                {
+                    margin-bottom: 20px;
+                    padding: 0;
+
+                    button
+                    {
+                        margin: 0 10px;
+                        background: transparent;
+                        border: none;
+
+                        @media (max-width: 375px) {
+                            margin: 0 5px;
+                        }
+                    }
+
+                    .quantity
+                    {
+                        display: inline;
+
+                        button
+                        {
+                            margin: 0;
+                            width: 40px;
+                            height: 39px;
+                            background: #eee;
+                            border: 2px solid #eee;
+                            outline: none;
+
+                            @media (max-width: 375px) {
+                                width: 35px;
+                            }
+
+                            @media (max-width: 360px) {
+                                width: 30px;
+                            }
+                        }
+
+                        .counter {
+                            background: transparent;
+                            cursor: default;
+                        }
+                    }
+
+                    .number {
+                        font-size: 18px;
+                        line-height: 20px;
+                        font-weight: 500;
+                    }
+
+                    .add-to-cart
+                    {
+                        background: $mainColor;
+                        color: $lightColor;
+                        padding: 8px 15px;
+                        font-size: 14px;
+                        border-radius: 5px;
+                        border: 1px solid $mainColor;
+                        font-family: "SemiBold", sans-serif;
+                        transition: .3s ease-in-out;
+
+                        &:hover {
+                            background: $lightColor;
+                            color: $mainColor;
+                            border: 1px solid $mainColor;
+                        }
+                    }
+
+                    .fas
+                    {
+                        margin-right: 15px;
+                        background: #eee;
+                        padding: 10px;
+
+                        @media (max-width: 414px) {
+                            margin-right: 7px;
+                        }
+                    }
+                }
+
+                .social-icons
+                {
+                    margin-bottom: 20px;
+
+                    .social-links
+                    {
+                        span {
+                            display: inline;
+                            color: $mainColor;
+                        }
+
+                        i {
+                            margin: 0 10px;
+                            cursor: pointer;
+                            transition: .3s ease-in-out;
+
+                            &:hover {
+                                color: $mainColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .tabs
+        {
+            @media (max-width: 414px) {
+                padding: 0 20px;
+            }
+
+            .nav-tabs .nav-link
+            {
+                background: #eee;
+                margin-right: 10px;
+                color: $darkColor;
+                font-family: "SemiBold", sans-serif;
+                transition: .3s ease-in-out;
+
+                @media (max-width: 768px) {
+                    margin: 0 10px 10px 0;
+                }
+            }
+            .nav-link.active {
+                background: $mainColor;
+                color: $lightColor;
+                border-color: $mainColor
+            }
+
+            .tab-content>.active {
+                padding: 20px 0;
+            }
+
+            .description {
+                color: #777777;
+                margin: 0 0 20px 0;
+            }
+        }
+
+        .leave-comment-box
+        {
+            margin: 20px 0 40px;
+            width: 100%;
+
+            @media (max-width: 414px) {
+                padding: 0 20px;
+            }
+
+            .title
+            {
+                font-size: 22px;
+                margin-bottom: 15px;
+                font-family: "SemiBold", sans-serif;
+
+                span {
+                    padding: 0 0 0 10px;
+                    font-size: 16px;
+                    font-family: "Light", sans-serif;
+                    text-decoration: underline;
+                }
+            }
+
+            textarea {
+                margin: 20px 0 0 0;
+                width: 100%;
+                height: 150px;
+                padding: 10px;
+                border: 1px solid #B7B7B7;
+                border-radius: 5px;
+                outline: none;
+                resize: none;
+            }
+
+            button {
+                padding: 10px;
+                background: $mainColor;
+                color: $lightColor;
+                font-family: "Regular", sans-serif;
+                border: 1px solid $mainColor;
+                border-radius: 5px;
+            }
+        }
+    }
+}

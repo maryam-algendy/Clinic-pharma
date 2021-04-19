@@ -29,7 +29,7 @@ export default function Shop()
 
     return(
         <div id="shop">
-            <PageHeader title="Shop Your Medicines" firstLocation="Shop Medicine" />
+            <PageHeader title="Shop Your Medicines & Products" firstLocation="Shop Medicine" />
             <div className="container">
                 <div className="row">
                     {shop?.map((medicine, i) => {
