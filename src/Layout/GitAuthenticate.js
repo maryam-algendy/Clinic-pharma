@@ -25,12 +25,12 @@ export default function GitAuthenticate() {
     const [error, setError] = useState();
 
     function handleLogin() {
-        API("patient/auth/login", "POST", form)
+        API("auth/login", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
-                    storage("access-token", data?.patient?.token);
+                    storage("access-token", data?.user?.tokens[0]?.token);
                     setTimeout(() => {
-                        window.location.replace("/account/login");
+                        window.location.replace("/");
                     }, 1000);
                 } else {
                     setError(data?.message);
@@ -43,7 +43,6 @@ export default function GitAuthenticate() {
         API("doctor/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
-                    storage("access-token", data?.doctor?.token);
                     setError("Account created successfully, you will be redirected in moments");
                     window.scrollTo(0, 0);
                     setTimeout(() => {
@@ -60,7 +59,6 @@ export default function GitAuthenticate() {
         API("patient/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
-                    storage("access-token", data?.doctor?.token);
                     setError("Account created successfully, you will be redirected in moments");
                     setTimeout(() => {
                         window.location.replace("/account/login");
@@ -77,10 +75,9 @@ export default function GitAuthenticate() {
             .then(({data, status}) => {
                 if (status === 200) {
                     window.scrollTo(0, 0);
-                    storage("access-token", data?.doctor?.token);
                     setError("Account created successfully, you will be redirected in moments");
                     setTimeout(() => {
-                        window.location.replace("/");
+                        window.location.replace("/account/login");
                     }, 1000);
                 } else {
                     setError(data?.message);
