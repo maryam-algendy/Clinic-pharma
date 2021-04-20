@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Tabs, Tab} from "react-bootstrap";
+import swal from "sweetalert";
 
 // style
 import './style/MedicineDetails.scss';
@@ -7,10 +8,26 @@ import './style/MedicineDetails.scss';
 // component
 import PageHeader from "./component/PageHeader";
 
+// utilize
+import API from "../utilize/API";
+
 export default function MedicineDetails()
 {
     const [quantity, setQuantity] = useState(1);
-    const [displayedImage, setDisplayedImage] = useState("/shop1-01.png")
+    const [displayedImage, setDisplayedImage] = useState("/shop1-01.png");
+
+    const handleAddToCart = () => {
+        API("cart", "POST", {product: "bodium-stretch-marks-200-ml", quantity: 1})
+            .then(({data, status}) => {
+                if (status === 200) {
+                    swal("success!","Added successfully");
+                    console.log(data);
+                } else {
+                    swal("Error");
+                    console.log(data);
+                }
+            })
+    }
 
     return(
         <div id="medicine-details">
@@ -58,7 +75,7 @@ export default function MedicineDetails()
                                     <button className="counter">{quantity}</button>
                                     <button onClick={() => setQuantity(quantity + 1)}>+</button>
                                 </span>
-                                <button className="add-to-cart">Add To Cart</button>
+                                <button className="add-to-cart" onClick={() => handleAddToCart("bodium-stretch-marks-200-ml", 1)}>Add To Cart</button>
                                 <i className="fas fa-exchange-alt"> </i>
                                 <i className="fas fa-heart"> </i>
                             </div>
