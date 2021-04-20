@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Tabs, Tab} from "react-bootstrap";
 
 // style
@@ -6,11 +6,29 @@ import './style/MedicineDetails.scss';
 
 // component
 import PageHeader from "./component/PageHeader";
+import API from "../utilize/API";
 
-export default function MedicineDetails()
+export default function MedicineDetails(props)
 {
     const [quantity, setQuantity] = useState(1);
-    const [displayedImage, setDisplayedImage] = useState("/shop1-01.png")
+    const [displayedImage, setDisplayedImage] = useState();
+
+    const slug =props.location.pathname.slice(6);
+    const [product, setProduct]=useState([]);
+
+    useEffect(()=>{
+        API(`medicine/${slug}`).then(({data, status})=>{
+            if (status===200){
+                setProduct(data?.product);
+                setDisplayedImage(`${data.product.photos[0].photo}`);
+
+            }
+            else {
+                setProduct(data.message);
+            }
+        })
+    },[])
+
 
     return(
         <div id="medicine-details">
@@ -22,20 +40,20 @@ export default function MedicineDetails()
                             <img className="active" src={displayedImage} alt="Shop"/>
                         </div>
                         <div className="sub-img">
-                            <div onClick={() => setDisplayedImage("/shop1-01.png")} className="img">
-                                <img src="/shop1-01.png" alt="Shop"/>
-                            </div>
-                            <div onClick={() => setDisplayedImage("/shop3.png")} className="img">
-                                <img src="/shop3.png" alt="Shop"/>
-                            </div>
-                            <div onClick={() => setDisplayedImage("/shop4.png")} className="img">
-                                <img src="/shop4.png" alt="Shop"/>
-                            </div>
+                            {
+                                product?.photos?.map((photo,id)=>{
+                                    return(
+                                        <div key={id} onClick={() => setDisplayedImage(`${photo.photo}`)} className="img">
+                                            <img src={photo.photo} alt="Shop"/>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div className="col-12 col-lg-6">
                         <div className="content">
-                            <h5 className="title">Medical Product Title</h5>
+                            <h5 className="title">{product.name}</h5>
                             <div className="icons">
                                 <i className="fas fa-star"> </i>
                                 <i className="fas fa-star"> </i>
@@ -44,12 +62,12 @@ export default function MedicineDetails()
                                 <i className="fas fa-star"> </i>
                             </div>
                             <div className="details">
-                                <span className="price">$59.00</span>
+                                <span className="price">${product.price?.toFixed(2)}</span>
                                 <span className="seller">
-                                    Seller: <a href="/">Clinic Number</a>
+                                    Seller: <a href="/">{product?.owner?.username}</a>
                                 </span>
                                 <span>SKU: <span className="code">SB0059</span></span>
-                                <span>Availability: <span className="Availability">Instock</span></span>
+                                <span>Availability: <span className="Availability">{product.quantity > 0?"Instock":"out of stock"}</span></span>
                                 <p className="description">Working from home meant we cloudsnack and coffee our breaks change our desks or views, good, drink on the job, even spend the weather started getting.</p>
                             </div>
                             <div className="btn">
