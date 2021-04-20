@@ -32,7 +32,7 @@ export default function MainNavbar()
                     <Navbar.Brand href="/">
                         <img
                             src="/background-logo.jpg"
-                            width="50"
+                            width="70"
                             className="d-inline-block align-top"
                             alt="React Bootstrap logo"
                         />

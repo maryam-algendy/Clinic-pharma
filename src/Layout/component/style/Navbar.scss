@@ -2,10 +2,13 @@
 
 #navbar
 {
-    margin: 20px 0;
     .container
     {
         display: flex;
+
+        .nav-brand {
+            padding: 0;
+        }
 
         .blocks
         {
