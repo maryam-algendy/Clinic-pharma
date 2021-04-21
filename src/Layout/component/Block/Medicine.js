@@ -17,7 +17,7 @@ export default function Medicine(props)
                 </div>
             </div>
             <div className="content">
-                <Link to={`/shop/${props.title.toLowerCase().replace(" ", "-")}`}>
+                <Link to={`/shop/${props.slug}`}>
                     <h5 className="title">{props.title}</h5>
                 </Link>
                 <div className="icons">
@@ -27,7 +27,7 @@ export default function Medicine(props)
                     <i className="fas fa-star"> </i>
                     <i className="fas fa-star"> </i>
                 </div>
-                <span className="price">{props.price}</span>
+                <span className="price">${props.price.toFixed(2)}</span>
             </div>
         </div>
     );
