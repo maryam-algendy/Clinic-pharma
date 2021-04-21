@@ -12,7 +12,7 @@ import API from "../utilize/API";
 export default function MedicineDetails(props)
 {
     const [quantity, setQuantity] = useState(1);
-    const [displayedImage, setDisplayedImage] = useState();
+    const [displayedImage, setDisplayedImage] = useState("");
 
     const slug =props.location.pathname.replace("/shop/", "");
     const [product, setProduct]=useState({});
@@ -48,7 +48,7 @@ export default function MedicineDetails(props)
                 <div className="row">
                     <div className="col-12 col-lg-6">
                         <div className="img-view">
-                            <img className="active" src={displayedImage} alt="Shop"/>
+                            <img className="active" src={displayedImage} />
                         </div>
                         <div className="sub-img">
                             {
