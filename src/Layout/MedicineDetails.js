@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Tabs, Tab} from "react-bootstrap";
+import swal from "sweetalert";
 
 // style
 import './style/MedicineDetails.scss';
@@ -28,6 +29,17 @@ export default function MedicineDetails(props)
                 }
         })
     },[])
+
+     const handleAddToCart = () => {
+        API("cart", "POST", {product: slug, quantity})
+            .then(({data, status}) => {
+                if (status === 200) {
+                    swal({icon: "success", text: "Added successfully", button: false});
+                } else {
+                    swal({icon: "error", text: data?.message, button: false});
+                }
+            })
+    }
 
     return(
         <div id="medicine-details">
@@ -75,7 +87,7 @@ export default function MedicineDetails(props)
                                     <button className="counter">{quantity}</button>
                                     <button onClick={() => quantity === product.quantity ? product.quantity : setQuantity(quantity + 1)}>+</button>
                                 </span>
-                                <button className="add-to-cart">Add To Cart</button>
+                                <button className="add-to-cart" onClick={() => handleAddToCart()}>Add To Cart</button>
                                 <i className="fas fa-exchange-alt"> </i>
                                 <i className="fas fa-heart"> </i>
                             </div>

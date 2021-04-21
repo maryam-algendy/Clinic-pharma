@@ -1,9 +1,7 @@
 import API from "./utilize/API";
 
 /** NOTE: use storage to cache data data that is difficult to change during the session -logically- (ex: cart, user-data, ...etc) **/
-import storage from "./utilize/storage";
 
-//
 export function loadProducts()
 {
     return function(dispatch)
