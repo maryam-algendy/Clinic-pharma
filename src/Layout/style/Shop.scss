@@ -8,8 +8,45 @@
             margin-top: 40px;
         }
 
-        .pagination {
-            margin: 30px auto;
+
+        .pagination
+        {
+            ul
+            {
+                margin: 30px auto;
+                border: 1px solid #e6e6e6;
+                padding: 0;
+                list-style: none;
+
+                li
+                {
+                    display: inline-block;
+                    padding: 10px 15px;
+                    border: 1px solid #e6e6e6;
+
+                    a
+                    {
+                        color: $mainColor;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+
+                .active
+                {
+                    background: $mainColor;
+
+                    a {
+                        color: $lightColor;
+                    }
+                }
+            }
         }
     }
 }
