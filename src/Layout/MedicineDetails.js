@@ -34,9 +34,9 @@ export default function MedicineDetails(props)
         API("cart", "POST", {product: slug, quantity})
             .then(({data, status}) => {
                 if (status === 200) {
-                    swal(type: "success!", text:"Added successfully", button: false);
+                    swal({icon: "success", text: "Added successfully", button: false});
                 } else {
-                    swal(type: "error", text: data?.message, button: false);
+                    swal({icon: "error", text: data?.message, button: false});
                 }
             })
     }
@@ -87,7 +87,7 @@ export default function MedicineDetails(props)
                                     <button className="counter">{quantity}</button>
                                     <button onClick={() => quantity === product.quantity ? product.quantity : setQuantity(quantity + 1)}>+</button>
                                 </span>
-                                <button className="add-to-cart" onClick={() => handleAddToCart("bodium-stretch-marks-200-ml", 1)}>Add To Cart</button>
+                                <button className="add-to-cart" onClick={() => handleAddToCart()}>Add To Cart</button>
                                 <i className="fas fa-exchange-alt"> </i>
                                 <i className="fas fa-heart"> </i>
                             </div>

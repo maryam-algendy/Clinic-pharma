@@ -157,3 +157,17 @@ img {
 .alert-success {
     border: 1px solid rgb(123, 162, 132);
 }
+
+.swal-icon--success__line {
+    background: rgba(57, 108, 240, 0.65);
+}
+
+.swal-icon--success__ring {
+    border-color: rgba(57, 108, 240, 0.65);
+}
+
+
+.swal-text {
+    font-family: "SemiBold", sans-serif;
+    font-size: 18px;
+}
