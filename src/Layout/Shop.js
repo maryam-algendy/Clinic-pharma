@@ -11,6 +11,7 @@ import Medicine from "./component/Block/Medicine";
 import API from "../utilize/API";
 
 export default function Shop() {
+    const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [pagination, setPagination] = useState({page: 1, pages: 1});
     const [error, setError] = useState();
@@ -19,6 +20,8 @@ export default function Shop() {
 
     const changePage = ({selected}) => {
         setPageNumber(selected + 1);
+        setLoading(true);
+        setError("");
     }
 
     useEffect(() => {
@@ -27,8 +30,14 @@ export default function Shop() {
                 if (status === 200) {
                     setPagination({page: data?.page, pages: data?.pages, results: data?.results});
                     setProducts(data?.products);
+                    setLoading(false);
+
+                    if (data?.products?.length < 1) {
+                        setError("There are no products found");
+                    }
                 } else {
                     setError(data.message);
+                    setLoading(false);
                 }
             })
     }, [pageNumber]);
@@ -40,21 +49,25 @@ export default function Shop() {
             <div className="container">
                 {error ? <div className="alert-danger">{error}</div> : null}
                 <div className="row">
-                    {products?.map((medicine, id) => {
+                    {!loading ? products?.map((medicine, id) => {
                         return (
                             <div key={id} className="col-12 col-md-4 col-lg-3">
                                 <Medicine medicine={id} image={medicine.thumbnail} alt={medicine.about}
                                           title={medicine.name} price={medicine.price} slug={medicine.slug}/>
                             </div>
                         );
-                    })}
+                    }): <div id="loading">
+                        <div className="spinner-border text-primary m-auto" role="status">
+                            <span className="visually-hidden sr-only">Loading...</span>
+                        </div>
+                    </div>}
                 </div>
                 <div className="pagination">
                     <ReactPaginate
                         activeClassName={'active'}
-                        startPage={pagination.page}
-                        pagecount={1}
-                        marginPagesDisplayed={1}
+                        startPage={pagination.page || 1}
+                        pagecount={pagination.pages || 1}
+                        marginPagesDisplayed={pagination.pages || 1}
                         onPageChange={changePage}
                     />
                 </div>
