@@ -3,6 +3,23 @@
 #cart
 {
 
+    .empty-flag
+    {
+        height: 400px;
+        padding: 10px 0;
+        color: $darkerColor;
+        font-size: 16px;
+
+        @media (max-width: 414px) {
+            padding: 20px;
+        }
+
+        a {
+            padding: 0 5px;
+            text-decoration: underline;
+        }
+    }
+
     button
     {
         margin-left: 40px;
