@@ -14,6 +14,8 @@ import SingleDoctor from "./Layout/SingleDoctor";
 import NotFound from "./Layout/NotFound";
 import Contact from "./Layout/Contact";
 import About from "./Layout/About";
+import Settings from "./Layout/Settings";
+import Cart from "./Layout/Cart";
 import SingleBlog from "./Layout/SingleBlog";
 
 export default function App() {
@@ -30,6 +32,8 @@ export default function App() {
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/about" exact component={About} />
+                    <Route path="/settings" exact component={Settings} />
+                    <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="*" exact component={NotFound} />
                 </Switch>
