@@ -13,13 +13,23 @@ export default function BlogDetails() {
                 <Image src="/blog1.jpg"/>
                 <span>20 june</span>
             </div>
-            <h3>My Dental Office Blo Aret Are Building A Healthy And Cousderty Cmunity One Individual
-                At A Timeveniam Quis Laore Nostrud.</h3>
+
+            <h3>
+                My Dental Office Blo Aret Are Building A Healthy And Cousderty Cmunity One Individual
+                At A Timeveniam Quis Laore Nostrud.
+            </h3>
             <div className="blog-info">
-                <p><i className="far fa-user"></i> by <span>admin</span></p>
-                <p><i className="fas fa-tag"></i> by <span>Clinic Pharma</span></p>
-                <p><i className="far fa-comments"></i> 15</p>
+                <p>
+                    <i className="far fa-user"> </i> by <span>admin</span>
+                </p>
+                <p>
+                    <i className="fas fa-tag"> </i> by <span>Clinic Pharma</span>
+                </p>
+                <p>
+                    <i className="far fa-comments"> </i> 15
+                </p>
             </div>
+
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aut cumque, eligendi error
                 fugit,
@@ -32,8 +42,9 @@ export default function BlogDetails() {
                 Adipisci cumque itaque maiores neque nulla placeat veritatis!
                 nulla quibusdam rerum vel. Dicta distinctio dolorem doloremque itaque porro, quo quod.
             </p>
+
             <div className="quote">
-                <i className="fas fa-quote-left"></i>
+                <i className="fas fa-quote-left"> </i>
                 <i>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cum dignissimos dolor,
                     expedita illo labore maiores nostrum similique.
@@ -52,9 +63,15 @@ export default function BlogDetails() {
             </p>
             <div className="share">
                 <span>share this post</span>
-                <Button><i className="fab fa-facebook-square"></i>facebook</Button>
-                <Button><i className="fab fa-twitter-square"></i>twitter</Button>
-                <Button><i className="fab fa-google-plus-square"></i>google plus</Button>
+                <Button>
+                    <i className="fab fa-facebook-square"> </i>facebook
+                </Button>
+                <Button>
+                    <i className="fab fa-twitter-square"> </i>twitter
+                </Button>
+                <Button>
+                    <i className="fab fa-google-plus-square"> </i>google plus
+                </Button>
             </div>
             <div className="about-author row">
                 <div className="col-sm-2 img-side text-center">
@@ -65,11 +82,21 @@ export default function BlogDetails() {
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis cum doloremque ipsum,
                         maiores natus non quaerat repellat.
                         Distinctio doloribus impedit laborum officiis perferendis quae quas quos, unde! At, earum.</p>
-                    <Link to="/"><i className="fab fa-facebook-f"></i></Link>
-                    <Link to="/"><i className="fab fa-twitter"></i></Link>
-                    <Link to="/"><i className="fab fa-linkedin-in"></i></Link>
-                    <Link to="/"><i className="fab fa-pinterest-p"></i></Link>
-                    <Link to="/"><i className="fab fa-skype"></i></Link>
+                    <Link to="/">
+                        <i className="fab fa-facebook-f"> </i>
+                    </Link>
+                    <Link to="/">
+                        <i className="fab fa-twitter"> </i>
+                    </Link>
+                    <Link to="/">
+                        <i className="fab fa-linkedin-in"> </i>
+                    </Link>
+                    <Link to="/">
+                        <i className="fab fa-pinterest-p"> </i>
+                    </Link>
+                    <Link to="/">
+                        <i className="fab fa-skype"> </i>
+                    </Link>
 
                 </div>
             </div>
@@ -102,6 +129,7 @@ export default function BlogDetails() {
                     <div className="col-sm-2 text-center"><Button>reply</Button></div>
                 </div>
             </div>
+
             <div className="leave-us-message">
                 <h4>leave us comment</h4>
                 <Form>
@@ -113,7 +141,7 @@ export default function BlogDetails() {
                             <Form.Control placeholder="E-Mail*"/>
                         </div>
                         <div className="col-lg-4 col-md-6 input">
-                            <Form.Control placeholder="website*"/>
+                            <Form.Control placeholder="Website*"/>
                         </div>
                     </div>
                     <Form.Control placeholder="Message *" as="textarea" rows="6"/>

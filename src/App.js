@@ -30,7 +30,7 @@ export default function App() {
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/about" exact component={About} />
-                    <Route path="/blogs/details" exact component={SingleBlog} />
+                    <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="*" exact component={NotFound} />
                 </Switch>
                 <Footer />

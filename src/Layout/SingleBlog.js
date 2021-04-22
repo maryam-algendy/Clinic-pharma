@@ -4,7 +4,6 @@ import React from "react";
 import BlogDetails from "./component/BlogDetails";
 import PageHeader from "./component/PageHeader";
 
-
 export default function SingleBlog() {
     return (
         <div id="single-blog">

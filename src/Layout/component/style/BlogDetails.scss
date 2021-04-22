@@ -200,6 +200,7 @@
 
         .reply {
             margin-left: 40px;
+
             @media (max-width: 300px) {
                 margin-left: 0;
             }
@@ -238,7 +239,8 @@
             }
         }
 
-        input, textarea
+        input,
+        textarea
         {
             background: #f2f7fb;
             border: none;
@@ -246,6 +248,7 @@
             font-size: 14px;
             padding: 20px;
             margin-bottom: 15px;
+            resize: none;
 
             &:focus {
                 box-shadow: none;
