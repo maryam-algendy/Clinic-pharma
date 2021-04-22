@@ -28,7 +28,7 @@ export default function Shop()
                 }
         })
 
-    },[]);
+    },[pagination]);
 
     return(
         <div id="shop">
