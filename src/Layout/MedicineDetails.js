@@ -28,7 +28,7 @@ export default function MedicineDetails(props)
                     setProduct(data.message);
                 }
         })
-    },[])
+    })
 
      const handleAddToCart = () => {
         API("cart", "POST", {product: slug, quantity})
@@ -48,7 +48,7 @@ export default function MedicineDetails(props)
                 <div className="row">
                     <div className="col-12 col-lg-6">
                         <div className="img-view">
-                            <img className="active" src={displayedImage} />
+                            <img className="active" src={displayedImage}  alt="Active"/>
                         </div>
                         <div className="sub-img">
                             {

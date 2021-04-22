@@ -17,7 +17,7 @@ export default function AboutUsBlock(){
                 </div>
                 <div className="col-md-6">
                     <Image src="/about6.jpg"/>
-                    <i className="flaticon-play-button"></i>
+                    <i className="flaticon-play-button"> </i>
                 </div>
             </div>
             <p>
@@ -33,15 +33,15 @@ export default function AboutUsBlock(){
                 <div className="col-md-6">
                     <ul className="list-unstyled">
                         <li>
-                            <i className="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"> </i>
                             keep patient first
                         </li>
                         <li>
-                            <i className="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"> </i>
                             keep everyone safe
                         </li>
                         <li>
-                            <i className="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"> </i>
                             work together
                         </li>
                     </ul>
@@ -49,15 +49,15 @@ export default function AboutUsBlock(){
                 <div className="col-md-6">
                     <ul className="list-unstyled">
                         <li>
-                            <i className="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"> </i>
                             pursue excellence
                         </li>
                         <li>
-                            <i className="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"> </i>
                             manage your resources
                         </li>
                         <li>
-                            <i className="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"> </i>
                             keep learning
                         </li>
                     </ul>
