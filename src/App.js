@@ -16,6 +16,7 @@ import Contact from "./Layout/Contact";
 import About from "./Layout/About";
 import Settings from "./Layout/Settings";
 import Cart from "./Layout/Cart";
+import SingleBlog from "./Layout/SingleBlog";
 
 export default function App() {
     return (
@@ -33,6 +34,7 @@ export default function App() {
                     <Route path="/about" exact component={About} />
                     <Route path="/settings" exact component={Settings} />
                     <Route path="/cart" exact component={Cart}/>
+                    <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="*" exact component={NotFound} />
                 </Switch>
                 <Footer />
