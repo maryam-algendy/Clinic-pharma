@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {Switch, Route} from "react-router";
 
@@ -17,8 +17,15 @@ import About from "./Layout/About";
 import Settings from "./Layout/Settings";
 import Cart from "./Layout/Cart";
 import SingleBlog from "./Layout/SingleBlog";
+import {useDispatch} from "react-redux";
+import {loadCart} from "./actions";
 
 export default function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(loadCart());
+    }, [])
+
     return (
         <div id="clinic-pharma">
             <BrowserRouter>

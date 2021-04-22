@@ -9,13 +9,14 @@ import SearchBar from './Block/SearchBar';
 import "./style/Navbar.scss";
 import storage from "../../utilize/storage";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default function MainNavbar()
 {
     const [authenticatedUser, setAuthenticatedUser] = useState(false);
     const [userSection, setUserSection] = useState(false);
     const [searchBar, setSearchBar] = useState(false);
-
+    const cart = useSelector(state => state.portal.cart);
     useEffect(() => {
         storage("access-token") ? setAuthenticatedUser(true) : setAuthenticatedUser(false);
         document.addEventListener("click", () => {
@@ -65,9 +66,9 @@ export default function MainNavbar()
                                 > </i>
                                 <SearchBar searchBar={searchBar} />
                             </button>
-                            <button className="icon">
+                            <button className="icon" onClick={() => window.location.replace("/cart")}>
                                 <i className="flaticon-shopping-cart"> </i>
-                                <span className="counter">2</span>
+                                <span className="counter">{cart?.products?.length || 0}</span>
                             </button>
                             {!authenticatedUser ? <button onClick={() => window.location.replace("/account/login")} className="btn">Login/Register</button> : null}
                             {authenticatedUser ? <><img

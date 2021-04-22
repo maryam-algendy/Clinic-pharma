@@ -2,15 +2,15 @@ import API from "./utilize/API";
 
 /** NOTE: use storage to cache data data that is difficult to change during the session -logically- (ex: cart, user-data, ...etc) **/
 
-export function loadProducts()
+export function addToCart(data)
 {
     return function(dispatch)
     {
-        API("medicine", "GET")
+        API("cart", "POST", data)
             .then(({ data, status }) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
-                    dispatch({type: "CLINIC_PHARMA_SET_PRODUCTS", payload: data?.products});
+                    dispatch({type: "CLINIC_PHARMA_SET_CART", payload: data?.cart});
                 } else {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "BETA_ERROR", payload: data?.message});
@@ -18,15 +18,16 @@ export function loadProducts()
             })
     }
 }
-export function loadProduct()
+
+export function loadCart()
 {
     return function(dispatch)
     {
-        API("medicine", "GET")
+        API("cart")
             .then(({ data, status }) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
-                    dispatch({type: "CLINIC_PHARMA_SET_PRODUCT", payload: data?.product});
+                    dispatch({type: "CLINIC_PHARMA_SET_CART", payload: data?.cart[0]});
                 } else {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "BETA_ERROR", payload: data?.message});
@@ -34,3 +35,4 @@ export function loadProduct()
             })
     }
 }
+

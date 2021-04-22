@@ -7,15 +7,17 @@ import './style/MedicineDetails.scss';
 
 // component
 import PageHeader from "./component/PageHeader";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../actions";
 import API from "../utilize/API";
 
 export default function MedicineDetails(props)
 {
+    const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
     const [displayedImage, setDisplayedImage] = useState("");
-
+    const [product, setProduct] = useState({});
     const slug =props.location.pathname.replace("/shop/", "");
-    const [product, setProduct]=useState({});
 
     useEffect(()=>{
         API(`medicine/${slug}`)
@@ -27,19 +29,8 @@ export default function MedicineDetails(props)
                 else {
                     setProduct(data.message);
                 }
-        })
-    })
-
-     const handleAddToCart = () => {
-        API("cart", "POST", {product: slug, quantity})
-            .then(({data, status}) => {
-                if (status === 200) {
-                    swal({icon: "success", text: "Added successfully", button: false});
-                } else {
-                    swal({icon: "error", text: data?.message, button: false});
-                }
             })
-    }
+    }, [])
 
     return(
         <div id="medicine-details">
@@ -87,7 +78,7 @@ export default function MedicineDetails(props)
                                     <button className="counter">{quantity}</button>
                                     <button onClick={() => quantity === product.quantity ? product.quantity : setQuantity(quantity + 1)}>+</button>
                                 </span>
-                                <button className="add-to-cart" onClick={() => handleAddToCart()}>Add To Cart</button>
+                                <button className="add-to-cart" onClick={() => dispatch(addToCart({product: slug, quantity}))}>Add To Cart</button>
                                 <i className="fas fa-exchange-alt"> </i>
                                 <i className="fas fa-heart"> </i>
                             </div>

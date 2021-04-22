@@ -11,7 +11,7 @@ export default function API(endpoint, method = "GET", data = {}) {
     }
 
     return fetch(
-        BaseURL + endpoint,
+        BaseURL + "/" + endpoint,
         {
             method,
             headers: {
