@@ -14,9 +14,9 @@ export default function GitAuthenticate() {
         username: "",
         email: "",
         password: "",
+        phone: "",
         government: "",
         country: "",
-        phone: "",
         specialization: "",
         location: "",
         pharmacyName: ""
@@ -29,6 +29,7 @@ export default function GitAuthenticate() {
             .then(({data, status}) => {
                 if (status === 200) {
                     storage("access-token", data?.user?.tokens[0]?.token);
+                    storage("user", JSON.stringify(data.user));
                     setTimeout(() => {
                         window.location.replace("/");
                     }, 1000);
@@ -92,8 +93,6 @@ export default function GitAuthenticate() {
         }
     });
 
-    console.log(form);
-
     return <div id="git-authenticate">
         <div id="page-content">
             <div className="container py-5 boxes">
@@ -107,7 +106,7 @@ export default function GitAuthenticate() {
                                 <div className="row">
                                     <div className="col-12 col-lg-8 mx-auto">
                                         {error ? <div className={error.includes("Account created successfully") ? "alert-success" : "alert-danger"}>{error}</div> : null}
-                                        <form method="post">
+                                        <form method="post" onKeyPress={(e) => e.key === "Enter" ? document.getElementById("submit-form").click() : null}>
                                             <label htmlFor="email">E-mail*</label>
                                             <input type="email" name="email" placeholder="Enter E-mail" id="email"
                                                    inputMode="email" value={form.email}
@@ -122,7 +121,7 @@ export default function GitAuthenticate() {
                                         </form>
 
                                         <div className="actions">
-                                            <button onClick={() => handleLogin()}>Login</button>
+                                            <button id="submit-form" onClick={() => handleLogin()}>Login</button>
 
                                             <Link to="" className="lost-pass-link">Lost your password?</Link>
                                         </div>

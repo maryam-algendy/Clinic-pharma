@@ -4,6 +4,7 @@ import React, {useEffect} from 'react';
 import './style/UserSection.scss';
 import API from "../../../utilize/API";
 import storage from "../../../utilize/storage";
+import {Link} from "react-router-dom";
 
 export default function UserSection({userSection})
 {
@@ -18,21 +19,21 @@ export default function UserSection({userSection})
         API("patient/auth/logout", "POST")
             .then(({ data, status }) => {
                 storage("access-token", null);
+                storage("user", null);
                 setTimeout(() => {
                     window.location.replace("/");
                 }, 1000);
             })
     }
 
-    return(
+    return (
         <div className={userSection ? "d-block" : "d-none"} id="userSection">
             <div className="user-list">
-                <a href="/">Profile</a>
-                <a href="/">Order</a>
-                <a href="/">Payment</a>
-                <a href="/">Appointment</a>
-                <a href="/">Settings</a>
-                <button onClickCapture={() => handleLogOut()} style={{color: "#396cf0", border: "none"}} href="/">Logout</button>
+                <Link to="/settings/profile">Settings</Link>
+                <Link to="/settings/orders">Order</Link>
+                <Link to="/settings/payments">Payment</Link>
+                <Link to="/settings/appointments">Appointment</Link>
+                <button onClickCapture={() => handleLogOut()} style={{color: "#396cf0", border: "none"}}>Logout</button>
             </div>
         </div>
     );
