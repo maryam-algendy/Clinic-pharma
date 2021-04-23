@@ -1,0 +1,146 @@
+@import "../variables.scss";
+
+#online-payment
+{
+    .rhs,
+    .lhs {
+        border: 1px solid #cdcdcd;
+        border-radius: 4px;
+
+        h3 {
+            text-transform: uppercase;
+            font-family: "SemiBold", sans-serif;
+            font-size: 22px;
+
+            &::after {
+                content: '';
+                width: 45px;
+                height: 3px;
+                background: $mainColor;
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+        }
+
+        h4 {
+            text-transform: uppercase;
+            font-family: "SemiBold", sans-serif;
+            font-size: 16px;
+        }
+    }
+
+    .rhs {
+        h3 {
+            padding: 1.5rem 0 0.3rem 1rem;
+        }
+
+        .products {
+            padding: 0 1rem;
+        }
+
+        p {
+            font-family: "SemiBold", sans-serif;
+
+            span {
+                float: right;
+                color: $mainColor;
+            }
+
+            label {
+                padding-left: 0;
+                white-space: nowrap;
+                max-width: 50%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        .date {
+
+            font-size: 14px;
+            border-top: 1px solid #dbdbdb;
+            background: #f2f7fb;
+            span{
+                text-transform: uppercase;
+                font-family: "SemiBold", sans-serif;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            p{
+                margin-bottom: 0;
+            }
+        }
+
+    }
+
+    button{
+        width: 100%;
+        background: $mainColor;
+        padding: 10px;
+        text-transform: uppercase;
+        border: 2px solid $mainColor;
+        font-family: "SemiBold", sans-serif;
+        border-radius: 4px;
+
+        &:focus{
+            box-shadow: none;
+        }
+
+        &:hover{
+            background: $lightColor;
+            color: $mainColor;
+        }
+    }
+
+    .UbaEC{
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+        box-shadow: none;
+
+        svg{
+            position: absolute;
+            right: 50px;
+        }
+    }
+
+    select {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    input,
+    select
+    {
+        &:focus{
+            box-shadow: none;
+            border: 1px solid #dbdbdb;
+        }
+    }
+
+    #cardNumber{
+        width: 100%;
+        border: 0;
+    }
+
+    .fKxFCl{
+        box-shadow: none;
+    }
+
+    .fdYuTp ,.eKpHVp{
+        border: 1px solid #bdbdbd;
+        box-shadow: none;
+    }
+}

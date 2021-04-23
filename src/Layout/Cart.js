@@ -95,7 +95,7 @@ export default function Cart() {
                                 <span>{"$" + cart?.total}</span>
                             </div>
                         </div>
-                        <Button>proceed to checkout</Button>
+                        <Button onClick={() => window.location.href = "/checkout"}>proceed to checkout</Button>
                     </div>
                     <div className="clear"> </div>
                 </div>
