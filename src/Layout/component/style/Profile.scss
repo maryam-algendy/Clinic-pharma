@@ -3,6 +3,16 @@
 #profile
 {
     margin-bottom: 40px;
+
+    .spinner-border {
+        width: 1em;
+        height: 1em;
+    }
+
+    .text-primary {
+        color: $lightColor !important;
+    }
+
     .profile-form
     {
         @media (max-width: 992px) {
@@ -11,9 +21,11 @@
 
         input, textarea, select
         {
+            width: 100%;
             margin-bottom: 15px;
             padding: 20px;
             font-size: 14px;
+            border: 1px solid #ced4da;
             border-radius: 3px;
             resize: none;
 
@@ -24,10 +36,13 @@
         }
 
         label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             border: 1px solid #ced4da;
             margin-bottom: 15px;
-            padding: 10px 0 10px 21px;
+            padding: 10px 21px 10px 21px;
             font-size: 14px;
             color: #80848c;
             border-radius: 3px;
@@ -59,9 +74,14 @@
             font-family: "SemiBold", sans-serif;
             border-color: $mainColor;
 
-            &:hover {
+            &:hover
+            {
                 background: $lightColor;
                 color: $mainColor;
+
+                .text-primary {
+                    color: $mainColor !important;
+                }
             }
         }
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {Switch, Route} from "react-router";
 
@@ -19,10 +19,14 @@ import Cart from "./Layout/Cart";
 import SingleBlog from "./Layout/SingleBlog";
 import {useDispatch} from "react-redux";
 import {loadCart} from "./actions";
+import store from "./utilize/storage";
 
 export default function App() {
     const dispatch = useDispatch();
+    const [auth, setAuth] = useState(false);
+
     useEffect(() => {
+        setAuth(store("user")?.tokens[0]?.token === store("access-token"));
         dispatch(loadCart());
     }, [dispatch])
 
@@ -39,7 +43,7 @@ export default function App() {
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/about" exact component={About} />
-                    <Route path="/settings" exact component={Settings} />
+                    {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>] : null}
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="*" exact component={NotFound} />
