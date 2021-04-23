@@ -19,6 +19,7 @@ import Cart from "./Layout/Cart";
 import SingleBlog from "./Layout/SingleBlog";
 import {useDispatch} from "react-redux";
 import {loadCart} from "./actions";
+import OnlinePayment from "./Layout/OnlinePayment";
 
 export default function App() {
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ export default function App() {
                     <Route path="/settings" exact component={Settings} />
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs/:blog" exact component={SingleBlog} />
+                    <Route path="/checkout" exact component={OnlinePayment} />
                     <Route path="*" exact component={NotFound} />
                 </Switch>
                 <Footer />
