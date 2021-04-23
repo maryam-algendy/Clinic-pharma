@@ -26,11 +26,11 @@ import {loadCart} from "./actions";
 
 export default function App() {
     const dispatch = useDispatch();
-    const [auth, setAuth] = useState(false);
+    const [auth, setAuth] = useState(true);
 
     useEffect(() => {
-        setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
-        dispatch(loadCart());
+            setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
+            dispatch(loadCart());
     }, [dispatch])
 
     return (
