@@ -24,7 +24,7 @@ export default function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadCart());
-    }, [])
+    }, [dispatch])
 
     return (
         <div id="clinic-pharma">

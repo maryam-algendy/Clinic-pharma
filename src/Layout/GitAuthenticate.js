@@ -14,9 +14,9 @@ export default function GitAuthenticate() {
         username: "",
         email: "",
         password: "",
+        phone: "",
         government: "",
         country: "",
-        phone: "",
         specialization: "",
         location: "",
         pharmacyName: ""
@@ -29,6 +29,7 @@ export default function GitAuthenticate() {
             .then(({data, status}) => {
                 if (status === 200) {
                     storage("access-token", data?.user?.tokens[0]?.token);
+                    localStorage.setItem("user", JSON.stringify(data.user));
                     setTimeout(() => {
                         window.location.replace("/");
                     }, 1000);
@@ -91,8 +92,6 @@ export default function GitAuthenticate() {
             window.location.replace("/");
         }
     });
-
-    console.log(form);
 
     return <div id="git-authenticate">
         <div id="page-content">

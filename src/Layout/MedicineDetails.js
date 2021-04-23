@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Tabs, Tab} from "react-bootstrap";
-import swal from "sweetalert";
 
 // style
 import './style/MedicineDetails.scss';
@@ -30,7 +29,7 @@ export default function MedicineDetails(props)
                     setProduct(data.message);
                 }
             })
-    }, [])
+    }, [slug]);
 
     return(
         <div id="medicine-details">

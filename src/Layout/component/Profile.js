@@ -1,30 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Form} from "react-bootstrap";
+import storage from "../../utilize/storage";
 
 // style
 import './style/Profile.scss';
 
 export default function Profile()
 {
+    const [data, setData] = useState({});
+
+    let loginData = {}
+    useEffect(() => {
+        loginData = localStorage.getItem("user");
+        if (typeof storage("user") !== "undefined") {
+            setData(storage("user"))
+        }
+    })
+
+    const handleChange = (e) => {
+        setData({...data, name: e.target.value});
+    }
+
     return(
         <div id="profile">
             <div className="profile-form">
                 <Form>
                     <div className="row">
                         <div className="col-sm-6">
-                            <Form.Control placeholder="Full Name *"/>
+                            <Form.Control placeholder="Full Name *" value={loginData.name} onChange={handleChange}/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control placeholder="User Name *"/>
+                            <Form.Control placeholder="User Name *" value={loginData.username} onChange={handleChange}/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control type="email" placeholder="E-mail *"/>
+                            <Form.Control type="email" placeholder="E-mail *" value={loginData.email} onChange={handleChange}/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control type="password" placeholder="Password *"/>
+                            <Form.Control type="password" placeholder="Password *" value={loginData.password} onChange={handleChange}/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control type="number" placeholder="Phone *"/>
+                            <Form.Control type="number" placeholder="Phone *" value={loginData.phone} onChange={handleChange}/>
                         </div>
                         <Form.Group className="col-sm-6" controlId="exampleForm.SelectCustom">
                             <Form.Control as="select" custom>
@@ -37,24 +52,24 @@ export default function Profile()
                             <Form.Control type="date" placeholder="Date of birth *"/>
                         </div>
                         <div className="col-sm-6">
-                            <label htmlFor="upload">Image *</label>
-                            <Form.Control id="upload" type="file"/>
+                            <label htmlFor="upload-image">Image *</label>
+                            <Form.Control id="upload-image" type="file"/>
                         </div>
                         <div className="col-sm-6">
-                            <label htmlFor="upload">Certificate *</label>
-                            <Form.Control id="upload" type="file"/>
+                            <label htmlFor="upload-certificate">Certificate *</label>
+                            <Form.Control id="upload-certificate" type="file"/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control type="text" placeholder="Pharmacy Location *"/>
+                            <Form.Control type="text" placeholder="Pharmacy Location *" value={loginData.location} onChange={handleChange}/>
                         </div>
                         <div className="col-sm-6">
                             <Form.Control type="text" placeholder="Working Date *"/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control type="text" placeholder="Government *"/>
+                            <Form.Control type="text" placeholder="Government *" value={loginData.government} onChange={handleChange}/>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Control type="text" placeholder="Country *"/>
+                            <Form.Control type="text" placeholder="Country *" value={loginData.country} onChange={handleChange}/>
                         </div>
                     </div>
                     <Form.Control placeholder="About *" as="textarea" rows="6"/>
