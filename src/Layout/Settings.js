@@ -13,41 +13,61 @@ import NotFound from "./NotFound";
 
 export default function Settings()
 {
+    function detectPage() {
+        let page = window.location.pathname.replace("/settings/", "");
+        switch (page) {
+            case "profile":
+                return "profile";
+
+            case "appointments":
+                return "appointments";
+
+            case "orders":
+                return "orders";
+
+            case "payments":
+                return "payments";
+
+            default:
+                return "profile";
+        }
+    }
+
     return(
         <div id="settings">
             <PageHeader title="Settings" firstLocation="Setting" secondLocation="Appointment" />
-            <div className="container">
-                <Tab.Container id="left-tabs-example" defaultActiveKey="1">
+            <div className="container inner-settings">
+                <Tab.Container id="left-tabs-example" defaultActiveKey={detectPage()} onSelect={(e) => window.location.href = e}>
                     <div className="row">
                         <div className="col-lg-3 text-center">
                             <div className="side-bar-settings">
                                 <Nav variant="pills">
                                     <Nav.Item>
-                                        <Nav.Link eventKey="1">
+                                        <Nav.Link eventKey="profile">
                                             Profile
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="2">
-                                            Appointment
+                                        <Nav.Link eventKey="appointments">
+                                            Appointments
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="3">
+                                        <Nav.Link eventKey="payments">
                                             Payments
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="4">
+                                        <Nav.Link eventKey="orders">
                                             Orders
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="5">
+                                        <Nav.Link eventKey="social">
                                             Social Media
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
@@ -58,19 +78,19 @@ export default function Settings()
 
                         <div className="col-lg-9">
                             <Tab.Content>
-                                <Tab.Pane eventKey="1">
+                                <Tab.Pane eventKey="profile">
                                     <Profile />
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="2">
+                                <Tab.Pane eventKey="appointments">
                                     <Appointment />
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="3">
+                                <Tab.Pane eventKey="payments">
                                     <Payments />
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="4">
+                                <Tab.Pane eventKey="orders">
                                     <NotFound />
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="5">
+                                <Tab.Pane eventKey="social">
                                     <NotFound />
                                 </Tab.Pane>
                             </Tab.Content>
