@@ -10,6 +10,7 @@ import Profile from "./component/Profile";
 import Appointment from "./component/Appointment";
 import Payments from "./component/Payments";
 import NotFound from "./NotFound";
+import Orders from "./component/Orders";
 
 export default function Settings()
 {
@@ -88,7 +89,7 @@ export default function Settings()
                                     <Payments />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="orders">
-                                    <NotFound />
+                                    <Orders />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="social">
                                     <NotFound />
