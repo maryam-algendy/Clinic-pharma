@@ -37,3 +37,22 @@ export function loadCart()
     }
 }
 
+export function fetchOrders()
+{
+    return function(dispatch)
+    {
+        API("orders")
+            .then(({ data, status }) => {
+                if (status === 200) {
+                    dispatch({type: "LOADING", payload: false});
+                    dispatch({type: "CLINIC_PHARMA_SET_ORDERS", payload: data?.orders});
+                    console.log(data?.orders);
+
+                } else {
+                    dispatch({type: "LOADING", payload: false});
+                    dispatch({type: "BETA_ERROR", payload: data?.message});
+                }
+            })
+    }
+}
+

@@ -1,14 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 // style
 import './style/Appointment.scss';
+import './style/Orders.scss';
 import {Table} from "react-bootstrap";
+import API from "../../utilize/API";
 
-export default function Orders()
-{
-    return(
+export default function Orders() {
+    const [orders, setOrders] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        API("orders", "GET")
+            .then(({data, status}) => {
+                if (status === 200) {
+                    setOrders(data?.orders);
+                    setLoading(false);
+                    if (data?.orders?.length < 1) {
+                        setError("There are no orders found");
+                    }
+                } else {
+                    setError(data.message);
+                    setLoading(false);
+                }
+            })
+    }, []);
+
+    return (
         <div id="orders">
-            <div className="table">
+            {error ? <div className="alert-danger">{error}</div> : null}
+            {!loading ? <div className="table">
                 <Table>
                     <thead>
                     <tr>
@@ -20,44 +42,26 @@ export default function Orders()
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Zinia Zara</td>
-                        <td>Jan. 7. 2021 - 05:00PM</td>
-                        <td>Cardiology</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Rihana Roy</td>
-                        <td>Feb. 18. 2021 - 06:00PM</td>
-                        <td>Dental Consult</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Nadim Kamal</td>
-                        <td>Jun. 1. 2021 - 07:00PM</td>
-                        <td>Lense Expert</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Steven Jobs</td>
-                        <td>Aug. 11. 2021 - 08:00PM</td>
-                        <td>Orthopaedics</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Jason Roy</td>
-                        <td>Dec. 14. 2021 - 09:00PM</td>
-                        <td>Gynaecology</td>
-                        <td>Online</td>
-                    </tr>
+                    {
+                        orders.map((order, id) => {
+                            return (
+                                <tr key={id}>
+                                    <td>{id + 1}</td>
+                                    <td>{order.medicine.name}</td>
+                                    <td>{order.price}</td>
+                                    <td>{order.currency}</td>
+                                    <td>{order.deliveryStatus}</td>
+                                </tr>
+                            )
+                        })
+                    }
                     </tbody>
                 </Table>
-            </div>
+            </div> : <div id="loading">
+                <div className="spinner-border text-primary m-auto" role="status">
+                    <span className="visually-hidden sr-only">Loading...</span>
+                </div>
+            </div>}
         </div>
     );
 }
