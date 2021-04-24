@@ -29,7 +29,9 @@ export default function App() {
     const [auth, setAuth] = useState(true);
 
     useEffect(() => {
-            setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
+            if (storage("access-token")) {
+                setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
+            }
             dispatch(loadCart());
     }, [dispatch])
 

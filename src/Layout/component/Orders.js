@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 // style
 import './style/Appointment.scss';
+import './style/Orders.scss';
 import {Table} from "react-bootstrap";
 import API from "../../utilize/API";
 
@@ -28,7 +29,8 @@ export default function Orders() {
 
     return (
         <div id="orders">
-            <div className="table">
+            {error ? <div className="alert-danger">{error}</div> : null}
+            {!loading ? <div className="table">
                 <Table>
                     <thead>
                     <tr>
@@ -55,7 +57,11 @@ export default function Orders() {
                     }
                     </tbody>
                 </Table>
-            </div>
+            </div> : <div id="loading">
+                <div className="spinner-border text-primary m-auto" role="status">
+                    <span className="visually-hidden sr-only">Loading...</span>
+                </div>
+            </div>}
         </div>
     );
 }
