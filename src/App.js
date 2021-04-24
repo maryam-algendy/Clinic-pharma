@@ -14,6 +14,7 @@ import SingleDoctor from "./Layout/SingleDoctor";
 import NotFound from "./Layout/NotFound";
 import Contact from "./Layout/Contact";
 import About from "./Layout/About";
+import Blogs from "./Layout/Blogs";
 
 export default function App() {
     return (
@@ -29,7 +30,9 @@ export default function App() {
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/about" exact component={About} />
+                    <Route path="/blogs" exact component={Blogs} />
                     <Route path="*" exact component={NotFound} />
+                    
                 </Switch>
                 <Footer />
             </BrowserRouter>

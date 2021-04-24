@@ -1,0 +1,32 @@
+@import '../../../variables';
+
+.post 
+{
+    margin: 20px 0;
+    display: flex;
+
+    .avatar 
+    {
+        max-width: 100%;
+
+        img {
+         width: 100%; 
+        }
+    }
+
+    .text 
+    {
+        width: 100%;
+        padding-left: 10px;
+       
+        span {
+            color: $mainColor;
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.3;
+        }
+    }  
+}
