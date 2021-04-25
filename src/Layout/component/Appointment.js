@@ -1,13 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Table, Modal, Button, Form} from 'react-bootstrap';
 
 // style
 import './style/Appointment.scss';
-import {Table} from "react-bootstrap";
 
 export default function Appointment()
 {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return(
         <div id="appointment">
+            <div className="add-appointment">
+                <div className="appointment-btn">
+                    <button  onClick={handleShow}><i className="fas fa-plus"> </i>Add Appointment</button>
+                </div>
+                <div className="modal">
+                    <Modal show={show} onHide={handleClose} animation={false}>
+                        <Modal.Header closeButton>
+                            <Modal.Title className="title">Add Appointment</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form.Control placeholder="Add Time *" />
+                            <Form.Control className="date-btn" placeholder="Add Date *" />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button>Save</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+            </div>
             <div className="table">
                 <Table>
                     <thead>
