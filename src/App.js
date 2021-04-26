@@ -17,6 +17,7 @@ import Contact from "./Layout/Contact";
 import About from "./Layout/About";
 import Settings from "./Layout/Settings";
 import Cart from "./Layout/Cart";
+import Blogs from "./Layout/Blogs";
 import SingleBlog from "./Layout/SingleBlog";
 import OnlinePayment from "./Layout/OnlinePayment";
 import storage from "./utilize/storage";
@@ -50,6 +51,7 @@ export default function App() {
                     <Route path="/about" exact component={About} />
                     {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>] : null}
                     <Route path="/cart" exact component={Cart}/>
+                    <Route path="/blogs" exact component={Blogs} />
                     <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="/checkout" exact component={OnlinePayment} />
                     <Route path="*" exact component={NotFound} />

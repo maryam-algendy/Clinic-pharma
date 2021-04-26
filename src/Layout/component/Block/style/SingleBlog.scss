@@ -1,0 +1,93 @@
+@import '../../../variables';
+
+.single-blog-container
+{
+    margin-bottom: 25px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+
+    .img-side
+    {
+        position: relative;
+        overflow: hidden;
+
+        &:hover
+        {
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        img {
+            transition: .7s ease-in-out;
+        }
+
+        span 
+        {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 55px;
+            padding: 10px;
+            background-color: $mainColor;
+            color: $secondColor;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+
+            @media (max-width: 414px) 
+            {
+                & {
+                    top: 10px;
+                    left: 10px;
+                    width: 50px;
+                    padding: 7px;
+                }
+            }
+        }
+    }
+
+    .content 
+    {
+       margin: 20px;
+
+        h3 
+        {
+            font-size: 24px;
+            font-family: "Regular", sans-serif;
+
+            @media (max-width: 720px) {
+                font-size: 18px;
+            }
+
+            @media (max-width:414px) {
+                font-size: 16px;
+            }
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: $darkColor;
+            font-size: 14px;
+        }
+
+        .author,
+        .comment
+        {
+            font-size: 14px;
+            margin-right: 20px;
+            color: $darkerColor;
+
+            i {
+                font-size: 12px;
+                margin-right: 5px;
+                color: $mainColor;
+            }
+
+            a {
+                margin-left: 5px;
+                color: $mainColor;
+            }
+        }
+    }
+}
