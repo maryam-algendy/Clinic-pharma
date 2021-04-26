@@ -1,9 +1,11 @@
 import React from 'react';
-import "./style/Blogs.scss";
 import PageHeader from "./component/PageHeader";
 import SingleBlog from "./component/Block/SingleBlog";
 import RelatedPosts from "./component/Block/RelatedPosts";
-import {Button,Pagination} from "react-bootstrap";
+import {Button} from "react-bootstrap";
+
+// style
+import "./style/Blogs.scss";
 
 export default function Blogs ()
 {
@@ -13,14 +15,13 @@ export default function Blogs ()
             <div className="container blog-container">
                 <div className="row">
                     <div className="col-lg-9">
-                        <SingleBlog />
-                        <SingleBlog />
+                        {[1, 2, 3].map(blog => <SingleBlog key={blog} />)}
                     </div>
                     <div className="col-lg-3">
-                        <div className="search ">
+                        <div className="search">
                             <h3>Search Keywords</h3>
                             <input type="text" placeholder="search here ..."/>
-                            <button> <i className="flaticon-search"> </i></button>
+                            <i className="flaticon-search"> </i>
                         </div>
 
                         <div className="categories">
@@ -28,35 +29,35 @@ export default function Blogs ()
                             <ul>
                                 <li>
                                     <a href="/">
-                                        <i className="fas fa-chevron-right"></i>
+                                        <i className="fas fa-chevron-right"> </i>
                                         Cardiology
                                         <span>15</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/">
-                                        <i className="fas fa-chevron-right"></i>
+                                        <i className="fas fa-chevron-right"> </i>
                                         Dental
                                         <span>10</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/">
-                                        <i className="fas fa-chevron-right"></i>
+                                        <i className="fas fa-chevron-right"> </i>
                                         Laboratory
                                         <span>14</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/">
-                                        <i className="fas fa-chevron-right"></i>
+                                        <i className="fas fa-chevron-right"> </i>
                                         Research
                                         <span>13</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/">
-                                     <i className="fas fa-chevron-right"></i>
+                                     <i className="fas fa-chevron-right"> </i>
                                         Eye
                                         <span>19</span>
                                     </a>
@@ -91,23 +92,27 @@ export default function Blogs ()
                         <div className="links">
                             <h3>Links</h3>
                             <>
-                                <Button variant="outline-primary" size="sm">Dental</Button>{' '}
-                                <Button variant="outline-primary" size="sm">Eye Care</Button>{' '}
-                                <Button variant="outline-primary" size="sm">Laboratory</Button>{' '}
-                                <Button variant="outline-primary" size="sm">Care</Button>{' '}
-                                <Button variant="outline-primary" size="sm">Health</Button>{' '}
-                                <Button variant="outline-primary" size="sm">Modern Clinic</Button>{' '}
+                                <Button variant="outline-primary" size="sm">
+                                    Dental
+                                </Button>
+                                <Button variant="outline-primary" size="sm">
+                                    Eye Care
+                                </Button>
+                                <Button variant="outline-primary" size="sm">
+                                    Laboratory
+                                </Button>
+                                <Button variant="outline-primary" size="sm">
+                                    Care
+                                </Button>
+                                <Button variant="outline-primary" size="sm">
+                                    Health
+                                </Button>
+                                <Button variant="outline-primary" size="sm">
+                                    Modern Clinic
+                                </Button>
                             </>
                         </div>
                     </div>
-                </div>
-                
-                <div className="pagination">
-                    <Pagination>
-                        <Pagination.Item active>{1}</Pagination.Item>
-                        <Pagination.Item >{2}</Pagination.Item>
-                        <Pagination.Item>{3}</Pagination.Item>
-                    </Pagination>
                 </div>
             </div>
         </div>

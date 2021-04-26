@@ -1,6 +1,6 @@
 @import '../../../variables';
 
-.blog-contianer 
+.single-blog-container
 {
     margin-bottom: 25px;
     border: 1px solid #e8e8e8;
@@ -9,21 +9,30 @@
     .img-side
     {
         position: relative;
+        overflow: hidden;
+
+        &:hover
+        {
+            img {
+                transform: scale(1.1);
+            }
+        }
 
         img {
-            max-width: 100%;
+            transition: .7s ease-in-out;
         }
 
         span 
         {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 57px;
-            padding: 8px;
+            top: 25px;
+            left: 25px;
+            width: 55px;
+            padding: 10px;
             background-color: $mainColor;
             color: $secondColor;
             text-align: center;
+            font-size: 14px;
             border-radius: 5px;
 
             @media (max-width: 414px) 
@@ -45,48 +54,38 @@
         h3 
         {
             font-size: 24px;
+            font-family: "Regular", sans-serif;
 
-            @media (max-width: 720px) 
-            {
-                & {
-                    font-size: 18px;
-                }
+            @media (max-width: 720px) {
+                font-size: 18px;
             }
 
-            @media (max-width:414px) 
-            {
-                & {
-                    font-size: 16px;
-                }
+            @media (max-width:414px) {
+                font-size: 16px;
             }
         }
 
         p {
             margin-bottom: 25px;
             color: $darkColor;
-            font-size: 13px;
+            font-size: 14px;
         }
 
-        .author
+        .author,
+        .comment
         {
+            font-size: 14px;
             margin-right: 20px;
             color: $darkerColor;
 
             i {
-                margin-right: 10px;
+                font-size: 12px;
+                margin-right: 5px;
                 color: $mainColor;
             }
 
-            span {
+            a {
                 margin-left: 5px;
-                color: $mainColor;
-            }
-        }
-
-        .comment 
-        {
-            i {
-                margin-right: 10px;
                 color: $mainColor;
             }
         }
