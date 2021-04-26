@@ -1,0 +1,252 @@
+@import "../variables.scss";
+
+#cart
+{
+
+    .empty-flag
+    {
+        height: 400px;
+        padding: 10px 0;
+        color: $darkerColor;
+        font-size: 16px;
+
+        @media (max-width: 414px) {
+            padding: 20px;
+        }
+
+        a {
+            padding: 0 5px;
+            text-decoration: underline;
+        }
+    }
+
+    button
+    {
+        margin-left: 40px;
+        background-color: $mainColor;
+        color: $lightColor;
+        border-radius: 4px;
+        padding: 10px 40px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-family: "SemiBold", sans-serif;
+        border: 1px solid $mainColor;
+
+        @media (max-width: 600px) {
+            margin-top: 20px;
+            display: block;
+            margin-left: 0;
+        }
+
+        &:hover {
+            background-color: $lightColor;
+            color: $darkerColor;
+            border: 1px solid $mainColor;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active {
+        box-shadow: none;
+        background-color: $lightColor;
+        color: $darkerColor;
+        border: 1px solid $mainColor;
+    }
+
+
+    .cart-items
+    {
+        overflow-x: auto;
+        white-space: nowrap;
+        overflow-y: hidden;
+        padding: 70px 70px 0;
+        max-width: 1279px;
+        margin: auto;
+        @media (max-width: 786px) {
+            padding: 70px 30px;
+        }
+
+        img
+        {
+            width: 60%;
+            text-align: center;
+        }
+
+        .name {
+            padding-left: 0;
+            white-space: nowrap;
+            max-width: 22%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .row
+        {
+            border: none;
+            padding: 0 30px;
+            justify-content: space-between;
+            margin-bottom: 15px;
+
+            &:nth-child(3) {
+                border-top: none;
+            }
+        }
+
+        .tb
+        {
+            border: 1px solid #eeeeee;
+            justify-content: space-between;
+            padding: 30px;
+            color: #555555;
+            text-transform: capitalize;
+            margin-bottom: 0;
+            width: 1169px;
+
+            .col-1, .col-5 {
+                margin: 35px 0 10px 0;
+            }
+        }
+
+        .th {
+            font-size: 13px;
+            color: #555555;
+            font-weight: 600;
+            text-transform: uppercase;
+            width: 1169px;
+
+        }
+
+        .quantity
+        {
+            border: 2px solid #e6e6e6;
+            border-radius: 3px;
+            width: fit-content;
+            margin-top: 25px;
+
+            span {
+                padding: 18px;
+                color: #555555;
+            }
+
+            button
+            {
+                background-color: #e6e6e6;
+                border: none;
+                padding: .375rem .75rem;
+                margin: 0;
+                color: #888888;
+                text-transform: uppercase;
+                line-height: 1.8;
+                min-width: 40px;
+                border-radius: 0;
+
+                &:hover {
+                    background: $mainColor;
+                    color: $lightColor;
+
+                }
+            }
+
+            .btn-primary:not(:disabled):not(.disabled):active {
+                box-shadow: none;
+                background-color: $mainColor;
+                border: none;
+                color: $lightColor;
+            }
+
+        }
+    }
+
+    //    cart total
+    .cart-total
+    {
+        padding: 30px 50px 70px 50px;
+
+        @media (max-width: 600px) {
+            padding: 50px 0;
+        }
+
+        .content
+        {
+            float: right;
+            max-width: 440px;
+            border: 1px solid #eeeeee;
+            border-radius: 5px;
+            padding: 40px;
+
+            .row {
+                padding: 0 0 12px;
+                margin-bottom: 12px;
+                border-bottom: 1px dashed #c0bfbf;
+            }
+
+            div:nth-child(4) {
+                border: none;;
+            }
+
+            h5 {
+                color: #333333;
+                font-weight: 600;
+                margin-bottom: 30px;
+            }
+
+            .col-4
+            {
+                padding: 0;
+
+                span {
+                    font-size: 15px;
+                    color: #555555;
+                    font-weight: 600;
+                }
+            }
+
+            .col-8
+            {
+                span {
+                    font-size: 18px;
+                    color: #888888;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #888888;
+                    line-height: 1.8;
+                }
+
+                label {
+                    font-size: 13px;
+                    color: #555555;
+                    letter-spacing: .6px;
+                }
+
+                .custom-select, input
+                {
+                    margin-bottom: 12px;
+                    color: #555555;
+                    font-size: 14px;
+                    height: 40px;
+                    line-height: 1.8;
+
+                    &:focus {
+                        border-color: #ced4da;
+                        box-shadow: none;
+                    }
+                }
+
+                .btn-primary {
+                    margin: 0;
+                    width: 100%;
+                }
+
+            }
+        }
+
+        .clear {
+            clear: both;
+        }
+    }
+}

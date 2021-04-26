@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {Switch, Route} from "react-router";
+import {useDispatch} from "react-redux";
 
 // pages
 import Home from "./Layout/Home";
@@ -14,9 +15,27 @@ import SingleDoctor from "./Layout/SingleDoctor";
 import NotFound from "./Layout/NotFound";
 import Contact from "./Layout/Contact";
 import About from "./Layout/About";
+import Settings from "./Layout/Settings";
+import Cart from "./Layout/Cart";
 import Blogs from "./Layout/Blogs";
+import SingleBlog from "./Layout/SingleBlog";
+import OnlinePayment from "./Layout/OnlinePayment";
+import storage from "./utilize/storage";
+
+// actions
+import {loadCart} from "./actions";
 
 export default function App() {
+    const dispatch = useDispatch();
+    const [auth, setAuth] = useState(true);
+
+    useEffect(() => {
+            if (storage("access-token")) {
+                setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
+            }
+            dispatch(loadCart());
+    }, [dispatch])
+
     return (
         <div id="clinic-pharma">
             <BrowserRouter>
@@ -30,9 +49,12 @@ export default function App() {
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/about" exact component={About} />
+                    {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>] : null}
+                    <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs" exact component={Blogs} />
+                    <Route path="/blogs/:blog" exact component={SingleBlog} />
+                    <Route path="/checkout" exact component={OnlinePayment} />
                     <Route path="*" exact component={NotFound} />
-                    
                 </Switch>
                 <Footer />
             </BrowserRouter>

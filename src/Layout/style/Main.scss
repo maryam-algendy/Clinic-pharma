@@ -145,3 +145,29 @@ img {
     margin-top: 15px;
     background: $mainColor;
 }
+
+.alert-danger,
+.alert-success {
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid rgba(114, 28, 36, 0.6);
+    border-radius: 5px;
+}
+
+.alert-success {
+    border: 1px solid rgb(123, 162, 132);
+}
+
+.swal-icon--success__line {
+    background: rgba(57, 108, 240, 0.65);
+}
+
+.swal-icon--success__ring {
+    border-color: rgba(57, 108, 240, 0.65);
+}
+
+
+.swal-text {
+    font-family: "SemiBold", sans-serif;
+    font-size: 18px;
+}

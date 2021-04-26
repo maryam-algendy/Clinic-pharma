@@ -1,4 +1,5 @@
 export const BaseURL = process.env.REACT_APP_BETA_AI_API_BASE_URL;
+// export const BaseURL = "http://localhost:8088";
 
 export default function API(endpoint, method = "GET", data = {}) {
 
@@ -11,7 +12,7 @@ export default function API(endpoint, method = "GET", data = {}) {
     }
 
     return fetch(
-        BaseURL + endpoint,
+        BaseURL + "/" + endpoint,
         {
             method,
             headers: {

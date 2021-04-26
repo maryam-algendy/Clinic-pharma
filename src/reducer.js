@@ -3,7 +3,9 @@ const initialState = {
     error: null,
     ready: false,
     user: null,
-    products: []
+    products: [],
+    cart: {},
+    orders:[]
 };
 
 export default function reducer(state = initialState, action)
@@ -21,6 +23,12 @@ export default function reducer(state = initialState, action)
 
         case "CLINIC_PHARMA_SET_PRODUCTS":
             return {...state, products: action.payload, error: null};
+
+        case "CLINIC_PHARMA_SET_CART":
+            return {...state, cart: action.payload, error: null};
+
+        case "CLINIC_PHARMA_SET_ORDERS":
+            return {...state, orders: action.payload, error: null};
 
         case "BETA_ERROR":
             return {...state, error: action.payload};
