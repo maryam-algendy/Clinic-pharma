@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button, Form, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import DOMPurify from 'dompurify';
@@ -8,13 +8,15 @@ import "./style/BlogDetails.scss";
 import {
     FacebookShareButton,
     LinkedinShareButton,
-    TwitterIcon,
     TwitterShareButton,
     WhatsappShareButton
 } from "react-share";
 
 
 export default function BlogDetails(props) {
+    useEffect(() => {
+        document.title = `Clinic Pharma - ${blog.title}`
+    }, [])
 
     const blog = props.details[0];
     const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -30,7 +32,7 @@ export default function BlogDetails(props) {
     return (
         <div id="blog-detail">
             <div className="img-side">
-                <Image src={blog.thumbnail}/>
+                <Image src={blog.thumbnail?.replace("http", "https")}/>
                 <span>{day} {monthsName[month - 1]}</span>
             </div>
 
@@ -52,16 +54,16 @@ export default function BlogDetails(props) {
             </div>
             <div className="share">
                 <span>share this post</span>
-                <FacebookShareButton quote={`Check ${blog.title} at <a target="_blank" href="https://clinic-pharma.vercel.app">Clinic Pharma</a>`} url={window.location.href}>
+                <FacebookShareButton quote={`Check: ${blog.title}`} url={window.location.href}>
                     <i className="fab fa-facebook-square"> </i>Facebook
                 </FacebookShareButton>
-                <LinkedinShareButton quote={`Check ${blog.title} at <a target="_blank" href="https://clinic-pharma.vercel.app">Clinic Pharma</a>`} url={window.location.href}>
+                <LinkedinShareButton quote={`Check: ${blog.title}`} url={window.location.href} source="https://clinic-pharma.vercel.app" summary={`${blog.content.replace(" </p>", "").replace("<p>", "").replace("</em>", "").replace("<em>", "").replace("<blockquote>", "").replace("</blockquote>", "").substring(0, 200)}`}>
                     <i className="fab fa-linkedin"> </i>LinkedIn
                 </LinkedinShareButton>
-                <TwitterShareButton quote={`Check ${blog.title} at <a target="_blank" href="window.location.href">Clinic Pharma</a>`} url={window.location.href} related={["@mohamedMghazi"]}>
+                <TwitterShareButton title={`Check: ${blog.title}`} url={window.location.href} via=" https://clinic-pharma.vercel.app">
                     <i className="fab fa-twitter-square"> </i>Twitter
                 </TwitterShareButton>
-                <WhatsappShareButton title={`Check: ${blog.title}`} url={window.location.href}>
+                <WhatsappShareButton title={`Check: ${blog.title}`} url={window.location.href} separator=" - ">
                     <i className="fab fa-whatsapp-square"> </i>WhatsApp
                 </WhatsappShareButton>
             </div>
