@@ -14,7 +14,7 @@ export default function Cart() {
     return (
         <div id="cart">
             <PageHeader title="Shop Your Medicines & Products" firstLocation="Cart"/>
-            {typeof cart.products !== "undefined" ? <>
+            {typeof cart?.products !== "undefined" ? <>
                 <div className="cart-items">
                     <div className="row th">
                         <div className="col-2">
@@ -97,7 +97,7 @@ export default function Cart() {
                         </div>
                         <Button onClick={() => window.location.href = "/checkout"}>proceed to checkout</Button>
                     </div>
-                    <div className="clear"> </div>
+                    <div className="clear"></div>
                 </div>
             </> : <div className="container empty-flag">
                 Your cart is empty

@@ -250,11 +250,6 @@ export default function GitAuthenticate() {
                                                            onChange={(e) => setForm({...form, phone: e.target.value})}/>
 
 
-                                                    <label htmlFor="pharmacyName">Pharmacy Name*</label>
-                                                    <input type="text" name="pharmacyName" placeholder="Enter Pharmacy Name"
-                                                           id="pharmacyName" inputMode="name" value={form.pharmacyName}
-                                                           onChange={(e) => setForm({...form, pharmacyName: e.target.value})}/>
-
                                                     <label htmlFor="address">Address*</label>
                                                     <input type="text" name="address" placeholder="Enter address"
                                                            id="address" inputMode="address" value={form.location}
@@ -386,6 +381,12 @@ export default function GitAuthenticate() {
                                                                ...form,
                                                                location: e.target.value
                                                            })}/>
+
+                                                    <label htmlFor="pharmacyName">Pharmacy Name*</label>
+                                                    <input type="text" name="pharmacyName" placeholder="Enter Pharmacy Name"
+                                                           id="pharmacyName" inputMode="name" value={form.pharmacyName}
+                                                           onChange={(e) => setForm({...form, pharmacyName: e.target.value})}/>
+
 
                                                     <label>Profile Image</label>
                                                     <label className="upload" htmlFor="profile">

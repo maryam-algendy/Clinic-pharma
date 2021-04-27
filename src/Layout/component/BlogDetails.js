@@ -1,66 +1,48 @@
 import React from "react";
 import {Button, Form, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import DOMPurify from 'dompurify';
 
 //style
 import "./style/BlogDetails.scss";
 
 
-export default function BlogDetails() {
+export default function BlogDetails(props) {
+
+    const blog = props.details[0];
+    const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = blog.updated_at.slice(5, 7);
+    const day = blog.updated_at.slice(8, 10);
+
+    const createMarkup = (html) => {
+        return {
+            __html: DOMPurify.sanitize(html)
+        }
+    }
+
     return (
         <div id="blog-detail">
             <div className="img-side">
-                <Image src="/blog1.jpg"/>
-                <span>20 june</span>
+                <Image src={blog.thumbnail}/>
+                <span>{day} {monthsName[month - 1]}</span>
             </div>
 
             <h3>
-                My Dental Office Blo Aret Are Building A Healthy And Cousderty Cmunity One Individual
-                At A Timeveniam Quis Laore Nostrud.
+                {blog.title}
             </h3>
             <div className="blog-info">
                 <p>
                     <i className="far fa-user"> </i> by <span>admin</span>
                 </p>
                 <p>
-                    <i className="fas fa-tag"> </i> by <span>Clinic Pharma</span>
+                    <i className="fas fa-tag"> </i> by <span>{blog.category.name}</span>
                 </p>
                 <p>
                     <i className="far fa-comments"> </i> 15
                 </p>
             </div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aut cumque, eligendi error
-                fugit,
-                iste minima modi, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aperiam consequuntur
-                fuga,
-                iste iure neque numquam repellat. Alias excepturi id iusto. Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit.
-                A accusantium consequatur enim molestias nihil, nisi possimus quasi tempora.
-                Architecto asperiores dolorem ducimus enim error in ipsam laborum odio pariatur suscipit.
-                Adipisci cumque itaque maiores neque nulla placeat veritatis!
-                nulla quibusdam rerum vel. Dicta distinctio dolorem doloremque itaque porro, quo quod.
-            </p>
-
-            <div className="quote">
-                <i className="fas fa-quote-left"> </i>
-                <i>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cum dignissimos dolor,
-                    expedita illo labore maiores nostrum similique.
-                    Alias dolores incidunt officiis praesentium voluptate. Exercitationem ipsum laborum obcaecati quae
-                    vitae!
-                </i>
+            <div className="content" dangerouslySetInnerHTML={createMarkup(blog.content)}>
             </div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aut cumque, eligendi error
-                fugit,
-                iste minima modi, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aperiam consequuntur
-                fuga,
-                Adipisci cumque itaque maiores neque nulla placeat veritatis!
-                nulla quibusdam rerum vel. Dicta distinctio dolorem doloremque itaque porro, quo quod.
-            </p>
             <div className="share">
                 <span>share this post</span>
                 <Button>

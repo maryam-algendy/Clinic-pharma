@@ -50,11 +50,21 @@
     .content 
     {
        margin: 20px;
-
+    .title{
+        color: $darkerColor;
+        margin:  30px 0;
+        display: block;
+        &:hover{
+            text-decoration: none;
+            color: $mainColor;
+            transition: .3s ease-in-out;
+        }
+    }
         h3 
         {
             font-size: 24px;
-            font-family: "Regular", sans-serif;
+            font-family: "SemiBold", sans-serif;
+            text-transform: capitalize;
 
             @media (max-width: 720px) {
                 font-size: 18px;
@@ -77,6 +87,7 @@
             font-size: 14px;
             margin-right: 20px;
             color: $darkerColor;
+            display: inline-block;
 
             i {
                 font-size: 12px;

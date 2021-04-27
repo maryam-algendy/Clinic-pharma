@@ -40,7 +40,7 @@ export default function Shop() {
                     setLoading(false);
                 }
             })
-    }, [pageNumber, pagination]);
+    }, []);
 
     return (
         <div id="shop">

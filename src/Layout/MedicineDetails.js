@@ -1,18 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {Tabs, Tab} from "react-bootstrap";
+import {Tabs, Tab, Modal, Spinner, Button} from "react-bootstrap";
 
 // style
 import './style/MedicineDetails.scss';
 
 // component
 import PageHeader from "./component/PageHeader";
-import {useDispatch} from "react-redux";
-import {addToCart} from "../actions";
+import {useDispatch, useSelector} from "react-redux";
+import {addToCart, resetError} from "../actions";
 import API from "../utilize/API";
+import {Link} from "react-router-dom";
+import storage from "../utilize/storage";
 
 export default function MedicineDetails(props)
 {
     const dispatch = useDispatch();
+    const [auth, setAuth] = useState(false);
+    const [show, setShow] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [displayedImage, setDisplayedImage] = useState("");
     const [product, setProduct] = useState({});
@@ -29,10 +33,55 @@ export default function MedicineDetails(props)
                     setProduct(data.message);
                 }
             })
+
+        if (storage("access-token")) {
+            setAuth(true)
+        }
     }, [slug]);
 
     return(
         <div id="medicine-details">
+            {/** Modal */}
+            <Modal show={show} onHide={() => setShow(false)}>
+                {auth ? <Modal.Body className="text-center">
+                    <div className="header text-center">
+                        <Spinner animation="border" role="status"> </Spinner>
+                        <span>
+                            <svg width="60" height="60" className="check">
+                                <line fill="none" id="svg_1" stroke="#396cf0" strokeWidth="5"
+                                      transform="rotate(-34.7186 10.457 35.115)" x1="10.45705" x2="10.45705"
+                                      y1="24.60471" y2="45.62539"/>
+                                <path d="m13.14288,42.96428l45.14286,-30.57143" fill="none" id="svg_2"
+                                      stroke="#396cf0" strokeWidth="5"/>
+                            </svg>
+                        </span>
+                    </div>
+
+                    <h4>{props.title}</h4>
+                    <p>is added to cart !</p>
+
+                    <Button onClick={() => {
+                        setShow(false);
+                        window.location.href = "/shop";
+                    }}>
+                        continue shopping
+                    </Button>
+
+                    <Button onClick={() => {
+                        setShow(false);
+                        window.location.href = "/cart";
+                    }}>
+                        Go to Cart
+                    </Button>
+
+                </Modal.Body>
+                    :
+                <Modal.Body className="text-center py-5">
+                    <h4>you must log in first</h4>
+                    <Link to="/account/login">log in </Link>
+                </Modal.Body>
+                }
+            </Modal>
             <PageHeader title="Medical Product Title" firstLocation="Shop" secondLocation="Medical Product Title" />
             <div className="container">
                 <div className="row">
@@ -77,7 +126,10 @@ export default function MedicineDetails(props)
                                     <button className="counter">{quantity}</button>
                                     <button onClick={() => quantity === product.quantity ? product.quantity : setQuantity(quantity + 1)}>+</button>
                                 </span>
-                                <button className="add-to-cart" onClick={() => dispatch(addToCart({product: slug, quantity}))}>Add To Cart</button>
+                                <button className="add-to-cart" onClick={() => {
+                                    dispatch(addToCart({product: slug, quantity}));
+                                    setShow(true);
+                                }}>Add To Cart</button>
                                 <i className="fas fa-exchange-alt"> </i>
                                 <i className="fas fa-heart"> </i>
                             </div>
