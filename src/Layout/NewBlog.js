@@ -112,10 +112,7 @@ export default function NewBlog() {
                             </Form.Control>
                         </Form.Group>
                         <div className="post text-center" >
-                            <Button onClick={() => {
-                                addToBlogs();
-                                console.log(form);
-                            }}>post</Button>
+                            <Button onClick={() => addToBlogs()}>post</Button>
                         </div>
                     </Form>
 

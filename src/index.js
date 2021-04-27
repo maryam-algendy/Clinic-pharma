@@ -41,7 +41,6 @@ function verifyToken() {
         } else {
             API("auth/user", "GET")
                 .then(({ status, data }) => {
-                    console.log(data)
                     if (status === 200) {
                         storage("user", data?.user);
                         storage("role", data?.role);

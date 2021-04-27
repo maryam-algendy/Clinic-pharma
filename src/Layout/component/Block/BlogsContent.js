@@ -10,6 +10,7 @@ export default function BlogsContent() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
+    const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const createMarkup=(html)=>{
         return{
@@ -21,10 +22,8 @@ export default function BlogsContent() {
         API("blog", "GET")
             .then(({data, status}) => {
                 if (status === 200) {
-
                     setBlogs(data?.blogs);
                     setLoading(false);
-                    console.log(data.blogs);
                     if (data?.blogs?.length < 1) {
                         setError("There are no blogs found");
                     }
@@ -41,16 +40,18 @@ export default function BlogsContent() {
             {
                 !loading ?
 
-                    blogs.map((blog,id)=>{
+                    blogs?.map(blog => {
+                        let month = blog.updated_at.slice(5, 7);
+                        let day = blog.updated_at.slice(8, 10);
                         return(
-                            <div>
+                            <div className="blog-item" key={blog._id}>
                                 <div className="img-side">
                                     <img alt="not found" className="img-fluid" src={blog.thumbnail}/>
-                                    <span className="date">20 June</span>
+                                    <span className="date">{day} {monthsName[month - 1]}</span>
                                 </div>
                                 <div className="content">
                                     <Link className="title" to={`blogs/${blog.slug}`}> <h3>{blog.title}</h3></Link>
-                                    <div dangerouslySetInnerHTML={createMarkup(blog.content)}>
+                                    <div className="blog-content" dangerouslySetInnerHTML={createMarkup(blog.content)}>
                                     </div>
                                     <div>
                                     <span className="author">

@@ -48,23 +48,6 @@ export function fetchOrders() {
     }
 }
 
-export function addToBlogs(data) {
-    return function (dispatch) {
-        API("blogs", "POST", data)
-            .then(({data, status}) => {
-                if (status === 200) {
-                    dispatch({type: "LOADING", payload: false});
-                    dispatch({type: "CLINIC_PHARMA_SET_BLOGS", payload: data?.blogs});
-                    window.location.href = "/new-blog";
-                    console.log(data)
-                } else {
-                    dispatch({type: "LOADING", payload: false});
-                    dispatch({type: "BETA_ERROR", payload: data?.message});
-                }
-            })
-    }
-}
-
 export function fetchBlogCategory() {
     return function (dispatch) {
         API("blog/category")
