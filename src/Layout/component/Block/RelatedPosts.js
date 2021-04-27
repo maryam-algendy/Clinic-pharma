@@ -6,7 +6,7 @@ export default function RelatedPosts (props)
     return (
         <div className="post">
             <div className="avatar">
-                <img src={props.avatar} />
+                <img alt="not found" src={props.avatar} />
             </div>
             <div className="text">
                 <span className="date">{props.date}</span>

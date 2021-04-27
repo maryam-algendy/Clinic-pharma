@@ -2,109 +2,239 @@
 
 #medicine
 {
-    .products-img
-    {
-        position: relative;
-        width: 100%;
-        max-width: 333px;
-        margin: auto;
+  .products-img
+  {
+    position: relative;
+    width: 100%;
+    max-width: 333px;
+    margin: auto;
 
-        .shop-img {
-            display: block;
-            margin-bottom: 15px;
-            width: 100%;
-            background: $bgColor;
-            cursor: pointer;
-        }
 
-        .overlay
-        {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(57, 108, 240, .8);
-            color: $lightColor;
-            opacity: 0;
-            font-size: 35px;
-            transition: .3s ease-in-out;
-
-            button {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: $secondColor;
-                padding: 10px;
-                line-height: 1;
-                border: 1px solid $secondColor;
-                border-radius: 5px;
-                box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
-                transition: .3s ease-in-out;
-
-                &:hover {
-                    background: transparent;
-                    color: $secondColor;
-                }
-
-                i {
-                    font-size: 24px;
-                }
-            }
-        }
-
-        &:hover
-        {
-            .overlay {
-                opacity: 1;
-            }
-        }
+    .shop-img {
+      display: block;
+      margin-bottom: 15px;
+      width: 100%;
+      background: $bgColor;
+      cursor: pointer;
     }
 
-    .content
+    .overlay
     {
-        @media (max-width: 414px) {
-            text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(57, 108, 240, .8);
+      color: $lightColor;
+      opacity: 0;
+      font-size: 35px;
+      transition: .3s ease-in-out;
+
+      button
+      {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $secondColor;
+        color: $mainColor;
+        padding: 10px;
+        line-height: 1;
+        border: 1px solid $secondColor;
+        border-radius: 5px;
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+        transition: .3s ease-in-out;
+
+        &:hover {
+          background: transparent;
+          color: $secondColor;
         }
 
-        a
-        {
-            color: $darkColor;
-
-            &:hover {
-                text-decoration: none;
-            }
-
-            .title {
-                font-size: 16px;
-                font-family: "SemiBold", sans-serif;
-                min-height: 40px;
-            }
+        i {
+          font-size: 24px;
         }
-
-        .icons
-        {
-            margin-bottom: 8px;
-
-            .fas
-            {
-                color: #ffd700;
-                font-size: 14px;
-                padding-right: 5px;
-                cursor: pointer;
-
-                &:last-child {
-                    color: #777;
-                }
-            }
-        }
-
-        .price {
-            color: $mainColor;
-            font-family: "SemiBold", sans-serif;
-        }
+      }
     }
+
+    &:hover
+    {
+      .overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  .content
+  {
+    @media (max-width: 414px) {
+      text-align: center;
+    }
+
+    a
+    {
+      color: $darkColor;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      .title {
+        font-size: 16px;
+        font-family: "SemiBold", sans-serif;
+        min-height: 40px;
+      }
+    }
+
+    .icons
+    {
+      margin-bottom: 8px;
+
+      .fas {
+        color: #ffd700;
+        font-size: 14px;
+        padding-right: 5px;
+        cursor: pointer;
+
+        &:last-child {
+          color: #777;
+        }
+      }
+    }
+
+    .price {
+      color: $mainColor;
+      font-family: "SemiBold", sans-serif;
+    }
+  }
+
+}
+
+.modal-dialog
+{
+  top: 20%;
+
+  h4 {
+    color: #333333;
+    font-size: 18px;
+    text-align: center;
+    font-family: "SemiBold", sans-serif;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+
+  }
+
+  a
+  {
+    background-color: $mainColor;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border: 2px solid $mainColor;
+    padding: 8px 35px;
+    color: $lightColor;
+    font-family: "SemiBold", sans-serif;
+    display: inline-block;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: $lightColor;
+      text-decoration: none;
+      color: $mainColor;
+      transition: .2s ease-in-out;
+
+    }
+
+  }
+
+  .header
+  {
+    padding: 50px;
+
+    .spinner-border {
+      animation-iteration-count: 1;
+      border-color: transparent;
+      border-left-color: $mainColor;
+      width: 90px;
+      height: 90px;
+      animation: spinner-border .4s linear reverse, hide-border 2s forwards;
+
+    }
+
+    span {
+      position: absolute;
+      left: 41%;
+      border: 5px solid rgba(242, 247, 251, 0.9);
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .check {
+      animation: check .3s;
+
+    }
+
+    @keyframes hide-border {
+      100% {
+        border-left-color: transparent;
+      }
+    }
+    @keyframes check {
+      50% {
+        transform: scale(.6);
+      }
+    }
+  }
+
+
+  p {
+    text-align: center;
+    color: #333333;
+    font-size: 15px;
+    display: block;
+  }
+
+  .btn-primary
+  {
+    background-color: $mainColor;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border: 2px solid $mainColor;
+    padding: 8px 35px;
+    color: $lightColor;
+    font-family: "SemiBold", sans-serif;
+    margin-bottom: 20px;
+
+    &:hover {
+      border: 2px solid $mainColor;
+      background-color: $lightColor;
+      color: $mainColor;
+      transition: .3s ease-in-out;
+
+    }
+
+    &:active {
+      background-color: #333333;
+      box-shadow: none;
+
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .btn-primary:not(:disabled):not(.disabled):active {
+    box-shadow: none;
+    background: $lightColor;
+    color: $mainColor;
+  }
+}
+
+.clicked {
+  fill: #e65540;
+  stroke: #e65540;
+  width: 20px;
+
 }

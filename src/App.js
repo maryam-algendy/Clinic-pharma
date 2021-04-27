@@ -18,12 +18,12 @@ import About from "./Layout/About";
 import Settings from "./Layout/Settings";
 import Cart from "./Layout/Cart";
 import Blogs from "./Layout/Blogs";
-import SingleBlog from "./Layout/SingleBlog";
 import OnlinePayment from "./Layout/OnlinePayment";
 import storage from "./utilize/storage";
 import NewBlog from "./Layout/NewBlog";
 // actions
 import {loadCart} from "./actions";
+import SingleBlog from "./Layout/SingleBlog";
 
 export default function App() {
     const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export default function App() {
                     {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>] : null}
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs" exact component={Blogs} />
-                    <Route path="/blogs/:blog" exact component={SingleBlog} />
+                    <Route path="/blogs/:slug" exact component={SingleBlog} />
                     <Route path="/checkout" exact component={OnlinePayment} />
                     <Route path="/blog/create" exact component={NewBlog}/>
                     <Route path="*" exact component={NotFound} />

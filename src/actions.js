@@ -2,12 +2,10 @@ import API from "./utilize/API";
 
 /** NOTE: use storage to cache data data that is difficult to change during the session -logically- (ex: cart, user-data, ...etc) **/
 
-export function addToCart(data)
-{
-    return function(dispatch)
-    {
+export function addToCart(data) {
+    return function (dispatch) {
         API("cart", "POST", data)
-            .then(({ data, status }) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "CLINIC_PHARMA_SET_CART", payload: data?.cart});
@@ -20,12 +18,10 @@ export function addToCart(data)
     }
 }
 
-export function loadCart()
-{
-    return function(dispatch)
-    {
+export function loadCart() {
+    return function (dispatch) {
         API("cart")
-            .then(({ data, status }) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "CLINIC_PHARMA_SET_CART", payload: data?.cart[0]});
@@ -37,12 +33,10 @@ export function loadCart()
     }
 }
 
-export function fetchOrders()
-{
-    return function(dispatch)
-    {
+export function fetchOrders() {
+    return function (dispatch) {
         API("orders")
-            .then(({ data, status }) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "CLINIC_PHARMA_SET_ORDERS", payload: data?.orders});
@@ -54,12 +48,11 @@ export function fetchOrders()
             })
     }
 }
-export function addToBlogs(data)
-{
-    return function(dispatch)
-    {
+
+export function addToBlogs(data) {
+    return function (dispatch) {
         API("blogs", "POST", data)
-            .then(({ data, status }) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "CLINIC_PHARMA_SET_BLOGS", payload: data?.blogs});
@@ -72,12 +65,11 @@ export function addToBlogs(data)
             })
     }
 }
-export function fetchBlogCategory()
-{
-    return function(dispatch)
-    {
+
+export function fetchBlogCategory() {
+    return function (dispatch) {
         API("blog/category")
-            .then(({ data, status }) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "CLINIC_PHARMA_FETCH_BLOG_CATEGORY", payload: data?.categories});
