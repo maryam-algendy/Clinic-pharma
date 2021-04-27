@@ -25,61 +25,73 @@ export default function GitAuthenticate() {
     const [error, setError] = useState();
 
     function handleLogin() {
+        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("auth/login", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
                     storage("access-token", data?.user?.tokens[0]?.token);
                     storage("user", JSON.stringify(data.user));
+                    storage("role", data?.role);
+                    document.querySelector("#submit-form").innerHTML = `Login`
                     setTimeout(() => {
                         window.location.replace("/");
-                    }, 1000);
+                    }, 500);
                 } else {
                     setError(data?.message);
+                    document.querySelector("#submit-form").innerHTML = `Login`
                     window.scrollTo(0, 0);
                 }
             })
     }
 
     function handleDoctorSignup() {
+        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("doctor/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
                     setError("Account created successfully, you will be redirected in moments");
+                    document.querySelector("#submit-form").innerHTML = `Create`
                     window.scrollTo(0, 0);
                     setTimeout(() => {
                         window.location.replace("/account/login");
-                    }, 1000);
+                    }, 500);
                 } else {
                     setError(data?.message);
+                    document.querySelector("#submit-form").innerHTML = `Create`
                     window.scrollTo(0, 0);
                 }
             })
     }
 
     function handlePatientSignup() {
+        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("patient/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
                     setError("Account created successfully, you will be redirected in moments");
+                    document.querySelector("#submit-form").innerHTML = `Login`
                     setTimeout(() => {
                         window.location.replace("/account/login");
-                    }, 1000);
+                    }, 500);
                 } else {
                     setError(data?.message);
+                    document.querySelector("#submit-form").innerHTML = `Create`
                     window.scrollTo(0, 0);
                 }
             })
     }
 
     function handlePharmacistSignup() {
+        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("pharmacist/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
-                    window.scrollTo(0, 0);
+                    document.querySelector("#submit-form").innerHTML = `Create`
                     setError("Account created successfully, you will be redirected in moments");
+                    window.scrollTo(0, 0);
                     setTimeout(() => {
                         window.location.replace("/account/login");
-                    }, 1000);
+                    }, 500);
                 } else {
                     setError(data?.message);
                     window.scrollTo(0, 0);
