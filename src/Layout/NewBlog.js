@@ -11,8 +11,6 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./style/NewBlog.scss";
 import {Link} from "react-router-dom";
 
-
-
 export default function NewBlog() {
     const [keywords, setKeywords] = useState({});
     const [form, setForm] = useState({title:"", content:"", thumbnail:"", category:"", keywords: ""});
@@ -23,6 +21,7 @@ export default function NewBlog() {
             .then(({data, status}) => {
                 if (status === 200) {
                     setError("You just added a new blog successfully");
+                    window.scrollTo(0, 0);
                 } else {
                     setError(data?.message);
                     window.scrollTo(0, 0);

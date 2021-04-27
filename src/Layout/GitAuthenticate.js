@@ -45,54 +45,55 @@ export default function GitAuthenticate() {
     }
 
     function handleDoctorSignup() {
-        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
+        document.querySelector("#create-doctor").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("doctor/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
                     setError("Account created successfully, you will be redirected in moments");
-                    document.querySelector("#submit-form").innerHTML = `Create`
+                    document.querySelector("#create-doctor").innerHTML = `Create`
                     window.scrollTo(0, 0);
                     setTimeout(() => {
                         window.location.replace("/account/login");
-                    }, 500);
+                    }, 1000);
                 } else {
                     setError(data?.message);
-                    document.querySelector("#submit-form").innerHTML = `Create`
+                    document.querySelector("#create-doctor").innerHTML = `Create`
                     window.scrollTo(0, 0);
                 }
             })
     }
 
     function handlePatientSignup() {
-        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
+        document.querySelector("#create-patient").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("patient/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
                     setError("Account created successfully, you will be redirected in moments");
-                    document.querySelector("#submit-form").innerHTML = `Login`
+                    document.querySelector("#create-patient").innerHTML = `Login`
                     setTimeout(() => {
                         window.location.replace("/account/login");
-                    }, 500);
+                    }, 1000);
                 } else {
                     setError(data?.message);
-                    document.querySelector("#submit-form").innerHTML = `Create`
+                    document.querySelector("#create-patient").innerHTML = `Create`
                     window.scrollTo(0, 0);
                 }
             })
     }
 
     function handlePharmacistSignup() {
-        document.querySelector("#submit-form").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
+        document.querySelector("#create-pharmacist").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
         API("pharmacist/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
-                    document.querySelector("#submit-form").innerHTML = `Create`
+                    document.querySelector("#create-pharmacist").innerHTML = `Create`;
                     setError("Account created successfully, you will be redirected in moments");
                     window.scrollTo(0, 0);
                     setTimeout(() => {
                         window.location.replace("/account/login");
                     }, 500);
                 } else {
+                    document.querySelector("#create-pharmacist").innerHTML = `Create`;
                     setError(data?.message);
                     window.scrollTo(0, 0);
                 }
@@ -211,7 +212,7 @@ export default function GitAuthenticate() {
                                             </form>
 
                                             <div className="actions">
-                                                <button onClick={() => handlePatientSignup()}>Create</button>
+                                                <button id="create-patient" onClick={() => handlePatientSignup()}>Create</button>
 
                                                 <Link to="/account/login" className="lost-pass-link">Already have an
                                                     account?</Link>
@@ -336,7 +337,7 @@ export default function GitAuthenticate() {
                                                 <span className="required">*Required data</span>
 
                                                 <div className="actions">
-                                                    <button onClick={() => handleDoctorSignup()}>Create</button>
+                                                    <button id="create-doctor" onClick={() => handleDoctorSignup()}>Create</button>
 
                                                     <Link to="/account/login" className="lost-pass-link">Already have an
                                                         account?</Link>
@@ -441,7 +442,7 @@ export default function GitAuthenticate() {
                                                 <span className="required">*Required data</span>
 
                                                 <div className="actions">
-                                                    <button onClick={() => handlePharmacistSignup()}>Create</button>
+                                                    <button id="create-pharmacist" onClick={() => handlePharmacistSignup()}>Create</button>
 
                                                     <Link to="/account/login" className="lost-pass-link">Already have an
                                                         account?</Link>
