@@ -113,12 +113,14 @@
 
         button
         {
-            font-family: "SemiBold", sans-serif;
-            background: none;
-            color: #777777;
-            font-size: 14px;
-            border: 1px solid #B7B7B7;
-            margin:  0 10px 10px 0;
+            font-family: "SemiBold", sans-serif !important;
+            background: none !important;
+            color: #777777 !important;
+            font-size: 14px !important;
+            margin:  0 10px 0 0 !important;
+            padding: .375rem .75rem !important;
+            border: 1px solid #B7B7B7 !important;
+            border-radius: 5px !important;
 
             &:focus {
                 box-shadow: none;
@@ -137,8 +139,12 @@
                 color: #39a4f4;
             }
 
-            .fa-google-plus-square {
-                color: #ff4a21;
+            .fa-linkedin {
+                color: $mainColor;
+            }
+
+            .fa-whatsapp-square {
+                color: #0ee800;
             }
         }
     }

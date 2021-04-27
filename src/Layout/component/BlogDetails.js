@@ -5,6 +5,13 @@ import DOMPurify from 'dompurify';
 
 //style
 import "./style/BlogDetails.scss";
+import {
+    FacebookShareButton,
+    LinkedinShareButton,
+    TwitterIcon,
+    TwitterShareButton,
+    WhatsappShareButton
+} from "react-share";
 
 
 export default function BlogDetails(props) {
@@ -45,15 +52,18 @@ export default function BlogDetails(props) {
             </div>
             <div className="share">
                 <span>share this post</span>
-                <Button>
-                    <i className="fab fa-facebook-square"> </i>facebook
-                </Button>
-                <Button>
-                    <i className="fab fa-twitter-square"> </i>twitter
-                </Button>
-                <Button>
-                    <i className="fab fa-google-plus-square"> </i>google plus
-                </Button>
+                <FacebookShareButton quote={`Check ${blog.title} at <a target="_blank" href="https://clinic-pharma.vercel.app">Clinic Pharma</a>`} url={window.location.href}>
+                    <i className="fab fa-facebook-square"> </i>Facebook
+                </FacebookShareButton>
+                <LinkedinShareButton quote={`Check ${blog.title} at <a target="_blank" href="https://clinic-pharma.vercel.app">Clinic Pharma</a>`} url={window.location.href}>
+                    <i className="fab fa-linkedin"> </i>LinkedIn
+                </LinkedinShareButton>
+                <TwitterShareButton quote={`Check ${blog.title} at <a target="_blank" href="window.location.href">Clinic Pharma</a>`} url={window.location.href} related={["@mohamedMghazi"]}>
+                    <i className="fab fa-twitter-square"> </i>Twitter
+                </TwitterShareButton>
+                <WhatsappShareButton title={`Check: ${blog.title}`} url={window.location.href}>
+                    <i className="fab fa-whatsapp-square"> </i>WhatsApp
+                </WhatsappShareButton>
             </div>
             <div className="about-author row">
                 <div className="col-sm-2 img-side text-center">
