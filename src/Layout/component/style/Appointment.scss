@@ -3,6 +3,36 @@
 #appointment,
 #orders
 {
+    .add-appointment
+    {
+        margin-bottom: 20px;
+        text-align: right;
+
+        .appointment-btn
+        {
+            button
+            {
+                color: $lightColor;
+                background: $mainColor;
+                font-size: 14px;
+                padding: 9px 20px;
+                font-family: "SemiBold", sans-serif;
+                border: 1px solid $mainColor;
+                transition: .3s ease-in-out;
+
+                &:hover
+                {
+                    background: $lightColor;
+                    color: $mainColor;
+                }
+
+                .fas {
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+
     .table
     {
         h4 {
@@ -58,6 +88,51 @@
             td:last-child,
             th:last-child {
                 padding-right: 25px;
+            }
+        }
+    }
+}
+
+.modal
+{
+    .modal-header
+    {
+        .modal-title {
+            font-size: 18px;
+            font-family: "SemiBold", sans-serif;
+        }
+    }
+
+    .modal-body
+    {
+        .form-control {
+            box-shadow: none;
+        }
+
+        .date-btn {
+            margin-top: 10px;
+        }
+    }
+
+    .modal-footer
+    {
+        .btn-primary {
+            color: $lightColor;
+            background: $mainColor;
+            font-size: 14px;
+            padding: 9px 20px;
+            font-family: "SemiBold", sans-serif;
+            border: 1px solid $mainColor;
+            transition: .3s ease-in-out;
+
+            &:hover
+            {
+                background: $lightColor;
+                color: $mainColor;
+            }
+
+            .fas {
+                padding-right: 5px;
             }
         }
     }

@@ -11,11 +11,11 @@ export default function DoctorBlock(props)
             <div className="doctors-card">
                 <div className="doc-img">
                     <img src={props.image} alt={props.alter}/>
-                    <Link to={`/doctor/${props.title}`} className="overlay">+</Link>
+                    <Link to={`/doctor/${props.name}`} className="overlay">+</Link>
                 </div>
                 <div className="content">
-                    <h5 className="title">{props.title}</h5>
-                    <span>{props.span}</span>
+                    <h5 className="title">{props.name}</h5>
+                    <span>{props.specialization}</span>
                 </div>
                 <div className="dropdown-divider"> </div>
                 <div className="date-time">
