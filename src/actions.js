@@ -9,7 +9,6 @@ export function addToCart(data) {
                 if (status === 200) {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "CLINIC_PHARMA_SET_CART", payload: data?.cart});
-                    window.location.href = "/cart";
                 } else {
                     dispatch({type: "LOADING", payload: false});
                     dispatch({type: "BETA_ERROR", payload: data?.message});

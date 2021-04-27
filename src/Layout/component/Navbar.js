@@ -47,6 +47,7 @@ export default function MainNavbar()
                                 <li><Link to="/doctors">Doctors</Link></li>
                                 <li><Link to="/shop">Shop</Link></li>
                                 <li><Link to="/blogs">Blogs</Link></li>
+                                {authenticatedUser ? <li><Link to="/blog/create">Add Blog</Link></li> : null}
                                 <li><Link to="/contact">Contact</Link></li>
                             </ul>
                         </div>

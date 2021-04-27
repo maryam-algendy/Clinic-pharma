@@ -49,7 +49,7 @@ export default function BlogsContent() {
                                     <span className="date">20 June</span>
                                 </div>
                                 <div className="content">
-                                    <Link className="title" to={`blog/:${blog.slug}`}> <h3>{blog.title}</h3></Link>
+                                    <Link className="title" to={`blogs/${blog.slug}`}> <h3>{blog.title}</h3></Link>
                                     <div dangerouslySetInnerHTML={createMarkup(blog.content)}>
                                     </div>
                                     <div>

@@ -49,12 +49,11 @@ export default function App() {
                     <Route path="/doctor/:doc" exact component={SingleDoctor} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/about" exact component={About} />
-                    {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>] : null}
+                    {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>, <Route key={2} path="/blog/create" exact component={NewBlog}/>] : null}
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/blogs/:slug" exact component={SingleBlog} />
                     <Route path="/checkout" exact component={OnlinePayment} />
-                    <Route path="/blog/create" exact component={NewBlog}/>
                     <Route path="*" exact component={NotFound} />
                 </Switch>
                 <Footer />
