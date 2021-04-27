@@ -171,7 +171,7 @@ export default function GitAuthenticate() {
 
                                                 <label htmlFor="password">Password*</label>
                                                 <input type="password" name="password" placeholder="Enter Password"
-                                                       id="password" inputMode="none" value={form.password}
+                                                       id="password" value={form.password}
                                                        onChange={(e) => setForm({...form, password: e.target.value})}/>
 
 
@@ -242,7 +242,7 @@ export default function GitAuthenticate() {
 
                                                     <label htmlFor="email">Username*</label>
                                                     <input type="username" name="username" placeholder="Enter username"
-                                                           id="username" inputMode="username" value={form.username}
+                                                           id="username" value={form.username}
                                                            onChange={(e) => setForm({
                                                                ...form,
                                                                username: e.target.value
@@ -367,7 +367,7 @@ export default function GitAuthenticate() {
 
                                                     <label htmlFor="email">Username*</label>
                                                     <input type="username" name="username" placeholder="Enter username"
-                                                           id="username" inputMode="username" value={form.username}
+                                                           id="username" value={form.username}
                                                            onChange={(e) => setForm({
                                                                ...form,
                                                                username: e.target.value
