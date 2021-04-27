@@ -21,7 +21,7 @@ import Blogs from "./Layout/Blogs";
 import SingleBlog from "./Layout/SingleBlog";
 import OnlinePayment from "./Layout/OnlinePayment";
 import storage from "./utilize/storage";
-
+import NewBlog from "./Layout/NewBlog";
 // actions
 import {loadCart} from "./actions";
 
@@ -54,6 +54,7 @@ export default function App() {
                     <Route path="/blogs" exact component={Blogs} />
                     <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="/checkout" exact component={OnlinePayment} />
+                    <Route path="/blog/create" exact component={NewBlog}/>
                     <Route path="*" exact component={NotFound} />
                 </Switch>
                 <Footer />
