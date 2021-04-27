@@ -52,7 +52,7 @@ export default function App() {
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/blogs/:blog" exact component={SingleBlog} />
                     <Route path="/checkout" exact component={OnlinePayment} />
-                    <Route path="/new-blog" exact component={NewBlog}/>
+                    <Route path="/blog/create" exact component={NewBlog}/>
                     <Route path="*" exact component={NotFound} />
                 </Switch>
                 <Footer />
