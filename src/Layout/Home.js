@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+
+// actions
+import {loadSlides} from "../actions";
 
 // style
 import "./style/Home.scss";
@@ -14,25 +18,22 @@ import LatestBlogs from "./component/LatestBlogs";
 import Testimonial from "./component/Testimonial";
 
 export default function Home() {
-
-    const slides = [{image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573380/Assets/slides/slide1-1_wcspqu.jpg"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573380/Assets/slides/slide1-2_bzwsju.jpg"},
-        {image: "https://res.cloudinary.com/medical-pharma/image/upload/v1618573381/Assets/slides/slide1-3_qmcsr6.jpg"}
-    ];
-
+    const slides = useSelector(state => state.portal.slides);
+    const blogs = useSelector(state => state.portal.blogs);
+    const topDoctors = useSelector(state => state.portal.top_doctors);
 
     return <div id="home">
         <Slider slides={slides} fade={true}/>
         <WelcomeBadge/>
         <OurDepartments />
         <BenefitsSection />
-        <TopDoctors />
+        <TopDoctors topDoctors={topDoctors} />
         <EmergencySection />
 
         <div className="container-fluid p-0">
             <div className="row m-0">
                 <div className="col-12 col-md-6 p-0">
-                    <LatestBlogs />
+                    <LatestBlogs blogs={blogs} />
                 </div>
                 <div className="col-12 col-md-6 p-0">
                     <Testimonial />

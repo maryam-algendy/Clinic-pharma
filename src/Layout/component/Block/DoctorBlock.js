@@ -11,7 +11,7 @@ export default function DoctorBlock(props)
             <div className="doctors-card">
                 <div className="doc-img">
                     <img src={props.image} alt={props.alter}/>
-                    <Link to={`/doctor/${props.name}`} className="overlay">+</Link>
+                    <a href={`/doctor/${props.name}`} className="overlay">+</a>
                 </div>
                 <div className="content">
                     <h5 className="title">{props.name}</h5>

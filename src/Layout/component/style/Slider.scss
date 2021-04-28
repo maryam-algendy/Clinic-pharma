@@ -4,6 +4,45 @@
 {
   text-transform: capitalize;
 
+  .carousel-item {
+    max-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 1280px) {
+      max-height: 466.6px;
+    }
+
+    @media (max-width: 1024px) {
+      max-height: 373.3px;
+    }
+
+    @media (max-width: 850px) {
+      max-height: 304px;
+    }
+
+    @media (max-width: 800px) {
+      max-height: 291.5px;
+    }
+
+    @media (max-width: 768px) {
+      max-height: 280px;
+    }
+
+    @media (max-width: 414px) {
+      max-height: 150.9px;
+    }
+
+    @media (max-width: 375px) {
+      max-height: 137px;
+    }
+
+    @media (max-width: 360px) {
+      max-height: 131px;
+    }
+  }
+
   .active img {
     transform: translate(0, 0) !important;
     opacity: 1 !important;
