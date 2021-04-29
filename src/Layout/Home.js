@@ -1,8 +1,5 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-
-// actions
-import {loadSlides} from "../actions";
+import React from 'react';
+import {useSelector} from "react-redux";
 
 // style
 import "./style/Home.scss";
@@ -29,7 +26,6 @@ export default function Home() {
         <BenefitsSection />
         <TopDoctors topDoctors={topDoctors} />
         <EmergencySection />
-
         <div className="container-fluid p-0">
             <div className="row m-0">
                 <div className="col-12 col-md-6 p-0">
@@ -40,6 +36,5 @@ export default function Home() {
                 </div>
             </div>
         </div>
-
     </div>
 }
