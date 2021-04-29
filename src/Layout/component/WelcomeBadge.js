@@ -35,13 +35,13 @@ export default function WelcomeBadge() {
                             </span>
                         </Link>
 
-                        <Link to="/">
+                        <a href="/doctors">
                             <i className="far fa-user"> </i>
                             find doctors
                             <span className="float-right">
                                 <i className="fas fa-angle-right"> </i>
                             </span>
-                        </Link>
+                        </a>
 
                         <Link to="/">
                             <i className="fas fa-map-marker-alt"> </i>
@@ -51,13 +51,13 @@ export default function WelcomeBadge() {
                             </span>
                         </Link>
 
-                        <Link to="/">
+                        <a href="tel:+123456789">
                             <i className="fas fa-phone"> </i>
                             emergency contact
                             <span className="float-right">
                                 <i className="fas fa-angle-right"> </i>
                             </span>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
