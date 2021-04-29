@@ -35,7 +35,7 @@ export default function WelcomeBadge() {
                             </span>
                         </Link>
 
-                        <Link to="/">
+                        <Link to="/doctors">
                             <i className="far fa-user"> </i>
                             find doctors
                             <span className="float-right">
@@ -51,7 +51,7 @@ export default function WelcomeBadge() {
                             </span>
                         </Link>
 
-                        <Link to="/">
+                        <Link to="tel:+123456789">
                             <i className="fas fa-phone"> </i>
                             emergency contact
                             <span className="float-right">
