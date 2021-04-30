@@ -14,7 +14,7 @@ export default function Slider(props) {
                         <div className="header text-center text-md-left">
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-md-6 col-lg-4">
+                                    <div className="col-md-6 col-lg-5">
                                         <h1>{slide?.title}</h1>
                                         <p>{slide?.description}</p>
                                         <Button onClick={() => window.location.href = slide?.link}>
