@@ -37,7 +37,7 @@ export default function SingleDoctor() {
                     <div className="row">
                         <div className="col-lg-3 lhs">
                             <div className="name-card">
-                                <Image src={doctor?.image}/>
+                                <Image src={doctor?.image?.replace("http", "https")}/>
                                 <h4>Dr. {doctor?.name}</h4>
                                 <span>{doctor?.specialization}</span>
                                 <p>{role}</p>

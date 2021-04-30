@@ -32,7 +32,7 @@ export default function BlogDetails(props) {
     return (
         <div id="blog-detail">
             <div className="img-side">
-                <Image src={blog.thumbnail?.replace("http", "https")} alt="Thumbnail"/>
+                <Image src={blog.thumbnail.includes("https") ? blog.thumbnail : blog.thumbnail?.replace("http", "https")} alt="Thumbnail"/>
                 <span>{day} {monthsName[month - 1]}</span>
             </div>
 

@@ -10,7 +10,7 @@ export default function Slider(props) {
                        fade={props.fade !== false}>
                 {props?.slides?.map((slide, id) =>
                     <Carousel.Item key={id}>
-                        <img src={slide?.image} alt={slide.description} className="img-fluid"/>
+                        <img src={slide?.image.includes("https") ? slide?.image : slide?.image?.replace("http", "https")} alt={slide.description} className="img-fluid"/>
                         <div className="header text-center text-md-left">
                             <div className="container">
                                 <div className="row">

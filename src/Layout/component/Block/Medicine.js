@@ -23,7 +23,7 @@ export default function Medicine(props) {
     return (
         <div id="medicine">
             <div className="products-img">
-                <img className="shop-img" src={props.image} alt={props.alter}/>
+                <img className="shop-img" src={props.image.includes("https") ? props.image : props.image?.replace("http", "https")} alt={props.alter}/>
                 <div className="overlay">
                     <div className="favourite">
                         <Button className="heart-btn" onClick={() => {

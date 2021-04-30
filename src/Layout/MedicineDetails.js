@@ -27,7 +27,7 @@ export default function MedicineDetails(props)
             .then(({data, status})=>{
                 if (status===200){
                     setProduct(data?.product);
-                    setDisplayedImage(`${data.product.photos[0].photo}`);
+                    setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http", "https")}`);
                 }
                 else {
                     setProduct(data.message);
@@ -94,7 +94,7 @@ export default function MedicineDetails(props)
                                 product?.photos?.map((photo,id)=>{
                                     return(
                                         <div key={id} onClick={() => setDisplayedImage(`${photo.photo}`)} className="img">
-                                            <img src={photo.photo} alt="Shop"/>
+                                            <img src={photo?.photo?.replace("http", "https")} alt="Shop"/>
                                         </div>
                                     )
                                 })

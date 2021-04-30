@@ -39,7 +39,7 @@ export default function BlogsContent() {
                         return(
                             <div className="blog-item" key={blog._id}>
                                 <div className="img-side">
-                                    <img alt="not found" className="img-fluid" src={blog.thumbnail}/>
+                                    <img alt="not found" className="img-fluid" src={blog.thumbnail.includes("https") ? blog.thumbnail : blog.thumbnail?.replace("http", "https")}/>
                                     <span className="date">{day} {monthsName[month - 1]}</span>
                                 </div>
                                 <div className="content">
