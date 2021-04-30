@@ -79,7 +79,7 @@ export default function AllDoctor()
                                 <ul>
                                     <li>
                                         <h1>Departments</h1>
-                                        <div className="line"></div>
+                                        <div className="line"> </div>
                                     </li>
                                     <li>
                                         <a className="active" href="/">All</a>

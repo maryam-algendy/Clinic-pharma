@@ -6,8 +6,8 @@ import './style/MedicineDetails.scss';
 
 // component
 import PageHeader from "./component/PageHeader";
-import {useDispatch, useSelector} from "react-redux";
-import {addToCart, resetError} from "../actions";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../actions";
 import API from "../utilize/API";
 import {Link} from "react-router-dom";
 import storage from "../utilize/storage";

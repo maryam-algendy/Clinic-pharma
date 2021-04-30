@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
@@ -7,6 +7,7 @@ import './style/OurDeprtments.scss';
 
 // block
 import DepartmentBox from "./Block/DepartmentBox";
+import API from "../../utilize/API";
 
 export default function OurDepartments()
 {
@@ -21,18 +22,28 @@ export default function OurDepartments()
 
     const {galleryItems, currentIndex} = state;
 
-    const departments = [
-        {name: "Dental Care", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical icon-med"},
-        {name: "Medicine", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-pills icon-med"},
-        {name: "Cardeology", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical-5 icon-med"},
-        {name: "Orthopedic", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-human-hip icon-med"},
-        {name: "Dental Care", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-medical icon-med"},
-        {name: "Medicine", about: "Aorem Ipsumea dummy texte printing setting detry bringin eight challenges faced", icon: "flaticon-pills icon-med"}
-    ]
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState();
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        API("cms/departments", "GET")
+            .then(({data, status}) => {
+                if (status === 200) {
+                    setData(data?.departments);
+                    setLoading(false);
+                } else {
+                    setError(data?.message);
+                    setLoading(false);
+                }
+            })
+    }, [])
 
     return(
         <div id="our-departments">
             <div className="container">
+                {error ? <div className="alert-danger">{error}</div> : null}
+                {!loading ? <>
                 <div className="departments-header">
                     <h5 className="title">Our Departments</h5>
                     <span className="sub-title">Dedicated Services</span>
@@ -49,15 +60,20 @@ export default function OurDepartments()
                         touchTrackingEnabled={true}
                         mouseTrackingEnabled={true}
                         slideToIndex={currentIndex}
+                        infinite={true}
                     >
-                        {departments?.map((department, i) => {
+                        {data?.map((departments, i) => {
                             return <div key={i}>
-                                <DepartmentBox department={i + 1} name={department.name} about={department.about} icon={department.icon} />
+                                <DepartmentBox departments={i + 1} title={departments.title} icon={departments.icon} description={departments.description} textOnLink={departments.textOnLink} />
                             </div>
                         })}
-
                     </AliceCarousel>
                 </div>
+                </>  :<div id="loading">
+                    <div className="spinner-border text-primary m-auto" role="status">
+                        <span className="visually-hidden sr-only">Loading...</span>
+                    </div>
+                </div>}
             </div>
         </div>
     );

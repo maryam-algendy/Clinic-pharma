@@ -32,7 +32,7 @@ export default function BlogDetails(props) {
     return (
         <div id="blog-detail">
             <div className="img-side">
-                <Image src={blog.thumbnail?.replace("http", "https")}/>
+                <Image src={blog.thumbnail?.replace("http", "https")} alt="Thumbnail"/>
                 <span>{day} {monthsName[month - 1]}</span>
             </div>
 
@@ -69,7 +69,7 @@ export default function BlogDetails(props) {
             </div>
             <div className="about-author row">
                 <div className="col-sm-2 img-side text-center">
-                    <Image src="/blog7.jpg"/>
+                    <Image src="/blog7.jpg" alt="Blog" />
                 </div>
                 <div className="col-sm-10 text-side">
                     <h5>about the author</h5>
@@ -98,7 +98,7 @@ export default function BlogDetails(props) {
                 <h4>03 comments</h4>
                 <div className="row my-4">
                     <div className="col-sm-2 col-3 img-side">
-                        <Image src="/blog8.jpg"/>
+                        <Image src="/blog8.jpg" alt="Blog" />
                     </div>
                     <div className="col-9 col-sm-8 text-side">
                         <h5>about the author</h5>
@@ -111,7 +111,7 @@ export default function BlogDetails(props) {
                 </div>
                 <div className="row my-3 reply">
                     <div className="col-sm-2 col-3 img-side">
-                        <Image src="/blog7.jpg"/>
+                        <Image src="/blog7.jpg" alt="Blog" />
                     </div>
                     <div className="col-9 col-sm-8 text-side">
                         <h5>about the author</h5>
