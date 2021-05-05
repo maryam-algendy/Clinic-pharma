@@ -17,7 +17,6 @@ export default function SingleBlog() {
                 if (status === 200) {
                     setBlog(data?.blog);
                     setLoading(false);
-                    console.log(data.blog)
                 } else {
                     setError(data?.message);
                     setLoading(false);

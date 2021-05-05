@@ -22,7 +22,7 @@ import OnlinePayment from "./Layout/OnlinePayment";
 import storage from "./utilize/storage";
 import NewBlog from "./Layout/NewBlog";
 // actions
-import {loadCart} from "./actions";
+import {loadBlogs, loadCart, loadSlides, loadTopDoctors} from "./actions";
 import SingleBlog from "./Layout/SingleBlog";
 
 export default function App() {
@@ -30,34 +30,39 @@ export default function App() {
     const [auth, setAuth] = useState(true);
 
     useEffect(() => {
-            if (storage("access-token")) {
-                setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
-            }
-            dispatch(loadCart());
+        // api calls
+        dispatch(loadCart());
+        dispatch(loadSlides());
+        dispatch(loadBlogs());
+        dispatch(loadTopDoctors());
+
+        if (storage("access-token")) {
+            setAuth(storage("user")?.tokens[0]?.token === storage("access-token"));
+        }
     }, [dispatch])
 
     return (
         <div id="clinic-pharma">
             <BrowserRouter>
-                <MainNavbar />
+                <MainNavbar/>
                 <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/account/:page" exact component={GitAuthenticate} />
-                    <Route path="/doctors" exact component={AllDoctors} />
-                    <Route path="/shop/:slug" exact component={MedicineDetails} />
-                    <Route path="/shop" exact component={Shop} />
-                    <Route path="/doctor/:doc" exact component={SingleDoctor} />
-                    <Route path="/contact" exact component={Contact} />
-                    <Route path="/about" exact component={About} />
-                    {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>] : null}
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/account/:page" exact component={GitAuthenticate}/>
+                    <Route path="/doctors" exact component={AllDoctors}/>
+                    <Route path="/shop/:slug" exact component={MedicineDetails}/>
+                    <Route path="/shop" exact component={Shop}/>
+                    <Route path="/doctor/:doc" exact component={SingleDoctor}/>
+                    <Route path="/contact" exact component={Contact}/>
+                    <Route path="/about" exact component={About}/>
+                    {auth ? [<Route key={1} path="/settings/:page" exact component={Settings}/>,
+                        <Route key={2} path="/blog/create" exact component={NewBlog}/>] : null}
                     <Route path="/cart" exact component={Cart}/>
-                    <Route path="/blogs" exact component={Blogs} />
-                    <Route path="/blogs/:slug" exact component={SingleBlog} />
-                    <Route path="/checkout" exact component={OnlinePayment} />
-                    <Route path="/blog/create" exact component={NewBlog}/>
-                    <Route path="*" exact component={NotFound} />
+                    <Route path="/blogs" exact component={Blogs}/>
+                    <Route path="/blogs/:slug" exact component={SingleBlog}/>
+                    <Route path="/checkout" exact component={OnlinePayment}/>
+                    <Route path="*" exact component={NotFound}/>
                 </Switch>
-                <Footer />
+                <Footer/>
             </BrowserRouter>
         </div>
     );

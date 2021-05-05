@@ -4,6 +4,53 @@
 {
   text-transform: capitalize;
 
+  .carousel-item {
+    max-height: 690px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 1280px) {
+      max-height: 465px;
+    }
+
+    @media (max-width: 1024px) {
+      max-height: 372px;
+    }
+
+    @media (max-width: 850px) {
+      max-height: 300px;
+    }
+
+    @media (max-width: 800px) {
+      max-height: 290px;
+    }
+
+    @media (max-width: 768px) {
+      max-height: 275px;
+    }
+
+    @media (max-width: 540px) {
+      max-height: 190px;
+    }
+
+    @media (max-width: 414px) {
+      max-height: 150px;
+    }
+
+    @media (max-width: 375px) {
+      max-height: 135px;
+    }
+
+    @media (max-width: 360px) {
+      max-height: 130px;
+    }
+
+    @media (max-width: 320px) {
+      max-height: 116px;
+    }
+  }
+
   .active img {
     transform: translate(0, 0) !important;
     opacity: 1 !important;

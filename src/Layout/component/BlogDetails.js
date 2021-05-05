@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button, Form, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import DOMPurify from 'dompurify';
 
 //style
 import "./style/BlogDetails.scss";
+import {
+    FacebookShareButton,
+    LinkedinShareButton,
+    TwitterShareButton,
+    WhatsappShareButton
+} from "react-share";
 
 
 export default function BlogDetails(props) {
+    useEffect(() => {
+        document.title = `Clinic Pharma - ${blog.title}`
+    }, [])
 
     const blog = props.details[0];
     const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -23,7 +32,7 @@ export default function BlogDetails(props) {
     return (
         <div id="blog-detail">
             <div className="img-side">
-                <Image src={blog.thumbnail}/>
+                <Image src={blog.thumbnail.includes("https") ? blog.thumbnail : blog.thumbnail?.replace("http", "https")} alt="Thumbnail"/>
                 <span>{day} {monthsName[month - 1]}</span>
             </div>
 
@@ -45,19 +54,22 @@ export default function BlogDetails(props) {
             </div>
             <div className="share">
                 <span>share this post</span>
-                <Button>
-                    <i className="fab fa-facebook-square"> </i>facebook
-                </Button>
-                <Button>
-                    <i className="fab fa-twitter-square"> </i>twitter
-                </Button>
-                <Button>
-                    <i className="fab fa-google-plus-square"> </i>google plus
-                </Button>
+                <FacebookShareButton quote={`Check: ${blog.title}`} url={window.location.href}>
+                    <i className="fab fa-facebook-square"> </i>Facebook
+                </FacebookShareButton>
+                <LinkedinShareButton quote={`Check: ${blog.title}`} url={window.location.href} source="https://clinic-pharma.vercel.app" summary={`${blog.content.replace(" </p>", "").replace("<p>", "").replace("</em>", "").replace("<em>", "").replace("<blockquote>", "").replace("</blockquote>", "").substring(0, 200)}`}>
+                    <i className="fab fa-linkedin"> </i>LinkedIn
+                </LinkedinShareButton>
+                <TwitterShareButton title={`Check: ${blog.title}`} url={window.location.href} via=" https://clinic-pharma.vercel.app">
+                    <i className="fab fa-twitter-square"> </i>Twitter
+                </TwitterShareButton>
+                <WhatsappShareButton title={`Check: ${blog.title}`} url={window.location.href} separator=" - ">
+                    <i className="fab fa-whatsapp-square"> </i>WhatsApp
+                </WhatsappShareButton>
             </div>
             <div className="about-author row">
                 <div className="col-sm-2 img-side text-center">
-                    <Image src="/blog7.jpg"/>
+                    <Image src="/blog7.jpg" alt="Blog" />
                 </div>
                 <div className="col-sm-10 text-side">
                     <h5>about the author</h5>
@@ -86,7 +98,7 @@ export default function BlogDetails(props) {
                 <h4>03 comments</h4>
                 <div className="row my-4">
                     <div className="col-sm-2 col-3 img-side">
-                        <Image src="/blog8.jpg"/>
+                        <Image src="/blog8.jpg" alt="Blog" />
                     </div>
                     <div className="col-9 col-sm-8 text-side">
                         <h5>about the author</h5>
@@ -99,7 +111,7 @@ export default function BlogDetails(props) {
                 </div>
                 <div className="row my-3 reply">
                     <div className="col-sm-2 col-3 img-side">
-                        <Image src="/blog7.jpg"/>
+                        <Image src="/blog7.jpg" alt="Blog" />
                     </div>
                     <div className="col-9 col-sm-8 text-side">
                         <h5>about the author</h5>

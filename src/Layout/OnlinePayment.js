@@ -25,7 +25,7 @@ export default function OnlinePayment() {
     const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const [form, setForm] = useState({number: "", exp_month: "", exp_year: "", cvc: "", currency: "usd", location: ""});
-    console.log(form)
+
     function handlePayment() {
         API("checkout", "POST", form)
             .then(({data, status}) => {

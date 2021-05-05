@@ -9,8 +9,7 @@ import PageHeader from "./component/PageHeader";
 //style
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./style/NewBlog.scss";
-
-
+import {Link} from "react-router-dom";
 
 export default function NewBlog() {
     const [keywords, setKeywords] = useState({});
@@ -22,6 +21,7 @@ export default function NewBlog() {
             .then(({data, status}) => {
                 if (status === 200) {
                     setError("You just added a new blog successfully");
+                    window.scrollTo(0, 0);
                 } else {
                     setError(data?.message);
                     window.scrollTo(0, 0);
@@ -51,6 +51,7 @@ export default function NewBlog() {
                 if (status === 200) {
                     setCategory(data?.categories);
                     setLoading(false);
+                    window.scrollTo(0, 0);
                 } else {
                     setError(data.message);
                     setLoading(false);
@@ -64,7 +65,7 @@ export default function NewBlog() {
             {!loading?
                 <div className="container py-5">
                     <Form method="post">
-                        {error ? <div className={error.includes("You just added a new blog successfully") ? "alert-success" : "alert-danger"}>{error}</div> : null}
+                        {error ? <div className={error.includes("You just added a new blog successfully") ? "alert-success" : "alert-danger"}>{error} {error.includes("You just added a new blog successfully") ? <Link to="/blogs">Go to blogs</Link> : null}</div> : null}
                         <Form.Group controlId="title">
                             <Form.Label><h3>write your blog's title</h3></Form.Label>
                             <Form.Control type="text" placeholder="Title"
@@ -110,10 +111,7 @@ export default function NewBlog() {
                             </Form.Control>
                         </Form.Group>
                         <div className="post text-center" >
-                            <Button onClick={() => {
-                                addToBlogs();
-                                console.log(form);
-                            }}>post</Button>
+                            <Button onClick={() => addToBlogs()}>post</Button>
                         </div>
                     </Form>
 

@@ -89,7 +89,8 @@ export default function Profile()
                             </Form.Control>
                         </Form.Group>
                         <div className="col-sm-12">
-                            <Form.Control type="date" placeholder="Date of birth *" onChange={(e) => console.log(e)}/>
+                            {/* // todo: receive date of birth divided (ex: mm dd yyyy */}
+                            <Form.Control type="date" placeholder="Date of birth *" onChange={(e) => {}}/>
                         </div>
                         <div className="col-sm-6">
                             <label htmlFor="upload-image">

@@ -17,13 +17,13 @@ export default function Appointment()
         API("appointment", "POST", form)
             .then(({ data, status }) => {
                 if (status === 200) {
-                    console.log(data);
                     setError("Added Successfully");
                     setTimeout(() => {
                         setShow(false);
                     }, 1500)
                 } else {
-                    console.log(data);
+                    // todo: display error in modal
+                    setError(data?.message);
                 }
             })
     }

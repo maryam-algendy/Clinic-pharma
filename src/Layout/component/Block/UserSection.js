@@ -16,13 +16,16 @@ export default function UserSection({userSection})
     }, [userSection, user]);
 
     function handleLogOut() {
-        API("patient/auth/logout", "POST")
+        document.querySelector("#logout-btn").innerHTML = `<div class="spinner-border text-primary m-auto" role="status"></div>`
+        API("auth/logout", "POST")
             .then(({ data, status }) => {
                 storage("access-token", null);
                 storage("user", null);
+                storage("role", null);
+                document.querySelector("#logout-btn").innerHTML = `Logout`
                 setTimeout(() => {
                     window.location.replace("/");
-                }, 1000);
+                }, 500);
             })
     }
 
@@ -33,7 +36,7 @@ export default function UserSection({userSection})
                 <Link to="/settings/orders">Order</Link>
                 <Link to="/settings/payments">Payment</Link>
                 <Link to="/settings/appointments">Appointment</Link>
-                <button onClickCapture={() => handleLogOut()} style={{color: "#396cf0", border: "none"}}>Logout</button>
+                <button id="logout-btn" onClickCapture={() => handleLogOut()} style={{color: "#396cf0", border: "none"}}>Logout</button>
             </div>
         </div>
     );

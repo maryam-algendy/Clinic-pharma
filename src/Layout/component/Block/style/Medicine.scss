@@ -126,6 +126,30 @@
 
   }
 
+  .btn-primary {
+    margin: 8px;
+
+    &:last-of-type {
+      background: $darkColor;
+      border-color: $darkColor;
+
+      &:hover {
+        color: $darkColor;
+        border-color: $darkColor;
+      }
+    }
+  }
+  .btn-primary:last-of-type:not(:disabled):not(.disabled):active {
+    color: $darkColor;
+    border-color: $darkColor;
+  }
+
+  .btn-primary:not(:disabled):not(.disabled).active:focus,
+  .btn-primary:not(:disabled):not(.disabled):active:focus,
+  .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+  }
+
   a
   {
     background-color: $mainColor;

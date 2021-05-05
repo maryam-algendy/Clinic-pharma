@@ -2,7 +2,6 @@ import React from 'react';
 
 // style
 import './style/DoctorBlock.scss';
-import {Link} from "react-router-dom";
 
 export default function DoctorBlock(props)
 {
@@ -10,8 +9,8 @@ export default function DoctorBlock(props)
         <div id="doctors-block">
             <div className="doctors-card">
                 <div className="doc-img">
-                    <img src={props.image} alt={props.alter}/>
-                    <Link to={`/doctor/${props.name}`} className="overlay">+</Link>
+                    <img src={props.image.includes("https") ? props.image : props.image?.replace("http", "https")} alt={props.alter}/>
+                    <a href={`/doctor/${props.name}`} className="overlay">+</a>
                 </div>
                 <div className="content">
                     <h5 className="title">{props.name}</h5>

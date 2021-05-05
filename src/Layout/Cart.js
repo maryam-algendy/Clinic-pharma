@@ -35,11 +35,10 @@ export default function Cart() {
                     </div>
                     {
                         cart?.products?.map((item, id) => {
-                            console.log(item.product)
                             return (
                                 <div key={id} className="row tb">
                                     <div className="col-2">
-                                        <Image className="img-fluid" src={item.product?.thumbnail}/>
+                                        <Image className="img-fluid" src={item.product?.thumbnail?.replace("http", "https")}/>
                                     </div>
 
                                     <div className="col-5 name">
