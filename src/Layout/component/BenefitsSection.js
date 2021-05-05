@@ -1,38 +1,40 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
 
 //style
 import "./style/BenefitsSection.scss";
+import API from "../../utilize/API";
 
 export default function BenefitsSection() {
+
+    const [benefits,setBenefits]=useState("");
+    useEffect(() => {
+        API("cms/menu/?menu=benefits")
+            .then(({data, status}) => {
+                if (status === 200) {
+                    setBenefits(data.menu[0]);
+                }
+            });
+    });
+
     return (
         <div id="benefits">
             <div className="row">
                 <div className="col-md-6 text-side">
                     <div className="inner-text">
                         <h2>choose the best of your health</h2>
-                        <p>Our online doctor offers patients the following benefits via our app </p>
+                        <p>{benefits.description}</p>
                         <ul className="list-unstyled mb-0">
-                            <li>
-                                <i className="fas fa-angle-right"></i>
-                                free consultation
-                            </li>
-                            <li>
-                                <i className="fas fa-angle-right"></i>
-                                quality doctors
-                            </li>
-                            <li>
-                                <i className="fas fa-angle-right"></i>
-                                professional experts
-                            </li>
-                            <li>
-                                <i className="fas fa-angle-right"></i>
-                                affordable price
-                            </li>
-                            <li>
-                                <i className="fas fa-angle-right"></i>
-                                24/7 opened
-                            </li>
+                            {
+                                benefits?.items?.map(benefit =>{
+                                    return(
+                                        <li key={benefit._id}>
+                                            <i className="fas fa-angle-right"></i>
+                                            {benefit.title}
+                                        </li>
+                                    )
+                                })
+                            }
                         </ul>
                     </div>
                 </div>
