@@ -1,10 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 //style
 import "./style/WelcomeBadge.scss";
+//
+import API from "../../utilize/API";
+
 
 export default function WelcomeBadge() {
+
+    const [features,setFeatures]=useState("");
+    useEffect(() => {
+        API("cms/menu/?menu=features")
+            .then(({data, status}) => {
+                if (status === 200) {
+                    setFeatures(data.menu[0])
+                }
+            });
+    });
+
     return (
         <div id="welcome-badge">
             <div className="container">
@@ -27,37 +41,19 @@ export default function WelcomeBadge() {
                     </div>
 
                     <div className="col-lg-4 rhs">
-                        <Link to="/">
-                            <i className="far fa-calendar-alt"> </i>
-                            request appointment
-                            <span className="float-right">
+                        {
+                            features?.items?.map( feature => {
+                                return(
+                                    <Link key={feature._id} to={feature.link}>
+                                        <i className={feature.icon}> </i>
+                                        {feature.title}
+                                        <span className="float-right">
                                 <i className="fas fa-angle-right"> </i>
                             </span>
-                        </Link>
-
-                        <Link to="/">
-                            <i className="far fa-user"> </i>
-                            find doctors
-                            <span className="float-right">
-                                <i className="fas fa-angle-right"> </i>
-                            </span>
-                        </Link>
-
-                        <Link to="/">
-                            <i className="fas fa-map-marker-alt"> </i>
-                            find locations
-                            <span className="float-right">
-                                <i className="fas fa-angle-right"> </i>
-                            </span>
-                        </Link>
-
-                        <Link to="/">
-                            <i className="fas fa-phone"> </i>
-                            emergency contact
-                            <span className="float-right">
-                                <i className="fas fa-angle-right"> </i>
-                            </span>
-                        </Link>
+                                    </Link>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
