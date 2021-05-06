@@ -17,7 +17,7 @@ export default function WelcomeBadge() {
                     setFeatures(data.menu[0])
                 }
             });
-    });
+    }, []);
 
     return (
         <div id="welcome-badge">

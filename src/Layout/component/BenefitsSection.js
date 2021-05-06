@@ -15,7 +15,7 @@ export default function BenefitsSection() {
                     setBenefits(data.menu[0]);
                 }
             });
-    });
+    }, []);
 
     return (
         <div id="benefits">
