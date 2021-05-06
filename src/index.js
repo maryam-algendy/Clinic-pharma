@@ -29,6 +29,7 @@ function verifyToken() {
     const token = storage("access-token");
     // todo: verify that token is valid
     if (token) {
+        storage("m_ph_uu", jwtDecode(token)._id);
         if (jwtDecode(token).exp < Date.now() / 1000) {
             API("auth/logout", "POST")
                 .then(({ status, data }) => {
