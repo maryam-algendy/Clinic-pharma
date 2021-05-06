@@ -24,6 +24,7 @@ import NewBlog from "./Layout/NewBlog";
 // actions
 import {loadBlogs, loadCart, loadSlides, loadTopDoctors} from "./actions";
 import SingleBlog from "./Layout/SingleBlog";
+import Chat from "./Layout/Chat";
 
 export default function App() {
     const dispatch = useDispatch();
@@ -60,6 +61,7 @@ export default function App() {
                     <Route path="/blogs" exact component={Blogs}/>
                     <Route path="/blogs/:slug" exact component={SingleBlog}/>
                     <Route path="/checkout" exact component={OnlinePayment}/>
+                    <Route path="/chat" exact component={Chat}/>
                     <Route path="*" exact component={NotFound}/>
                 </Switch>
                 <Footer/>
