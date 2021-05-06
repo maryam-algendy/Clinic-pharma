@@ -10,7 +10,7 @@ import API from "../utilize/API";
 
 export default function Chat () {
     const client = useRef();
-    client.current = io(process.env.REACT_APP_BETA_AI_API_BASE_URL.replace("https://", "ws://"));
+    client.current = io(process.env.REACT_APP_BETA_AI_API_BASE_URL);
     let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const [show, setShow] = useState(false);
     const [doctors, setDoctors] = useState([]);
