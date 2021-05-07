@@ -1,0 +1,254 @@
+@import "../variables.scss";
+
+#medical-history
+{
+    background: #f1f7fb;
+
+    .lhs,
+    .rhs
+    {
+        padding: 12px;
+        border-radius: 14px;
+
+        .name-card,
+        .personal-info,
+        .details
+        {
+            padding: 25px 20px;
+            background: $lightColor;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 8px #dbdbdb;
+
+            h4
+            {
+                text-transform: capitalize;
+                font-family: "SemiBold", sans-serif;
+                font-size: 22px;
+
+                button
+                {
+                    float: right;
+                    background: none;
+                    border: 0;
+                    color: $mainColor;
+                    font-size: 22px;
+                    font-family: "SemiBold", sans-serif;
+
+                    &:hover {
+                        background: rgba(0, 0, 0, .03);
+                        transition: .3s ease-in-out;
+                    }
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    width: 45px;
+                    height: 3px;
+                    background: $mainColor;
+                    display: block;
+                    margin-top: 15px;
+                }
+            }
+        }
+
+        .name-card
+        {
+            @media (max-width: 992px) {
+                text-align: center;
+            }
+
+            img {
+                width: 100%;
+                max-width: 220px;
+            }
+
+            h4
+            {
+                margin-top: 20px;
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            span {
+                font-size: 14px;
+                color: #777777;
+            }
+
+            p {
+                color: $mainColor;
+                font-family: "SemiBold", sans-serif;
+                font-size: 14px;
+                margin: 7px 0;
+            }
+        }
+
+        .personal-info
+        {
+            p
+            {
+                font-size: 12px;
+                font-family: "SemiBold", sans-serif;
+                text-transform: capitalize;
+
+                span
+                {
+                    padding-left: 20px;
+                    text-transform: initial;
+
+                    @media (max-width: 340px) {
+                        padding-left: 0;
+                    }
+
+                    a {
+                        color: $darkerColor;
+                        font-family: "SemiBold", sans-serif;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .social-box
+            {
+                span > a
+                {
+                    padding-left: 20px;
+                    color: $mainColor;
+
+                    &:nth-child(1) {
+                        padding-left: 0;
+                    }
+
+                    &:hover {
+                        color: #777777;
+                    }
+                }
+            }
+        }
+
+
+        .details
+        {
+            padding: 25px 60px;
+
+            @media (max-width: 640px) {
+                padding: 25px 20px;
+            }
+
+            h4 {
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 14px;
+                margin: 20px 0 0;
+            }
+
+            .about-me
+            {
+                text-transform: capitalize;
+                font-size: 15px;
+
+                span {
+                    margin-left: 5px;
+                    font-size: 14px;
+                    font-family: "SemiBold", sans-serif;
+                }
+
+                .fa-times {
+                    color: #d70000;
+                }
+
+                .fa-check {
+                    color: $mainColor;
+                }
+            }
+
+            table
+            {
+                font-size: 14px;
+
+                @media (max-width: 560px) {
+                    font-size: 14px;
+                    display: block;
+                    overflow-x: scroll;
+
+                }
+
+                tr
+                {
+                    border: none;
+
+                    &:nth-child(even) td, th {
+                        background: #f1f7fb;
+                    }
+
+
+                    td,
+                    th
+                    {
+                        border: none;
+                        vertical-align: middle;
+
+                        @media (max-width: 800px) {
+                            white-space: nowrap;
+                        }
+
+                        @media (max-width: 560px) {
+                            padding: .5rem;
+                        }
+                    }
+                }
+
+                th:nth-child(1) {
+                    width: 170px;
+                }
+
+                td:nth-child(1),
+                th:nth-child(1) {
+                    padding-left: 25px;
+                    text-transform: capitalize;
+                }
+
+                td:last-child,
+                th:last-child {
+                    padding-right: 25px;
+                }
+
+                .remove
+                {
+                    text-align: right;
+                    padding: 7px;
+
+                    button
+                    {
+                        font-size: 11px;
+                        font-family: "SemiBold", sans-serif;
+                        border: 1px solid $mainColor;
+                        background: transparent;
+                        color: $mainColor;
+                        padding: 6px 30px;
+                        text-transform: capitalize;
+
+                        &:hover {
+                            background: $mainColor;
+                            color: $lightColor;
+                            transition: .2s ease-in-out;
+                        }
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
