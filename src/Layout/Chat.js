@@ -36,7 +36,6 @@ export default function Chat () {
             }
         })
 
-        // todo: use server-url instead of localhost
         if (storage("access-token")) {
             API("chat")
                 .then(({ data, status }) => {
@@ -90,9 +89,7 @@ export default function Chat () {
         client.current.emit("getMessages", chatID);
 
         client.current.on("chat", (msgs) => {
-            if(msgs.length > 0) {
-                setMessages(msgs)
-            }
+            setMessages(msgs)
             const chatBox = document.querySelector("#chat-box");
             chatBox.scrollTop = chatBox.scrollHeight;
         })
