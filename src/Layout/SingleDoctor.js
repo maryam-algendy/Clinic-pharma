@@ -13,6 +13,7 @@ export default function SingleDoctor() {
     const [doctor, setDoctor] = useState({});
     const [error, setError] = useState();
     const [role, setRole] = useState();
+    const [rate, setRate] = useState();
 
     useEffect(() => {
         API(`doctors/?name=${window.location.pathname.replace("/doctor/", "")}`)
@@ -26,7 +27,15 @@ export default function SingleDoctor() {
                     setLoading(false);
                 }
             })
-    }, [])
+    }, []);
+
+     const handleChange = () => {
+         if (rate === [1]) {
+            document.querySelector('.rate').style.cssText = 'fill: #396cf0, stroke: #396cf0';
+         } else {
+             return;
+         }
+    }
 
     return (
         <div id="single-doctor">
@@ -38,6 +47,21 @@ export default function SingleDoctor() {
                         <div className="col-lg-3 lhs">
                             <div className="name-card">
                                 <Image src={doctor?.image?.replace("http", "https")}/>
+                                <div className="doctor-rate">
+                                    {[1, 2, 3, 4, 5].map(id =>
+                                        <svg
+                                            className="rate"
+                                            key={id}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20.936" height="20.382"
+                                            viewBox="1 -1 10.936 14.382"
+                                            onClickCapture={() => setRate(id)}
+                                            onChange={handleChange}
+                                        >
+                                            <path className="a" d="M7.216.43l-1.579,3.2L2.1,4.146a.774.774,0,0,0-.428,1.32L4.232,7.957l-.6,3.518a.773.773,0,0,0,1.122.815l3.16-1.661,3.16,1.661a.774.774,0,0,0,1.122-.815l-.6-3.518,2.556-2.491a.774.774,0,0,0-.428-1.32l-3.533-.515L8.6.43a.774.774,0,0,0-1.388,0Z" transform="translate(-1.441 0.001)"/>
+                                        </svg>
+                                    )}
+                                </div>
                                 <h4>Dr. {doctor?.name}</h4>
                                 <span>{doctor?.specialization}</span>
                                 <p>{role}</p>
@@ -134,7 +158,7 @@ export default function SingleDoctor() {
                                     <tr>
                                         <th>day</th>
                                         <th>time</th>
-                                        <th></th>
+                                        <th> </th>
                                     </tr>
                                     </thead>
                                     <tbody>
