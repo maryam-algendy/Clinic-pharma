@@ -29,7 +29,7 @@ export default function BenefitsSection() {
                                 benefits?.items?.map(benefit =>{
                                     return(
                                         <li key={benefit._id}>
-                                            <i className="fas fa-angle-right"></i>
+                                            <i className="fas fa-angle-right"> </i>
                                             {benefit.title}
                                         </li>
                                     )
