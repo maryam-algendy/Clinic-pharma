@@ -68,9 +68,13 @@ export default function Chat () {
                     const chatBox = document.querySelector("#chat-box");
                     chatBox.scrollTop = chatBox.scrollHeight;
                 })
+
             })
         }
     }, []);
+    window.onbeforeunload = () => {
+        client.current.emit("goOffline", storage("access-token"));
+    };
 
     function startNewChat(data)
     {
@@ -148,7 +152,7 @@ export default function Chat () {
                                      alt="user" width="30" className="rounded-circle"/>
                                 <div className="inner-data">
                                     <p className="mb-0 px-3 py-0">{selectedChatData.username}</p>
-                                    <span className="mb-0 px-3 py-0">{selectedChatData._id in onlineList ? "Online" : "Offline"}</span>
+                                    <span className="mb-0 px-3 py-0">{selectedChatData._id in onlineList && onlineList[selectedChatData._id] === true ? "Online" : "Offline"}</span>
                                 </div>
                             </div>}
 
