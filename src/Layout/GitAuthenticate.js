@@ -19,7 +19,10 @@ export default function GitAuthenticate() {
         country: "",
         specialization: "",
         location: "",
-        pharmacyName: ""
+        pharmacyName: "",
+        height:"",
+        weight:"",
+        blood_type:""
     });
     
     const [error, setError] = useState();
@@ -68,6 +71,7 @@ export default function GitAuthenticate() {
         API("patient/auth/signup", "POST", form)
             .then(({data, status}) => {
                 if (status === 200) {
+                    console.log(data)
                     setError("Account created successfully, you will be redirected in moments");
                     document.querySelector("#create-patient").innerHTML = `Login`
                     setTimeout(() => {
@@ -104,6 +108,7 @@ export default function GitAuthenticate() {
         if (storage("access-token")) {
             window.location.replace("/");
         }
+
     });
 
     return <div id="git-authenticate">
@@ -187,6 +192,29 @@ export default function GitAuthenticate() {
                                                     <option value="male">Male</option>
                                                     <option value="female">Female</option>
                                                 </select>
+
+                                                <label>Blood Type </label>
+                                                <select name="blood_type" id="blood_type" defaultValue="" onChange={(e) => setForm({...form, blood_type: e.target.value})}>
+                                                    <option value="">-</option>
+                                                    <option value="+A">A+</option>
+                                                    <option value="-A">A-</option>
+                                                    <option value="+B">B+</option>
+                                                    <option value="-B">B-</option>
+                                                    <option value="+0">O+</option>
+                                                    <option value="-0">O-</option>
+                                                    <option value="+AB">AB+</option>
+                                                    <option value="-AB ">AB-</option>
+                                                </select>
+
+                                                <label htmlFor="height">height*</label>
+                                                <input type="text" name="height" placeholder="Enter Height"
+                                                       id="height"  value={form.height}
+                                                       onChange={(e) => setForm({...form, height: e.target.value})}/>
+
+                                                <label htmlFor="weight">weight*</label>
+                                                <input type="text" name="weight" placeholder="Enter Weight"
+                                                       id="weight"  value={form.weight}
+                                                       onChange={(e) => setForm({...form, weight: e.target.value})}/>
 
                                                 <label>Country</label>
                                                 <CountryDropdown blacklist={['IL']} value={form.country}
