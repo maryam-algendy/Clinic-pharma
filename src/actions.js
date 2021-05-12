@@ -108,4 +108,17 @@ export function fetchBlogCategory() {
             })
     }
 }
-
+export function addMedicalHistory(data) {
+    return function (dispatch) {
+        API("history/:id", "POST", data)
+            .then(({data, status}) => {
+                if (status === 200) {
+                    dispatch({type: "LOADING", payload: false});
+                    dispatch({type: "CLINIC_PHARMA_SET_HISTORY", payload: data?.history});
+                } else {
+                    dispatch({type: "LOADING", payload: false});
+                    dispatch({type: "BETA_ERROR", payload: data?.message});
+                }
+            })
+    }
+}

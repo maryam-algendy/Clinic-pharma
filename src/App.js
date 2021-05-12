@@ -63,7 +63,7 @@ export default function App() {
                     <Route path="/blogs/:slug" exact component={SingleBlog}/>
                     <Route path="/checkout" exact component={OnlinePayment}/>
                     <Route path="/chat" exact component={Chat}/>
-                    <Route path="/medical-history" exact component={MedicalHistory}/>
+                    <Route path="/history/:patient" exact component={MedicalHistory}/>
                     <Route path="*" exact component={NotFound}/>
                 </Switch>
                 <Footer/>

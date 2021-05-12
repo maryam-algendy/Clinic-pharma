@@ -9,7 +9,8 @@ const initialState = {
     categories:[],
     slides: [],
     blogs: [],
-    top_doctors: []
+    top_doctors: [],
+    history:{}
 };
 
 export default function reducer(state = initialState, action)
@@ -45,6 +46,9 @@ export default function reducer(state = initialState, action)
 
         case "CLINIC_PHARMA_FETCH_BLOG_CATEGORY":
             return {...state, categories: action.payload, error: null};
+
+        case "CLINIC_PHARMA_SET_HISTORY":
+            return {...state, history: action.payload, error: null};
 
         case "BETA_ERROR":
             return {...state, error: action.payload};

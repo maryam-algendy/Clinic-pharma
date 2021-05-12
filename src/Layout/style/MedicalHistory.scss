@@ -181,6 +181,15 @@
                     overflow-x: scroll;
 
                 }
+                .photo{
+                    padding: 0;
+                    border: 0;
+                    background: none;
+                    &:focus{
+                        border: 0;
+                        box-shadow: none;
+                    }
+                }
 
                 tr
                 {
@@ -189,8 +198,13 @@
                     &:nth-child(even) td, th {
                         background: #f1f7fb;
                     }
-
-
+                    .no-data{
+                        color: red;
+                        text-transform: none!important;
+                    }
+                    td img{
+                        width: 100px;
+                    }
                     td,
                     th
                     {
