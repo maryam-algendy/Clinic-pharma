@@ -132,7 +132,6 @@
             }
         }
 
-
         .details
         {
             padding: 25px 60px;
@@ -171,6 +170,11 @@
                 }
             }
 
+            .no-data{
+                color: red;
+                text-transform: none!important;
+            }
+
             table
             {
                 font-size: 14px;
@@ -181,6 +185,15 @@
                     overflow-x: scroll;
 
                 }
+                .photo{
+                    padding: 0;
+                    border: 0;
+                    background: none;
+                    &:focus{
+                        border: 0;
+                        box-shadow: none;
+                    }
+                }
 
                 tr
                 {
@@ -189,8 +202,9 @@
                     &:nth-child(even) td, th {
                         background: #f1f7fb;
                     }
-
-
+                    td img{
+                        width: 100px;
+                    }
                     td,
                     th
                     {
@@ -250,5 +264,40 @@
                 }
             }
         }
+    }
+}
+
+.result-uploader {
+    label {
+        font-weight: normal;
+        font-family: "SemiBold", sans-serif;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .upload
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0 0 35px 0;
+        padding: 10px 5px;
+        font-size: 16px;
+        font-family: "Regular", sans-serif;
+        border: 1px solid #B7B7B7;
+        border-radius: 5px;
+        cursor: pointer;
+
+        span {
+            white-space: nowrap;
+            width: 40%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    input[type="file"] {
+        display: none;
     }
 }

@@ -33,7 +33,7 @@ export default function UserSection({userSection})
         <div className={userSection ? "d-block" : "d-none"} id="userSection">
             <div className="user-list">
                 <Link to="/settings/profile">Settings</Link>
-                <Link to="/medical-history">Medical History</Link>
+                <Link to={storage("m_ph_uu") ? `/history/${storage("m_ph_uu")}` : "not-found"}>Medical History</Link>
                 <Link to="/settings/orders">Order</Link>
                 <Link to="/settings/payments">Payment</Link>
                 <Link to="/settings/appointments">Appointment</Link>
