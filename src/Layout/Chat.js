@@ -7,11 +7,11 @@ import storage from "../utilize/storage";
 import ChatBox from "./component/Block/ChatBox";
 import MessageBox from "./component/Block/MessageBox";
 import API from "../utilize/API";
+import dateConverter from "../utilize/dateConverter";
 
 export default function Chat () {
     const client = useRef();
     client.current = io(process.env.REACT_APP_BETA_AI_API_BASE_URL);
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const [show, setShow] = useState(false);
     const [doctors, setDoctors] = useState([]);
     const [selectedChatData, setSelectedChatData] = useState({ username: "", _id: "", image: "" });
@@ -126,14 +126,12 @@ export default function Chat () {
                                     <div className="list-group rounded-0">
                                         <Nav variant="pills" className="flex-column">
                                             {chats.map(chat => {
-                                                let month = chat?.updated_at?.slice(5, 7);
-                                                let day = chat?.updated_at?.slice(8, 10);
                                                 return<Nav.Item key={chat?._id} id="single-chat-block" onClick={() => setSelectedChatData({ ...selectedChatData, username: sender ? chat?.receiver?.name : chat?.sender?.name, _id: sender ? chat?.receiver?._id : chat?.sender?._id, image: sender ? chat?.receiver?.image : chat?.sender?.image })}>
                                                     <Nav.Link eventKey={chat?._id} className={chat === selectedChat ? "list-group-item list-group-item-action active  text-white rounded-0" : "list-group-item list-group-item-action list-group-item-light rounded-0"}>
                                                         <ChatBox
                                                             avatar={sender ? chat?.receiver?.image : chat?.sender?.image}
                                                             name={sender ? chat?.receiver?.name : chat?.sender?.name}
-                                                            lastMsgDate={`${day} ${months[month - 1]}`}
+                                                            lastMsgDate={dateConverter(chat?.updated_at).replace("-", "").substr(0, 7)}
                                                             lastMsg={chat?.lastMessage}
                                                         />
                                                     </Nav.Link>

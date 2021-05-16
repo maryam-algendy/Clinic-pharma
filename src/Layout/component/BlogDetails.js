@@ -11,6 +11,7 @@ import {
     TwitterShareButton,
     WhatsappShareButton
 } from "react-share";
+import dateConverter from "../../utilize/dateConverter";
 
 
 export default function BlogDetails(props) {
@@ -19,9 +20,6 @@ export default function BlogDetails(props) {
     }, [])
 
     const blog = props.details[0];
-    const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const month = blog.updated_at.slice(5, 7);
-    const day = blog.updated_at.slice(8, 10);
 
     const createMarkup = (html) => {
         return {
@@ -33,7 +31,7 @@ export default function BlogDetails(props) {
         <div id="blog-detail">
             <div className="img-side">
                 <Image src={blog.thumbnail.includes("https") ? blog.thumbnail : blog.thumbnail?.replace("http", "https")} alt="Thumbnail"/>
-                <span>{day} {monthsName[month - 1]}</span>
+                <span>{dateConverter(blog?.created_at).replace("-", "").substr(0, 7)}</span>
             </div>
 
             <h3>

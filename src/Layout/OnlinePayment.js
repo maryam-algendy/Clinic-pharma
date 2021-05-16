@@ -15,6 +15,7 @@ export default function OnlinePayment() {
 
     const cart = useSelector(state => state.portal.cart);
 
+    // todo: Remove date-config and display order's delivery time in format: DD-MM-YYYY
     // get year, month and day separated
     let year = new Date().getFullYear();
     let month = new Date().getMonth();
