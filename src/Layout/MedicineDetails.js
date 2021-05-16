@@ -23,7 +23,7 @@ export default function MedicineDetails(props)
     const slug =props.location.pathname.replace("/shop/", "");
 
     useEffect(()=>{
-        API(`medicine/${slug}`)
+        API(`medicine/?product=${slug}`)
             .then(({data, status})=>{
                 if (status===200){
                     setProduct(data?.product);

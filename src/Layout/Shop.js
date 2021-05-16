@@ -25,7 +25,7 @@ export default function Shop() {
     }
 
     useEffect(() => {
-        API(`medicine/?page=${pageNumber}`)
+        API(`medicines/?page=${pageNumber}`)
             .then(({data, status}) => {
                 if (status === 200) {
                     setPagination({page: data?.page, pages: data?.pages, results: data?.results});
