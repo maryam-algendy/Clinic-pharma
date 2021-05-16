@@ -18,6 +18,7 @@
                 padding: 9px 20px;
                 font-family: "SemiBold", sans-serif;
                 border: 1px solid $mainColor;
+                border-radius: 5px;
                 transition: .3s ease-in-out;
 
                 &:hover
@@ -66,7 +67,8 @@
                     border: none;
                 }
 
-                td, th {
+                td, th
+                {
                     vertical-align: middle;
 
                     @media (max-width: 800px) {
@@ -75,6 +77,15 @@
 
                     @media (max-width: 560px) {
                         padding: .5rem;
+                    }
+
+                    i {
+                        font-size: 16px;
+                        color: $darkerColor;
+                    }
+
+                    .message-icon {
+                        color: $mainColor;
                     }
                 }
             }

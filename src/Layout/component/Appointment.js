@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
-import {Table, Modal, Button, Form} from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Table, Modal, Button, Form, Nav } from 'react-bootstrap';
 
 // style
 import './style/Appointment.scss';
 import API from "../../utilize/API";
+import storage from "../../utilize/storage";
+import dateConverter from "../../utilize/dateConverter";
+import { Link } from "react-router-dom";
 
 export default function Appointment()
 {
+    const [appointments, setAppointments] = useState([]);
     const [form, setForm] = useState({ time: "", date: "" });
     const [show, setShow] = useState(false);
     const [error, setError] = useState();
@@ -27,6 +31,17 @@ export default function Appointment()
                 }
             })
     }
+
+    useEffect(() => {
+        API("appointment")
+            .then(({ data, status }) => {
+                if (status === 200) {
+                    setAppointments(data?.appointments);
+                } else {
+                    console.log(data);
+                }
+        })
+    }, [])
 
     return(
         <div id="appointment">
@@ -50,53 +65,32 @@ export default function Appointment()
                     </Modal>
                 </div>
             </div>
+
             <div className="table">
                 <Table>
                     <thead>
                     <tr>
-                        <th>Appointment</th>
-                        <th>Doctor</th>
-                        <th>Date/Time</th>
-                        <th>Department</th>
-                        <th>Type</th>
+                        <th>ID</th>
+                        <th>{storage("role") === "patient" ? "Doctor" : "Patient"}</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>{storage("role") === "patient" ? "Department" : "Medical History"}</th>
+                        <th>DM</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Zinia Zara</td>
-                        <td>Jan. 7. 2021 - 05:00PM</td>
-                        <td>Cardiology</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Rihana Roy</td>
-                        <td>Feb. 18. 2021 - 06:00PM</td>
-                        <td>Dental Consult</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Nadim Kamal</td>
-                        <td>Jun. 1. 2021 - 07:00PM</td>
-                        <td>Lense Expert</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Steven Jobs</td>
-                        <td>Aug. 11. 2021 - 08:00PM</td>
-                        <td>Orthopaedics</td>
-                        <td>Online</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Jason Roy</td>
-                        <td>Dec. 14. 2021 - 09:00PM</td>
-                        <td>Gynaecology</td>
-                        <td>Online</td>
-                    </tr>
+                    {appointments?.map((appointment, i) => <tr key={i}>
+                        <td>#{i + 1}</td>
+                        <td>{storage("role") === "patient" ? <Nav.Link href={`/doctor/${appointment?.doctor?.name}`}>{appointment?.doctor?.name}</Nav.Link> : appointment?.patient?.name}</td>
+                        <td>{dateConverter(appointment?.date)}</td>
+                        <td>{appointment?.time}</td>
+                        <td>{storage("role") === "patient" ? appointment?.doctor?.specialization : <Nav.Link href={`/history/${appointment?.patient?._id}`}><i className='fa fa-notes-medical'> </i></Nav.Link>}</td>
+                        <td>
+                            <Nav.Link href="/chat">
+                                <i className="fa fa-paper-plane message-icon"> </i>
+                            </Nav.Link>
+                        </td>
+                    </tr>)}
                     </tbody>
                 </Table>
             </div>

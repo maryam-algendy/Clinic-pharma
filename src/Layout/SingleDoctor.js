@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Image, Table} from "react-bootstrap";
+import { Button, Image, Nav, Table } from "react-bootstrap";
 import {Link} from "react-router-dom";
 import swal from "sweetalert";
 
@@ -8,8 +8,9 @@ import "./style/SingleDoctor.scss";
 import PageHeader from "./component/PageHeader";
 import API from "../utilize/API";
 import dateConverter from "../utilize/dateConverter";
+import store from "../utilize/storage";
 
-// todo: create request onLoad to get doctor data
+// todo: prevent patient from reserve more than one appointment with the same doctor
 export default function SingleDoctor() {
     const [loading, setLoading] = useState(true);
     const [doctor, setDoctor] = useState({});
@@ -75,6 +76,17 @@ export default function SingleDoctor() {
                 </g>
             </g>
         </svg> : null;
+    }
+
+    function reserveAppointment(appointmentID, doctorID) {
+        API(`appointment/reserve/?appointment=${appointmentID}&receiver=${doctorID}`, "POST")
+            .then(({ data, status }) => {
+                if (status === 200) {
+                    console.log(data);
+                } else {
+                    console.log(data);
+                }
+        })
     }
 
     return (
@@ -206,13 +218,22 @@ export default function SingleDoctor() {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {doctor?.availableDates?.map(date => <tr key={date._id}>
-                                        <td>{dateConverter(date?.date)}</td>
-                                        <td>{date?.time}</td>
-                                        <td className="book">
-                                            <Button>Appointment</Button>
-                                        </td>
-                                    </tr>)}
+                                    {doctor?.availableDates?.map(date => {
+                                        return <tr key={date._id}>
+                                            <td>{dateConverter(date?.date)}</td>
+                                            <td>{date?.time}</td>
+                                            <td className="book">
+                                                {date?.reserved && date?.patient === store("m_ph_uu") ?
+                                                    <Nav.Link href="/chat">
+                                                        <i className="fa fa-paper-plane"> </i>
+                                                    </Nav.Link> :
+                                                    <Button disabled={date?.reserved} onClick={() => reserveAppointment(date?._id, doctor?._id)}>
+                                                        {date?.reserved ? "Reserved" : "Reserve"}
+                                                    </Button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    })}
                                     </tbody>
                                 </Table> : <div>There are no appointments available for this doctor!</div>}
                             </div>

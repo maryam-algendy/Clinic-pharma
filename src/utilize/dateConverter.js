@@ -16,5 +16,5 @@ export default function dateConverter(date, monthType = "string") {
     let month   = months[time.getUTCMonth()];
     let day     = time.getDate();
 
-    return monthType === "numeric" ? time.getUTCMonth().toString().length === 1 ? day + " - 0" + (time.getUTCMonth()) + " - " + year : day + " - 0" + (time.getUTCMonth()) + " - " + year : day + " - " + month + " - " + year;
+    return monthType === "numeric" ? time.getUTCMonth().toString().length === 1 ? day + " - 0" + (time.getUTCMonth()) + " - " + year : day + " - 0" + (time.getUTCMonth()) + " - " + year : day.toString().length === 1 ? "0" + day + " - " + month + " - " + year : day + " - " + month + " - " + year;
 }
