@@ -4,19 +4,165 @@
 {
     .container
     {
-        .col-12 {
-            margin-top: 40px;
-        }
+        #content
+        {
+            padding-top: 40px;
 
-        #loading {
-            width: 100%;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            .alert-danger
+            {
+                width: 100%;
+                button {
+                    background: transparent;
+                    color: #396cf0;
+                    padding: 0;
+                    margin-left: 5px;
+                    text-decoration: underline;
+                    border: 0;
+                }
+            }
 
-            .text-primary {
-                color: $mainColor;
+            h3
+            {
+                font-size: 20px;
+                font-family: "SemiBold", sans-serif;
+
+                &::after {
+                    display: block;
+                    width: 45px;
+                    height: 3px;
+                    margin-top: 15px;
+                    background: $mainColor;
+                    content: '';
+                }
+            }
+
+            #loading {
+                width: 100%;
+                height: 400px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .text-primary {
+                    color: $mainColor;
+                }
+            }
+
+            #shop-filters
+            {
+                .search
+                {
+                    position: relative;
+
+                    @media (max-width: 540px) {
+                        margin-top: 30px;
+                    }
+
+                    input {
+                        background: #f2f7fb;
+                        width: 100%;
+                        height: 50px;
+                        padding: 20px 15px;
+                        font-size: 14px;
+                        border: none;
+                        outline: none;
+                    }
+
+                    i {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 0;
+                        transform: translateY(-35%);
+                        color: #396cf0;
+                        font-size: 20px;
+                        font-weight: bold;
+                        border: none;
+                        outline: none;
+                    }
+                }
+
+                .categories
+                {
+                    margin-top: 40px;
+
+                    ul {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+
+                        li
+                        {
+                            font-size: 14px;
+                            padding: 10px 0;
+                            border-bottom: 1px solid #e8e8e8;
+
+                            &:last-of-type {
+                                border-bottom: none;
+                            }
+
+                            button
+                            {
+                                background: transparent;
+                                color: $darkColor;
+                                text-transform: capitalize;
+                                text-decoration: none;
+                                border: 0;
+
+                                i {
+                                    margin-right: 5px;
+                                    color: $mainColor;
+                                    font-weight: bold;
+                                    font-size: 12px;
+                                }
+
+                                span {
+                                    float: right;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .price-range
+                {
+                    margin-top: 40px;
+
+                    .MuiSlider-rail,
+                    .MuiSlider-track {
+                        height: 5px;
+                        color: $mainColor;
+                        border-radius: 5px;
+                    }
+
+                    .PrivateValueLabel-offset-3 {
+                        display: none;
+                    }
+
+                    .MuiSlider-thumb {
+                        height: 15px;
+                        width: 15px;
+                        color: $lightColor;
+                        border: 5px solid $mainColor;
+                    }
+
+                    div
+                    {
+                        font-family: "SemiBold", sans-serif;
+                        font-size: 16px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        button {
+                            color: $mainColor;
+                            padding: 3px 10px;
+                            background: transparent;
+                            border: 1px solid $mainColor;
+
+                        }
+                    }
+                }
             }
         }
 
