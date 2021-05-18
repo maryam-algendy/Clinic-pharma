@@ -74,7 +74,7 @@ export default function NewBlog() {
 
                         <div>
                             <h3>write blog's content</h3>
-                            <div id="text-editor">
+                            <div className="text-editor">
                                 <Editor
                                     editorState={editorState}
                                     onEditorStateChange={handleEditorChange}
