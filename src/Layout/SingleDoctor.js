@@ -18,18 +18,22 @@ export default function SingleDoctor() {
     const [role, setRole] = useState();
     const [rate, setRate] = useState();
 
-    useEffect(() => {
+    function getDoctorData() {
         API(`doctors/?name=${window.location.pathname.replace("/doctor/", "")}`)
-            .then(({data, status}) => {
-                if (status === 200) {
-                    setDoctor(data?.doctor);
-                    setRole(data?.doctor?.education[0]?.degree);
-                    setLoading(false);
-                } else {
-                    setError(data?.message);
-                    setLoading(false);
-                }
-            })
+        .then(({data, status}) => {
+            if (status === 200) {
+                setDoctor(data?.doctor);
+                setRole(data?.doctor?.education[0]?.degree);
+                setLoading(false);
+            } else {
+                setError(data?.message);
+                setLoading(false);
+            }
+        })
+    }
+
+    useEffect(() => {
+        getDoctorData();
     }, []);
 
     function rateDoctor(id) {
@@ -82,9 +86,9 @@ export default function SingleDoctor() {
         API(`appointment/reserve/?appointment=${appointmentID}&receiver=${doctorID}`, "POST")
             .then(({ data, status }) => {
                 if (status === 200) {
-                    console.log(data);
+                    getDoctorData();
                 } else {
-                    console.log(data);
+                    setError(data?.message);
                 }
         })
     }

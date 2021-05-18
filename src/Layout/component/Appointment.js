@@ -81,14 +81,14 @@ export default function Appointment()
                     <tbody>
                     {appointments?.map((appointment, i) => <tr key={i}>
                         <td>#{i + 1}</td>
-                        <td>{storage("role") === "patient" ? <Nav.Link href={`/doctor/${appointment?.doctor?.name}`}>{appointment?.doctor?.name}</Nav.Link> : appointment?.patient?.name}</td>
+                        <td>{storage("role") === "patient" ? <Nav.Link href={`/doctor/${appointment?.doctor?.name}`}>{appointment?.doctor?.name}</Nav.Link> : !appointment.reserved ? "Not Reserved" : appointment?.patient?.name}</td>
                         <td>{dateConverter(appointment?.date)}</td>
                         <td>{appointment?.time}</td>
-                        <td>{storage("role") === "patient" ? appointment?.doctor?.specialization : <Nav.Link href={`/history/${appointment?.patient?._id}`}><i className='fa fa-notes-medical'> </i></Nav.Link>}</td>
+                        <td>{storage("role") === "patient" ? appointment?.doctor?.specialization : !appointment.reserved ? "-" : <Nav.Link href={`/history/${appointment?.patient?._id}`}><i className='fa fa-notes-medical'> </i></Nav.Link>}</td>
                         <td>
-                            <Nav.Link href="/chat">
+                            {!appointment.reserved ? "-" : <Nav.Link href="/chat">
                                 <i className="fa fa-paper-plane message-icon"> </i>
-                            </Nav.Link>
+                            </Nav.Link>}
                         </td>
                     </tr>)}
                     </tbody>

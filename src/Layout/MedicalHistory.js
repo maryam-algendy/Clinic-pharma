@@ -6,6 +6,8 @@ import {Link} from "react-router-dom";
 import "./style/MedicalHistory.scss";
 import PageHeader from "./component/PageHeader";
 import API from "../utilize/API";
+import dateConverter from "../utilize/dateConverter";
+import store from "../utilize/storage";
 
 // todo: Validate that date format matches MM-DD-YYYY
 export default function MedicalHistory() {
@@ -29,7 +31,7 @@ export default function MedicalHistory() {
         disease: ""
 
     });
-
+    console.log(history)
     useEffect(() => {
         fetchHistory();
         API("doctors", "GET")
@@ -405,11 +407,11 @@ export default function MedicalHistory() {
 
                                 <h4>
                                     medicines:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["medicines"]);
                                     }
-                                    }>+</Button>
+                                    }>+</Button> : null}
                                 </h4>
 
                                 {modal(params[0])}
@@ -428,12 +430,12 @@ export default function MedicalHistory() {
                                         (history?.medicines?.length > 0) ?
                                             history.medicines.map(item => {
                                                 return (
-                                                    <tr key={item?.id}>
+                                                    <tr key={item?._id}>
                                                         <td>{item?.medicine}</td>
-                                                        <td>{item?.date?.slice(0, 10)}</td>
+                                                        <td>{dateConverter(item?.date, "numeric")}</td>
                                                         <td className="remove">
                                                             {/* todo: Remove medicines from history using PATCH as an history update */}
-                                                            <Button onClick={() => {}}>Remove</Button>
+                                                            {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {}}>Remove</Button> : null}
                                                         </td>
                                                     </tr>
                                                 )
@@ -446,13 +448,15 @@ export default function MedicalHistory() {
                                     </tbody>
                                 </Table>
 
+                                {/* todo: Let doctors add diagnosis */}
                                 <h4>
                                     Diagnosis:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["diagnosis"]);
-                                    }}>+</Button>
+                                    }}>+</Button> : null}
                                 </h4>
+
                                 <Table>
                                     <thead>
                                     <tr>
@@ -468,12 +472,13 @@ export default function MedicalHistory() {
                                         (history?.diagnosis?.length > 0) ?
                                             history?.diagnosis?.map(item => {
                                                 return (
-                                                    <tr key={item?.id}>
+                                                    <tr key={item?._id}>
                                                         <td>{item?.diagnosis}</td>
                                                         <td className="date">{item?.notes}</td>
                                                         {item?.doctor ? <td>{item?.doctor?.name}</td> : <td>-</td>}
                                                         <td className="remove">
-                                                            <Button onClick={() => removeItemFromHistory("diagnosis", "diagnosis", item?._id)}>remove</Button>
+                                                            {history?.patient?._id === store("m_ph_uu") ? <Button
+                                                                onClick={() => removeItemFromHistory("diagnosis", "diagnosis", item?._id)}>remove</Button> : null}
                                                         </td>
                                                     </tr>
                                                 )
@@ -487,11 +492,11 @@ export default function MedicalHistory() {
 
                                 <h4>
                                     Chronic diseases:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["chronic diseases"]);
                                     }
-                                    }>+</Button>
+                                    }>+</Button> : null}
                                 </h4>
 
                                 {history?.chronic_diseases?.length > 0 ?
@@ -509,8 +514,10 @@ export default function MedicalHistory() {
                                             return (
                                                 <tr key={item?._id}>
                                                     <td>{item?.diagnosis}</td>
-                                                    <td>{item?.date?.substr(0, item?.date?.indexOf("T"))}</td>
-                                                    <td className="remove" onClick={() => removeItemFromHistory("chronic_disease", "disease", item?._id)}><Button>remove</Button></td>
+                                                    <td>{dateConverter(item?.date, "numeric")}</td>
+                                                    {history?.patient?._id === store("m_ph_uu") ? <td className="remove"
+                                                         onClick={() => removeItemFromHistory("chronic_disease", "disease", item?._id)}>
+                                                        <Button>remove</Button></td> : null}
                                                 </tr>
                                             )
                                         })
@@ -522,10 +529,10 @@ export default function MedicalHistory() {
 
                                 <h4>
                                     genetic diseases:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["genetic diseases"]);
-                                    }}>+</Button>
+                                    }}>+</Button> : null}
                                 </h4>
 
                                 {history?.genetic_disease?.length > 0 ?
@@ -547,7 +554,9 @@ export default function MedicalHistory() {
                                                     <td>{item?.disease}</td>
                                                     <td>{item?.injured}</td>
                                                     <td>{item?.cured === true ? "✔" : "❌"}</td>
-                                                    <td className="remove" onClick={() => removeItemFromHistory("genetic_disease", "disease", item?._id)}><Button>remove</Button></td>
+                                                    {history?.patient?._id === store("m_ph_uu") ? <td className="remove"
+                                                         onClick={() => removeItemFromHistory("genetic_disease", "disease", item?._id)}>
+                                                        <Button>remove</Button></td> : null}
                                                 </tr>
                                             )
                                         })
@@ -559,11 +568,12 @@ export default function MedicalHistory() {
 
                                 <h4>
                                     surgeries:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["surgeries"]);
-                                    }}>+</Button>
+                                    }}>+</Button> : null}
                                 </h4>
+
                                 {history?.surgeries?.length > 0 ?
                                     <Table>
                                         <thead>
@@ -580,8 +590,10 @@ export default function MedicalHistory() {
                                                 return (
                                                     <tr key={item?._id}>
                                                         <td>{item?.name}</td>
-                                                        <td>{item?.date}</td>
-                                                        <td className="remove" onClick={() => removeItemFromHistory("surgeries", "surgery", item?._id)}><Button>remove</Button></td>
+                                                        <td>{dateConverter(item?.date, "numeric")}</td>
+                                                        {history?.patient?._id === store("m_ph_uu") ? <td className="remove"
+                                                             onClick={() => removeItemFromHistory("surgeries", "surgery", item?._id)}>
+                                                            <Button>remove</Button></td> : null}
                                                     </tr>
                                                 )
                                             })
@@ -593,11 +605,11 @@ export default function MedicalHistory() {
 
                                 <h4>
                                     continuous medications:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["continuous_medications"]);
                                     }
-                                    }>+</Button>
+                                    }>+</Button>: null}
                                 </h4>
 
                                 {history?.continuous_medications?.length > 0 ?
@@ -614,10 +626,12 @@ export default function MedicalHistory() {
                                         {
                                             history?.continuous_medications?.map(item => {
                                                 return (
-                                                    <tr key={item?.id}>
+                                                    <tr key={item?._id}>
                                                         <td>{item?.medicine} </td>
                                                         <td>{item?.dose} </td>
-                                                        <td className="remove" onClick={() => removeItemFromHistory("continuous_medications", "medicine", item?._id)}><Button>remove</Button></td>
+                                                        {history?.patient?._id === store("m_ph_uu") ? <td className="remove"
+                                                             onClick={() => removeItemFromHistory("continuous_medications", "medicine", item?._id)}>
+                                                            <Button>remove</Button></td> : null}
                                                     </tr>
                                                 )
                                             })
@@ -627,13 +641,14 @@ export default function MedicalHistory() {
                                     </Table> :
                                     <div className="no-data">There are no continuous medications added yet.</div>
                                 }
+
                                 <h4>
                                     laboratory tests:
-                                    <Button onClick={() => {
+                                    {history?.patient?._id === store("m_ph_uu") ? <Button onClick={() => {
                                         setShow(true);
                                         setParams(["laboratory tests"]);
                                     }
-                                    }>+</Button>
+                                    }>+</Button> : null}
                                 </h4>
 
                                 {history?.laboratory_tests?.length > 0 ?
@@ -651,7 +666,7 @@ export default function MedicalHistory() {
                                         {
                                             history?.laboratory_tests?.map(item => {
                                                 return (
-                                                    <tr key={item?.id}>
+                                                    <tr key={item?._id}>
                                                         <td>{item?.lab}</td>
                                                         <td>{item?.name}</td>
                                                         <td>
@@ -662,7 +677,9 @@ export default function MedicalHistory() {
                                                                 <Image src={item?.result}/>
                                                             </Button>
                                                         </td>
-                                                        <td className="remove" onClick={() => removeItemFromHistory("lab", "lab", item?._id)}><Button>remove</Button></td>
+                                                        {history?.patient?._id === store("m_ph_uu") ? <td className="remove"
+                                                             onClick={() => removeItemFromHistory("lab", "lab", item?._id)}>
+                                                            <Button>remove</Button></td> : null}
                                                     </tr>
                                                 )
                                             })

@@ -73,8 +73,8 @@ export default function MainNavbar()
                             </button>
                             {!authenticatedUser ? <button onClick={() => window.location.replace("/account/login")} className="btn">Login/Register</button> : null}
                             {authenticatedUser ? <><img
-                                className="user-logo"
-                                src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573386/Assets/team/team04_sal7db.png"
+                                className="user-logo rounded"
+                                src={storage("user")?.image}
                                 alt="User Section"
                                 onClick={(e) => {
                                     if (userSection || searchBar) {
