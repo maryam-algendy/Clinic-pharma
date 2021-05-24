@@ -45,28 +45,19 @@ export default function MainNavbar()
                                 <li><Link to="/">Home</Link></li>
                                 <li><Link to="/about">About</Link></li>
                                 <li><Link to="/doctors">Doctors</Link></li>
-                                <li><Link to="/shop">Shop</Link></li>
+                                <li><Link to="/shop" className="shop-active">Shop</Link></li>
                                 <li><Link to="/blogs">Blogs</Link></li>
                                 {authenticatedUser ? <li><Link to="/blog/create">Add Blog</Link></li> : null}
                                 <li><Link to="/contact">Contact</Link></li>
                             </ul>
                         </div>
                         <div className="icons">
-                            <button className="icon">
+                            {authenticatedUser ? <button className="icon">
                                 <i
-                                    className="flaticon-search"
-                                    onClick={(e) => {
-                                        if (searchBar || userSection) {
-                                            setSearchBar(true);
-                                            setUserSection(false);
-                                        } else {
-                                            e.stopPropagation();
-                                        }
-                                        setSearchBar(!searchBar);
-                                    }}
+                                    className="fa fa-envelope"
+                                    onClick={() => window.location.replace("/chat")}
                                 > </i>
-                                <SearchBar searchBar={searchBar} />
-                            </button>
+                            </button> : null}
                             <button className="icon" onClick={() => window.location.replace("/cart")}>
                                 <i className="flaticon-shopping-cart"> </i>
                                 <span className="counter">{cart?.products?.length || 0}</span>

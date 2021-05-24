@@ -8,9 +8,7 @@ export default function AboutUsBlock(){
     return(
         <div id ="about-us-block">
             <h2>let's know short story about clinical pharma</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate et eveniet expedita facilis libero perspiciatis,
-                porro quidem reiciendis!
-                Accusantium beatae dolor dolorum fugiat porro provident quaerat rerum totam veritatis vero.</p>
+            <p>Clinic Pharma is a medical system based on serving patients, improving the form of services provided to them, and automating the facilitation of their communication with doctors</p>
             <div className="row img-section">
                 <div className="col-md-6">
                     <Image src="/about5.jpg"/>
@@ -21,13 +19,11 @@ export default function AboutUsBlock(){
                 </div>
             </div>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Accusantium adipisci aliquid corporis dolores enim et laborum molestiae mollitia nihil non,
-                omnis praesentium rem repudiandae sequi similique sint vitae. In, ullam.
-                omnis praesentium rem repudiandae sequi similique sint vitae. In, ullam.
-                omnis praesentium rem repudiandae sequi similique sint vitae. In, ullam.
-                omnis praesentium rem repudiandae sequi similique sint vitae. In, ullam.
-                omnis praesentium rem repudiandae sequi similique sint vitae. In, ullam.
+                The system facilitates building a patient's disease history that can be referred to at all times,
+                especially critical times, and facilitates patient communication with doctors,
+                whether for the purpose of booking an actual interview or remote communication,
+                which is what Clinique Pharma provides as a service among its services that also include providing access to the required medical treatments and tools
+                Without the need to go through the trouble of searching, it is only a click of a button and you have what you want.
             </p>
             <div className="row principles">
                 <div className="col-md-6">
@@ -63,9 +59,6 @@ export default function AboutUsBlock(){
                     </ul>
                 </div>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequuntur dolore doloribus ex illo incidunt ipsam,
-                libero minus,
-                quibusdam quod, voluptatem voluptatum. Commodi consequuntur eum necessitatibus placeat provident quidem voluptatem.</p>
         </div>
     )
 }

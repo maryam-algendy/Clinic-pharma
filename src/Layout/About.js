@@ -4,6 +4,7 @@ import {Image,Nav,Tab} from "react-bootstrap";
 //style
 import "./style/About.scss";
 import AboutUsBlock from "./component/Block/AboutUsBlock";
+import NotFound from "./NotFound";
 
 export default function About(){
     return(
@@ -25,24 +26,6 @@ export default function About(){
                                         <i className="fas fa-chevron-right"> </i>
                                     </Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="3">
-                                        experience
-                                        <i className="fas fa-chevron-right"> </i>
-                                    </Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="4">
-                                        awards
-                                        <i className="fas fa-chevron-right"> </i>
-                                    </Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="5">
-                                        success story
-                                        <i className="fas fa-chevron-right"> </i>
-                                    </Nav.Link>
-                                </Nav.Item>
                             </Nav>
                         </div>
                         <div className="emergency d-none d-lg-flex row">
@@ -61,16 +44,7 @@ export default function About(){
                                 <AboutUsBlock/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="2">
-                                <AboutUsBlock/>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="3">
-                                <AboutUsBlock/>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="4">
-                                <AboutUsBlock/>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="5">
-                                <AboutUsBlock/>
+                                <NotFound />
                             </Tab.Pane>
                         </Tab.Content>
                     </div>

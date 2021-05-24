@@ -12,7 +12,7 @@
 
         .blocks
         {
-            flex: 2;
+            flex: 3;
             display: flex;
             align-items: center;
 
@@ -49,6 +49,10 @@
                         text-decoration: none;
                     }
 
+                    .shop-active {
+                        color: $mainColor;
+                        border-bottom: 1px solid $mainColor;
+                    }
                 }
             }
         }
