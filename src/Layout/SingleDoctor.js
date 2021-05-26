@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Button, Image, Nav, Table } from "react-bootstrap";
+import {Button, Form, Image, Modal, Nav, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import swal from "sweetalert";
 
@@ -17,6 +17,9 @@ export default function SingleDoctor() {
     const [error, setError] = useState();
     const [role, setRole] = useState();
     const [rate, setRate] = useState();
+    const [show, setShow] = useState(false);
+    const [form, setForm] = useState({ time: "", date: "" });
+
 
     function getDoctorData() {
         API(`doctors/?name=${window.location.pathname.replace("/doctor/", "")}`)
@@ -87,6 +90,7 @@ export default function SingleDoctor() {
             .then(({ data, status }) => {
                 if (status === 200) {
                     getDoctorData();
+                    setError("Reserved Successfully")
                 } else {
                     setError(data?.message);
                 }
@@ -231,10 +235,27 @@ export default function SingleDoctor() {
                                                     <Nav.Link href="/chat">
                                                         <i className="fa fa-paper-plane"> </i>
                                                     </Nav.Link> :
-                                                    <Button disabled={date?.reserved} onClick={() => reserveAppointment(date?._id, doctor?._id)}>
+                                                    <Button disabled={date?.reserved} onClick={() => {
+                                                        setShow(true);
+                                                    }}>
                                                         {date?.reserved ? "Reserved" : "Reserve"}
                                                     </Button>
                                                 }
+                                                <Modal show={show} onHide={()=>setShow(false)} animation={false}>
+                                                    {error ? <div className={error === "Reserved Successfully" ? "alert-primary" : "alert-danger"}>{error}</div> : null}
+                                                    <Modal.Header closeButton>
+                                                        <Modal.Title className="title">make a reservation</Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body>
+                                                        <Form.Control value={form.time} onChange={(e) => setForm({...form, time: e.target.value})} placeholder="Add Time *" />
+                                                        <Form.Control value={form.date} onChange={(e) => setForm({...form, date: e.target.value})} className="date-btn" placeholder="Add Date *" />
+                                                    </Modal.Body>
+                                                    <Modal.Footer>
+                                                        <Button onClick={() =>
+                                                            reserveAppointment(date?._id, doctor?._id)
+                                                        }>Save</Button>
+                                                    </Modal.Footer>
+                                                </Modal>
                                             </td>
                                         </tr>
                                     })}
