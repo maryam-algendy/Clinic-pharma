@@ -17,6 +17,7 @@ export default function Shop() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
+    const [pharmacy, setPharmacy] = useState("");
     const [pagination, setPagination] = useState({page: 1, pages: 1});
     const [error, setError] = useState();
     const [pageNumber, setPageNumber] = useState(1);
@@ -59,7 +60,7 @@ export default function Shop() {
     function filters() {
         setLoading(true);
         setError("");
-        API(`medicines/find/?name=${value}&minPrice=${price[0]}&maxPrice=${price[1]}&category=${category}`, "POST")
+        API(`medicines/find/?name=${value}&minPrice=${price[0]}&maxPrice=${price[1]}&category=${category}&pharmacy=${pharmacy}`, "POST")
             .then(({ data, status }) => {
                 if (status === 200) {
                     setLoading(false);
@@ -104,26 +105,37 @@ export default function Shop() {
 
                     <div className="col-12 col-md-3 col-lg-3 order-1 order-md-2" id="shop-filters">
                         <div className="search">
-                            <h3>Name</h3>
+                            <h3>Find by Name</h3>
                             <input value={value} onChange={(e) => {
                                 setValue(e.target.value);
                                 filters();
-                            }} type="text" placeholder="search here ..."/>
+                            }} type="text" placeholder="Product Name ..."/>
+                            <i className="flaticon-search"> </i>
+                        </div>
+                        <div className="search mt-5">
+                            <h3>Find by Pharmacy</h3>
+                            <input value={pharmacy} onChange={(e) => {
+                                setPharmacy(e.target.value);
+                                filters();
+                            }} type="text" placeholder="Pharmacy Name ..."/>
                             <i className="flaticon-search"> </i>
                         </div>
 
                         <div className="categories">
                             <h3>Categories</h3>
                             <ul>
-                                {categories?.map(category => <li key={category?._id}>
-                                    <button onClick={() => {
-                                        setCategory(category?.slug);
-                                        filters();
-                                    }}>
-                                        <i className="fas fa-chevron-right"> </i>
-                                        {category?.name}
-                                    </button>
-                                </li>)}
+                                {categories?.map(category => {
+                                    return <li key={category?._id}>
+                                        <button onClick={() => {
+                                            setCategory(category?.slug);
+                                            filters();
+                                        }}>
+                                            <i className="fas fa-chevron-right"> </i>
+                                            {category?.name}
+                                        </button>
+                                        {/*{category?.sub_categories && todo: loop through sub_categories, then put onClick here instead of parent category}*/}
+                                    </li>
+                                })}
                             </ul>
                         </div>
 

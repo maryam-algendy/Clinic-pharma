@@ -51,11 +51,25 @@
             font-size: 14px;
             text-align: center;
 
+
             @media (max-width: 560px) {
                 font-size: 14px;
                 display: block;
                 overflow-x: scroll;
 
+            }
+
+            .delete{
+                background: none;
+                border: none;
+                &:focus{
+                    box-shadow: none;
+                    border: none;
+                }
+
+                i{
+                    color: red;
+                }
             }
 
             tr
@@ -108,11 +122,14 @@
 {
     .modal-header
     {
+        margin: 10px 0;
         .modal-title {
             font-size: 18px;
             font-family: "SemiBold", sans-serif;
+            text-transform: capitalize;
         }
     }
+
 
     .modal-body
     {
@@ -127,7 +144,10 @@
 
     .modal-footer
     {
-        .btn-primary {
+        border: none;
+
+        .btn-primary
+        {
             color: $lightColor;
             background: $mainColor;
             font-size: 14px;
@@ -135,11 +155,22 @@
             font-family: "SemiBold", sans-serif;
             border: 1px solid $mainColor;
             transition: .3s ease-in-out;
+            margin:5px auto;
 
-            &:hover
-            {
+            &:hover {
                 background: $lightColor;
                 color: $mainColor;
+            }
+
+            &:last-of-type
+            {
+                background: #d70000;
+                border-color: #d70000;
+
+                &:hover {
+                    color: #d70000;
+                    background: transparent;
+                }
             }
 
             .fas {
