@@ -145,7 +145,9 @@
     .modal-footer
     {
         border: none;
-        .btn-primary {
+
+        .btn-primary
+        {
             color: $lightColor;
             background: $mainColor;
             font-size: 14px;
@@ -155,10 +157,20 @@
             transition: .3s ease-in-out;
             margin:5px auto;
 
-            &:hover
-            {
+            &:hover {
                 background: $lightColor;
                 color: $mainColor;
+            }
+
+            &:last-of-type
+            {
+                background: #d70000;
+                border-color: #d70000;
+
+                &:hover {
+                    color: #d70000;
+                    background: transparent;
+                }
             }
 
             .fas {
