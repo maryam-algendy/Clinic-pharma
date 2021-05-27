@@ -137,11 +137,13 @@ export default function SingleDoctor() {
                                 <span>{doctor?.specialization}</span>
                                 <p>{role}</p>
                             </div>
+
                             <div className="personal-info">
                                 <h4>personal info</h4>
                                 <p>phone: <span className="text-md-left">+ (20) {doctor?.phone}</span></p>
                                 <p>office: <span>+ {doctor?.officeNumber}</span></p>
                                 <p>e-mail: <span>{doctor?.email}</span></p>
+                                <p>Address: <span>{doctor?.address || doctor?.government + ", " + doctor?.country}</span></p>
                                 <p>social:
                                     <span>
                                         <Link to="/">
@@ -158,16 +160,6 @@ export default function SingleDoctor() {
                                         </Link>
                                 </span>
                                 </p>
-                            </div>
-                            <div className="emergency row">
-                                <div className="col-3">
-                                    <Image
-                                        src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573353/Assets/figures/figure1_bxuaga.png"/>
-                                </div>
-                                <div className="col-9">
-                                    <p>emergency cases</p>
-                                    <span>2-800-700-6200</span>
-                                </div>
                             </div>
                         </div>
                         <div className="col-lg-9 rhs">
