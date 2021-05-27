@@ -32,6 +32,12 @@ export default function Appointment()
         {value: "Dr. Johora Roy"}
     ];
 
+    const formatOptionLabel = ({ value }) => (
+        <div style={{ color: "red", boxShadow: "none" }}>
+            <div style={{ border: "1px solid #ddd" }}>{value}</div>
+        </div>
+    );
+
     const [department, setDepartment] = useState(chooseDepartment[0]);
     const [doctor, setDoctor] = useState(chooseDoctor[0]);
 
@@ -53,6 +59,7 @@ export default function Appointment()
                                     <Select
                                         className="select"
                                         value={department}
+                                        formatOptionLabel={formatOptionLabel}
                                         onChange={onchangeDepartment}
                                         options={chooseDepartment}
                                         getOptionLabel={(chooseDepartment) => chooseDepartment.value}

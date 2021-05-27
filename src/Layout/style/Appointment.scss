@@ -2,18 +2,18 @@
 
 #appointment
 {
-    background: $bgColor;
+    background: #F2F7FB;
 
     .col-12
     {
-        padding: 60px 10px 0 10px;
+        padding: 40px 10px 0 10px;
 
         .content {
-            padding: 10px 20px;
+            padding: 30px 20px 10px;
             margin-bottom: 10px;
             color: $darkColor;
             background: $lightColor;
-            box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+            box-shadow: 0 0 2px rgba(0, 0, 0, .1);
             border-radius: 5px;
 
             @media (max-width: 850px) {
@@ -39,24 +39,22 @@
             input,
             textarea
             {
-                margin-bottom: 15px;
-
-                &:focus {
-                    box-shadow: none;
-                    border: 1px solid #ced4da;
-                }
+                margin-bottom: 20px;
+                padding: 1.375rem .75rem;
+                color: #777777;
+                border: 1px solid #ddd;
             }
 
             .appointment-btn
             {
-                margin-bottom: 10px;
+                margin-bottom: 15px;
                 text-align: center;
 
                 button
                 {
-                    box-shadow: 0 0 8px $mainColor;
+                    box-shadow: 0 0 5px $mainColor;
                     background: $mainColor;
-                    font-size: 14px;
+                    font-size: 12px;
                     padding: 9px 20px;
                     font-family: "SemiBold", sans-serif;
                     border-color: $mainColor;
@@ -78,12 +76,11 @@
     {
         .select
         {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             font-size: 15px;
 
-            &:focus {
-                box-shadow: none;
-                border: 1px solid #ced4da;
+            .css-1uccc91-singleValue {
+                color: #777777;
             }
         }
     }
