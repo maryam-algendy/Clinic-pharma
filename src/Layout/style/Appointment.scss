@@ -1,0 +1,103 @@
+@import "../variables";
+
+#appointment
+{
+    background: #F2F7FB;
+
+    .form {
+        @media (max-width: 1024px) {
+            flex: 0 0 90%;
+            max-width: 90%;
+            margin: auto;
+        }
+    }
+
+    .col-12
+    {
+        padding: 3rem 10px 0 10px;
+
+        .content
+        {
+            padding: 30px 20px 5rem;
+            margin-bottom: 10px;
+            color: $darkColor;
+            background: $lightColor;
+            border-radius: 0;
+
+            @media (max-width: 1024px) {
+                margin: auto;
+            }
+
+            .title {
+                margin-top: 20px;
+                font-size: 22px;
+                font-family: "SemiBold", sans-serif;
+            }
+
+            .line {
+                margin: 20px 0;
+            }
+
+            .description {
+                color: #777777;
+                font-size: 14px;
+            }
+
+            input,
+            textarea
+            {
+                margin-bottom: 20px;
+                padding: 1.375rem .75rem;
+                color: #777777;
+                border: 1px solid #ddd;
+            }
+
+            .appointment-btn
+            {
+                margin-bottom: 15px;
+                text-align: center;
+
+                button
+                {
+                    box-shadow: 0 0 5px $mainColor;
+                    background: $mainColor;
+                    font-size: 12px;
+                    padding: 9px 20px;
+                    font-family: "SemiBold", sans-serif;
+                    border-color: $mainColor;
+
+                    &:hover {
+                        background: $lightColor;
+                        color: $mainColor;
+                    }
+                }
+            }
+        }
+
+        img
+        {
+            width: 120%;
+
+            @media (max-width: 1280px) {
+                max-width: 110%;
+            }
+
+            @media (max-width: 1024px) {
+                display: none;
+            }
+        }
+    }
+
+    .col-sm-12
+    {
+        .select
+        {
+            margin-bottom: 25px;
+            font-size: 15px;
+
+            .css-1uccc91-singleValue {
+                color: #777777;
+            }
+        }
+    }
+}

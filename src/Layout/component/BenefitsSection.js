@@ -22,7 +22,7 @@ export default function BenefitsSection() {
             <div className="row">
                 <div className="col-md-6 text-side">
                     <div className="inner-text">
-                        <h2>choose the best of your health</h2>
+                        <h2>Choose the best of your health</h2>
                         <p>{benefits.description}</p>
                         <ul className="list-unstyled mb-0">
                             {

@@ -26,7 +26,7 @@ export default function TopDoctors(props)
         <div id="top-doctors">
             <div className="container">
                 <div className="top-doctors-header">
-                    <h5 className="title">Specialist Doctors</h5>
+                    <h5 className="title">Top Doctors</h5>
                     <span className="sub-title">Experienced Doctor</span>
                     <div className="line"> </div>
                 </div>
