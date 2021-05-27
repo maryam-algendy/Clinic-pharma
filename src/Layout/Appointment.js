@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import Select from 'react-select';
 
 // style
 import "./style/Appointment.scss";
@@ -9,6 +10,34 @@ import {Button, Form} from "react-bootstrap";
 
 export default function Appointment()
 {
+    const chooseDepartment = [
+        {value: "Select Department*"},
+        {value: "Dental"},
+        {value: "Gynaecology"},
+        {value: "Eye"},
+        {value: "Cardiology"},
+        {value: "Orthopaedics"},
+        {value: "Gastroenterology"},
+        {value: "Neurology"},
+        {value: "Medicine"}
+    ];
+
+    const chooseDoctor = [
+        {value: "Choose Doctor by Name*"},
+        {value: "Dr. Zinia Zara"},
+        {value: "Dr. Nadim Kamal"},
+        {value: "Dr. Rihana Roy"},
+        {value: "Dr. Jason Roy"},
+        {value: "Dr. Steven Jobs"},
+        {value: "Dr. Johora Roy"}
+    ];
+
+    const [department, setDepartment] = useState(chooseDepartment[0]);
+    const [doctor, setDoctor] = useState(chooseDoctor[0]);
+
+    const onchangeDepartment = (items) => setDepartment(items);
+    const onchangeDoctor = (items) => setDoctor(items);
+
     return <div id="appointment">
         <PageHeader title="Appointment Form" firstLocation="Form" />
         <div className="container">
@@ -21,34 +50,22 @@ export default function Appointment()
                         <Form>
                             <div className="row">
                                 <div className="col-sm-12">
-                                    <Form.Group className="select-group" controlId="exampleForm.SelectCustom">
-                                        <Form.Control as="select" custom>
-                                            <option>Select Department*</option>
-                                            <option>Dental</option>
-                                            <option>Gynaecology</option>
-                                            <option>Eye</option>
-                                            <option>Cardiology</option>
-                                            <option>Orthopaedics</option>
-                                            <option>Gastroenterology</option>
-                                            <option>Neurology</option>
-                                            <option>Medicine</option>
-                                        </Form.Control>
-                                    </Form.Group>
+                                    <Select
+                                        className="select"
+                                        value={department}
+                                        onChange={onchangeDepartment}
+                                        options={chooseDepartment}
+                                        getOptionLabel={(chooseDepartment) => chooseDepartment.value}
+                                    />
                                 </div>
                                 <div className="col-sm-12">
-                                    <Form.Group className="select-group" controlId="exampleForm.SelectCustom">
-                                        <Form.Control as="select" custom>
-                                            <option>Choose Doctor by Name*</option>
-                                            <option>Dr. Zinia Zara</option>
-                                            <option>Dr. Nadim Kamal</option>
-                                            <option>Dr. Rihana Roy</option>
-                                            <option>Dr. Jason Roy</option>
-                                            <option>Dr. Steven Jobs</option>
-                                            <option>Dr. Johora Ray</option>
-                                            <option>Dr. Rihana Roy</option>
-                                            <option>Dr. Nadim Kamal</option>
-                                        </Form.Control>
-                                    </Form.Group>
+                                    <Select
+                                        className="select"
+                                        value={doctor}
+                                        onChange={onchangeDoctor}
+                                        options={chooseDoctor}
+                                        getOptionLabel={(chooseDoctor) => chooseDoctor.value}
+                                    />
                                 </div>
                                 <div className="col-sm-12">
                                     <Form.Control type="text" placeholder="Patient Name*"/>
@@ -73,8 +90,8 @@ export default function Appointment()
                         </Form>
                     </div>
                 </div>
-                <div className="col-12 col-lg-6 appointment-bg">
-                    <img src="/figure7.png" alt="Appointment Background"/>
+                <div className="col-12 col-lg-6">
+                    <img src="/figure2.png" alt="Appointment Background"/>
                 </div>
             </div>
         </div>

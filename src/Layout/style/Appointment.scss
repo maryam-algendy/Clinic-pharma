@@ -6,7 +6,7 @@
 
     .col-12
     {
-        padding: 60px 10px 30px;
+        padding: 60px 10px 0 10px;
 
         .content {
             padding: 10px 20px;
@@ -34,17 +34,6 @@
             .description {
                 color: #777777;
                 font-size: 14px;
-            }
-
-            select
-            {
-                height: 42px;
-                padding: 10px 20px;
-
-                &:focus {
-                    box-shadow: none;
-                    border: 1px solid #ced4da;
-                }
             }
 
             input,
@@ -79,14 +68,23 @@
                 }
             }
         }
-    }
-
-    .appointment-bg
-    {
-        text-align: center;
 
         img {
-            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .col-sm-12
+    {
+        .select
+        {
+            margin-bottom: 15px;
+            font-size: 15px;
+
+            &:focus {
+                box-shadow: none;
+                border: 1px solid #ced4da;
+            }
         }
     }
 }
