@@ -4,21 +4,28 @@
 {
     background: #F2F7FB;
 
+    .form {
+        @media (max-width: 1024px) {
+            flex: 0 0 90%;
+            max-width: 90%;
+            margin: auto;
+        }
+    }
+
     .col-12
     {
-        padding: 40px 10px 0 10px;
+        padding: 3rem 10px 0 10px;
 
-        .content {
-            padding: 30px 20px 10px;
+        .content
+        {
+            padding: 30px 20px 5rem;
             margin-bottom: 10px;
             color: $darkColor;
             background: $lightColor;
-            box-shadow: 0 0 2px rgba(0, 0, 0, .1);
-            border-radius: 5px;
+            border-radius: 0;
 
-            @media (max-width: 850px) {
-                max-width: 720px;
-                overflow: auto;
+            @media (max-width: 1024px) {
+                margin: auto;
             }
 
             .title {
@@ -67,8 +74,17 @@
             }
         }
 
-        img {
-            width: 100%;
+        img
+        {
+            width: 120%;
+
+            @media (max-width: 1280px) {
+                max-width: 110%;
+            }
+
+            @media (max-width: 1024px) {
+                display: none;
+            }
         }
     }
 

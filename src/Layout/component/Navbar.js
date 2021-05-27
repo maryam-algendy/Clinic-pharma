@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Navbar, Dropdown} from 'react-bootstrap';
+import { Navbar, Dropdown, Nav } from 'react-bootstrap';
 
 // block
 import UserSection from './Block/UserSection';
@@ -46,14 +46,14 @@ export default function MainNavbar()
                                 <li><Link to="/about">About</Link></li>
                                 <li className="dropdown">
                                     <Dropdown>
-                                        <Dropdown.Toggle>Doctors<i className="fas fa-angle-down dropdown-icon"> </i></Dropdown.Toggle>
+                                        <Dropdown.Toggle>Doctors & Appointments<i className="fas fa-angle-down dropdown-icon"> </i></Dropdown.Toggle>
                                         <Dropdown.Menu>
-                                           <Link to="/doctors">Find Doctors</Link>
-                                           <Link to="/appointment">Appointment Page</Link>
+                                           <Nav.Link href="/doctors">Find a doctor</Nav.Link>
+                                           <Nav.Link href="/appointment">Request an appointment</Nav.Link>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </li>
-                                <li><Link to="/shop" className="shop-active">Shop</Link></li>
+                                <li><Link to="/shop">Shop</Link></li>
                                 <li><Link to="/blogs">Blogs</Link></li>
                                 {authenticatedUser ? <li><Link to="/blog/create">Add Blog</Link></li> : null}
                                 <li><Link to="/contact">Contact</Link></li>

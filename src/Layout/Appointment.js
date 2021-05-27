@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Select from 'react-select';
+import swal from "sweetalert";
 
 // style
 import "./style/Appointment.scss";
@@ -32,12 +33,6 @@ export default function Appointment()
         {value: "Dr. Johora Roy"}
     ];
 
-    const formatOptionLabel = ({ value }) => (
-        <div style={{ color: "red", boxShadow: "none" }}>
-            <div style={{ border: "1px solid #ddd" }}>{value}</div>
-        </div>
-    );
-
     const [department, setDepartment] = useState(chooseDepartment[0]);
     const [doctor, setDoctor] = useState(chooseDoctor[0]);
 
@@ -48,7 +43,7 @@ export default function Appointment()
         <PageHeader title="Appointment Form" firstLocation="Form" />
         <div className="container">
             <div className="row">
-                <div className="col-12 col-lg-6">
+                <div className="col-12 col-lg-6 form">
                     <div className="content">
                         <h3 className="title">Make An Appointment</h3>
                         <div className="line"> </div>
@@ -59,7 +54,6 @@ export default function Appointment()
                                     <Select
                                         className="select"
                                         value={department}
-                                        formatOptionLabel={formatOptionLabel}
                                         onChange={onchangeDepartment}
                                         options={chooseDepartment}
                                         getOptionLabel={(chooseDepartment) => chooseDepartment.value}
@@ -92,7 +86,8 @@ export default function Appointment()
                             </div>
                             <Form.Control placeholder="Type Appointment Note*" as="textarea" rows="5"/>
                             <div className="appointment-btn">
-                                <Button>Make An Appointment</Button>
+                                {/* todo: handle request appointment */}
+                                <Button onClick={() => setTimeout(() => { swal({ icon: "success", text: "Appointment requested successfully", button: false }) }, 1000)}>Make An Appointment</Button>
                             </div>
                         </Form>
                     </div>
