@@ -9,6 +9,8 @@ import PageHeader from "./component/PageHeader";
 import API from "../utilize/API";
 import dateConverter from "../utilize/dateConverter";
 import store from "../utilize/storage";
+import {PaymentInputsWrapper, usePaymentInputs} from "react-payment-inputs";
+import images from 'react-payment-inputs/images';
 
 // todo: prevent patient from reserve more than one appointment with the same doctor
 export default function SingleDoctor() {
@@ -18,7 +20,12 @@ export default function SingleDoctor() {
     const [role, setRole] = useState();
     const [rate, setRate] = useState();
     const [show, setShow] = useState(false);
-    const [form, setForm] = useState({ time: "", date: "" });
+    const [form, setForm] = useState({number: "", exp_month: "", exp_year: "", cvc: "", currency: "usd", location: ""});
+    const {wrapperProps, getCardImageProps, getCardNumberProps, getCVCProps} = usePaymentInputs();
+
+    let year = new Date().getFullYear();
+    const years = Array.from(new Array(10), (val, index) => index + year);
+    const months = Array.from(new Array(12), (val, index) => index + 1);
 
 
     function getDoctorData() {
@@ -130,11 +137,13 @@ export default function SingleDoctor() {
                                 <span>{doctor?.specialization}</span>
                                 <p>{role}</p>
                             </div>
+
                             <div className="personal-info">
                                 <h4>personal info</h4>
                                 <p>phone: <span className="text-md-left">+ (20) {doctor?.phone}</span></p>
                                 <p>office: <span>+ {doctor?.officeNumber}</span></p>
                                 <p>e-mail: <span>{doctor?.email}</span></p>
+                                <p>Address: <span>{doctor?.address || doctor?.government + ", " + doctor?.country}</span></p>
                                 <p>social:
                                     <span>
                                         <Link to="/">
@@ -151,16 +160,6 @@ export default function SingleDoctor() {
                                         </Link>
                                 </span>
                                 </p>
-                            </div>
-                            <div className="emergency row">
-                                <div className="col-3">
-                                    <Image
-                                        src="https://res.cloudinary.com/medical-pharma/image/upload/v1618573353/Assets/figures/figure1_bxuaga.png"/>
-                                </div>
-                                <div className="col-9">
-                                    <p>emergency cases</p>
-                                    <span>2-800-700-6200</span>
-                                </div>
                             </div>
                         </div>
                         <div className="col-lg-9 rhs">
@@ -241,14 +240,48 @@ export default function SingleDoctor() {
                                                         {date?.reserved ? "Reserved" : "Reserve"}
                                                     </Button>
                                                 }
-                                                <Modal show={show} onHide={()=>setShow(false)} animation={false}>
+                                                <Modal className="payment-modal" show={show} onHide={()=>setShow(false)} animation={false}>
                                                     {error ? <div className={error === "Reserved Successfully" ? "alert-primary" : "alert-danger"}>{error}</div> : null}
                                                     <Modal.Header closeButton>
                                                         <Modal.Title className="title">make a reservation</Modal.Title>
                                                     </Modal.Header>
                                                     <Modal.Body>
-                                                        <Form.Control value={form.time} onChange={(e) => setForm({...form, time: e.target.value})} placeholder="Add Time *" />
-                                                        <Form.Control value={form.date} onChange={(e) => setForm({...form, date: e.target.value})} className="date-btn" placeholder="Add Date *" />
+
+
+                                                        <Form method="post">
+                                                            <Form.Group controlId="nameOnCard">
+                                                                <Form.Label><h4>Card Holder</h4></Form.Label>
+                                                                <Form.Control type="text"/>
+                                                            </Form.Group>
+
+                                                            <Form.Label><h4>Card Number</h4></Form.Label>
+                                                            <PaymentInputsWrapper {...wrapperProps}>
+                                                                <svg {...getCardImageProps({images})} />
+                                                                <input {...getCardNumberProps()} value={form.number} onChange={(e) => setForm({...form, number: e.target.value})}/>
+                                                            </PaymentInputsWrapper>
+
+                                                            <div className="row">
+                                                                <Form.Group className="col-lg-4 col-md-6" controlId="SelectCustom">
+                                                                    <Form.Label><h4>month</h4></Form.Label>
+                                                                    <Form.Control as="select" custom onChange={(e) => setForm({...form, exp_month: e.target.value})}>
+                                                                        {months.map((month, id) => <option key={id}>{String(month).padStart(2, '0')}</option>)}
+                                                                    </Form.Control>
+                                                                </Form.Group>
+
+                                                                <Form.Group className="col-lg-4 col-md-6" controlId="SelectCustom2">
+                                                                    <Form.Label><h4>year</h4></Form.Label>
+                                                                    <Form.Control as="select" custom onChange={(e) => setForm({...form, exp_year: e.target.value})}>
+                                                                        {years.map((year, id) => <option key={id}>{String(year).slice(2)}</option>)}
+                                                                    </Form.Control>
+                                                                </Form.Group>
+
+                                                                <Form.Group className="col-lg-4 col-md-6">
+                                                                    <Form.Label><h4>cvc</h4></Form.Label>
+                                                                    <Form.Control  {...getCVCProps()} value={form.cvc} onChange={(e) => setForm({...form, cvc: e.target.value})}/>
+                                                                </Form.Group>
+                                                            </div>
+                                                        </Form>
+                                                        <span>If you cancel this reservation after 24 hour, you must pay a cancellation fee of 25%</span>
                                                     </Modal.Body>
                                                     <Modal.Footer>
                                                         <Button onClick={() =>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactPaginate from 'react-paginate';
+import {Button} from "react-bootstrap";
 import API from "../utilize/API";
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
@@ -54,8 +55,28 @@ export default function Shop() {
                 } else {
                     setError(data?.error);
                 }
-        })
-    }, []);
+        });
+
+        const accordionTitle=document.querySelectorAll("#accordion-title");
+        for (let l = 0; l < accordionTitle.length; l++) {
+            accordionTitle[l].addEventListener('click',toggleAccordion);
+        }
+
+        function toggleAccordion(e){
+            accordionTitle?.forEach((title)=>{
+                if(title===e.target){
+                    title.nextSibling.classList.remove("d-none");
+                    title.classList.add("active-title");
+                }
+                else {
+                    title.nextSibling.classList.add("d-none");
+                    title.classList.remove("active-title");
+                }
+            })
+        }
+
+
+    }, [categories]);
 
     function filters() {
         setLoading(true);
@@ -65,6 +86,7 @@ export default function Shop() {
                 if (status === 200) {
                     setLoading(false);
                     setProducts(data?.product);
+                    console.log(data?.product)
                 } else {
                     setLoading(false);
                     setError(data?.message);
@@ -126,7 +148,7 @@ export default function Shop() {
                             <ul>
                                 {categories?.map(category => {
                                     return <li key={category?._id}>
-                                        <button onClick={() => {
+                                        <button id="accordion-title" onClick={() => {
                                             setCategory(category?.slug);
                                             filters();
                                         }}>
@@ -134,6 +156,23 @@ export default function Shop() {
                                             {category?.name}
                                         </button>
                                         {/*{category?.sub_categories && todo: loop through sub_categories, then put onClick here instead of parent category}*/}
+
+                                    <ul className="sub-category pl-2 d-none">
+                                        {
+                                            category?.sub_categories?.map(item=>{
+                                                return <li key={item._id}>
+                                                    <Button onClick={() => {
+                                                        setCategory(item?.slug);
+                                                        filters();
+                                                    }}>
+                                                        <i className="fas fa-chevron-right"> </i>
+                                                        {item.name}
+                                                    </Button>
+                                                </li>
+                                            })
+                                        }
+                                    </ul>
+
                                     </li>
                                 })}
                             </ul>
