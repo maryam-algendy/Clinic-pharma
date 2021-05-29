@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Tabs, Tab, Modal, Spinner, Button, Image} from "react-bootstrap";
+import { Tabs, Tab, Modal, Spinner, Button, Image, Nav } from "react-bootstrap";
 import DOMPurify from 'dompurify';
 
 // style
@@ -20,7 +20,7 @@ export default function MedicineDetails(props) {
     const [quantity, setQuantity] = useState(1);
     const [displayedImage, setDisplayedImage] = useState("");
     const [product, setProduct] = useState({});
-    const [relatedProduct, setRelatedProduct] = useState({});
+    const [relatedProduct, setRelatedProduct] = useState([]);
     const [related, setRelated] = useState(false);
     const slug = props.location.pathname.replace("/shop/", "");
     const [loading, setLoading] = useState(true);
@@ -32,35 +32,13 @@ export default function MedicineDetails(props) {
     }
 
 
-    //fetch related products
-
-    function fetchRelatedProducts() {
-        API(`medicines/related/?product=${slug}`)
-            .then(({data, status}) => {
-                if (status === 200) {
-                    setRelatedProduct(data?.products);
-                    if (relatedProduct.length > 0) {
-                        setRelated(true);
-                        setLoading(false);
-
-                    }
-                } else {
-                    setRelatedProduct(data.message);
-                    setLoading(false);
-                    setRelated(false)
-                }
-            })
-    }
-
     useEffect(() => {
         API(`medicine/?product=${slug}`)
             .then(({data, status}) => {
                 if (status === 200) {
                     setProduct(data?.product);
                     setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http", "https")}`);
-                    fetchRelatedProducts();
                     setLoading(false);
-                    // console.log(data.product)
                 } else {
                     setProduct(data.message);
                     setLoading(false);
@@ -72,6 +50,24 @@ export default function MedicineDetails(props) {
             setAuth(true)
         }
     }, [slug]);
+
+    useEffect(() => {
+        API(`medicines/related/?product=${slug}`)
+        .then(({data, status}) => {
+            if (status === 200) {
+                setRelatedProduct(data?.products);
+                if (relatedProduct.length > 0) {
+                    setRelated(true);
+                    setLoading(false);
+
+                }
+            } else {
+                setRelatedProduct(data.message);
+                setLoading(false);
+                setRelated(false)
+            }
+        })
+    }, [relatedProduct])
 
     return (
         <div id="medicine-details">
@@ -118,11 +114,10 @@ export default function MedicineDetails(props) {
             </Modal>
             {
                 !loading ? <>
-                        <PageHeader title="Medical Product Title" firstLocation="Shop"
-                                    secondLocation="Medical Product Title"/>
+                        <PageHeader title="Medical Product Title" firstLocation="Shop" secondLocation="Medical Product Title"/>
                         <div className="container">
                             <div className="row">
-                                <div className={related ? `col-12 col-md-9 col-lg-9 order-2 order-md-1` : `col-12`}>
+                                <div className={related ? `col-12 col-md-9 col-lg-9 order-2 order-md-1 pr-lg-4` : `col-12`}>
                                     <div className="row">
                                         <div className="col-12 col-lg-6">
                                             <div className="img-view">
@@ -229,38 +224,37 @@ export default function MedicineDetails(props) {
                                     </div>
                                 </div>
                                 <></>
-                                {
-                                    related ?
-                                        <div className={`col-12 col-md-3 col-lg-3 order-1 order-md-2`}
-                                             id="shop-filters">
 
-                                            <div className="related-products">
-                                                <h3>related products</h3>
-                                                {
-                                                    relatedProduct?.map(item => {
-                                                        return (
-                                                            <div className="product row">
-                                                                <div className="col-4 lhs">
-                                                                    <Image src={product.thumbnail}/>
-                                                                </div>
-                                                                <div className="col-8 rhs">
-                                                                    <p>{product.name}</p>
-                                                                    <div className="icons">
-                                                                        <i className="fas fa-star"> </i>
-                                                                        <i className="fas fa-star"> </i>
-                                                                        <i className="fas fa-star"> </i>
-                                                                        <i className="fas fa-star"> </i>
-                                                                        <i className="fas fa-star"> </i>
-                                                                    </div>
-                                                                    <span className="cost">{product.price} LE</span>
-                                                                </div>
+                                {related ?
+                                    <div className={`col-12 col-md-3 col-lg-3 order-1 order-md-2`} id="shop-filters">
+                                        <div className="related-products">
+                                            <h3>Related Products</h3>
+                                            {
+                                                relatedProduct?.map(item => {
+                                                    return (
+                                                        <Link style={{ color: "inherit" }} to={`/shop/${item.slug}`} className="text-decoration-none product row">
+                                                            <div className="col-4 lhs">
+                                                                <Image src={item.thumbnail}/>
                                                             </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
+                                                            <div className="col-8 rhs">
+                                                                <p>{item.name}</p>
+                                                                <div className="icons">
+                                                                    <i className="fas fa-star"> </i>
+                                                                    <i className="fas fa-star"> </i>
+                                                                    <i className="fas fa-star"> </i>
+                                                                    <i className="fas fa-star"> </i>
+                                                                    <i className="fas fa-star"> </i>
+                                                                </div>
+                                                                <span className="cost">{item.price} LE</span>
+                                                            </div>
+                                                        </Link>
+                                                    )
+                                                })
+                                            }
                                         </div>
-                                        : <></>
+                                    </div>
+                                    :
+                                    <></>
                                 }
                             </div>
                         </div>

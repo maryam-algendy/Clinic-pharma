@@ -216,6 +216,10 @@
                 font-family: "SemiBold", sans-serif;
                 transition: .3s ease-in-out;
 
+                &:last-of-type {
+                    margin: 0;
+                }
+
                 @media (max-width: 768px) {
                     margin: 0 10px 10px 0;
                 }
