@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Tabs, Tab, Modal, Spinner, Button, Image, Nav } from "react-bootstrap";
+import { Tabs, Tab, Modal, Spinner, Button, Image } from "react-bootstrap";
 import DOMPurify from 'dompurify';
 
 // style
@@ -34,16 +34,16 @@ export default function MedicineDetails(props) {
 
     useEffect(() => {
         API(`medicine/?product=${slug}`)
-            .then(({data, status}) => {
-                if (status === 200) {
-                    setProduct(data?.product);
-                    setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http://", "https://")}`);
-                    setLoading(false);
-                } else {
-                    setProduct(data.message);
-                    setLoading(false);
-                }
-            });
+        .then(({data, status}) => {
+            if (status === 200) {
+                setProduct(data?.product);
+                setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http://", "https://")}`);
+                setLoading(false);
+            } else {
+                setProduct(data.message);
+                setLoading(false);
+            }
+        });
 
 
         if (storage("access-token")) {
@@ -117,31 +117,26 @@ export default function MedicineDetails(props) {
                         <PageHeader title={product?.name} firstLocation="Shop" secondLocation={product?.name} />
                         <div className="container">
                             <div className="row">
-                                <div className="col-12 col-lg-6">
-                                    <div className="img-view">
-                                        <img className="active" src={displayedImage}  alt="Active"/>
-                                    </div>
-                                    <div className="sub-img">
-                                        {
-                                            product?.photos?.map((photo,id)=>{
-                                                return(
-                                                    <div key={id} onClick={() => setDisplayedImage(`${photo.photo}`)} className="img">
-                                                        <img src={photo?.photo?.replace("http://", "https://")} alt="Shop"/>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                                <div className="col-12 col-lg-6">
-                                    <div className="content">
-                                        <h5 className="title">{product.name}</h5>
-                                        <div className="icons">
-                                            <i className="fas fa-star"> </i>
-                                            <i className="fas fa-star"> </i>
-                                            <i className="fas fa-star"> </i>
-                                            <i className="fas fa-star"> </i>
-                                            <i className="fas fa-star"> </i>
+                                <div className={related ? `col-12 col-md-9 col-lg-9 order-2 order-md-1 pr-lg-4` : `col-12`}>
+                                    <div className="row">
+                                        <div className="col-12 col-lg-6">
+                                            <div className="img-view">
+                                                <img className="active" src={displayedImage} alt="Active"/>
+                                            </div>
+                                            <div className="sub-img">
+                                                {
+                                                    product?.photos?.map((photo, id) => {
+                                                        return (
+                                                            <div key={id}
+                                                                 onClick={() => setDisplayedImage(`${photo.photo}`)}
+                                                                 className="img">
+                                                                <img src={photo?.photo?.replace("http://", "https://")}
+                                                                     alt="Shop"/>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
                                         </div>
                                         <div className="col-12 col-lg-6">
                                             <div className="content">
