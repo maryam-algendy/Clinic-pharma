@@ -34,7 +34,7 @@ export default function MedicineDetails(props)
             .then(({data, status})=>{
                 if (status===200){
                     setProduct(data?.product);
-                    setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http", "https")}`);
+                    setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http://", "https://")}`);
                     setLoading(false);
                     console.log(data.product)
                 }
@@ -94,7 +94,7 @@ export default function MedicineDetails(props)
             </Modal>
             {
                 !loading ? <>
-                        <PageHeader title="Medical Product Title" firstLocation="Shop" secondLocation="Medical Product Title" />
+                        <PageHeader title={product?.name} firstLocation="Shop" secondLocation={product?.name} />
                         <div className="container">
                             <div className="row">
                                 <div className="col-12 col-lg-6">
@@ -106,7 +106,7 @@ export default function MedicineDetails(props)
                                             product?.photos?.map((photo,id)=>{
                                                 return(
                                                     <div key={id} onClick={() => setDisplayedImage(`${photo.photo}`)} className="img">
-                                                        <img src={photo?.photo?.replace("http", "https")} alt="Shop"/>
+                                                        <img src={photo?.photo?.replace("http://", "https://")} alt="Shop"/>
                                                     </div>
                                                 )
                                             })

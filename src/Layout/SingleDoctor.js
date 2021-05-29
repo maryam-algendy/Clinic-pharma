@@ -113,7 +113,7 @@ export default function SingleDoctor() {
                     <div className="row">
                         <div className="col-lg-3 lhs">
                             <div className="name-card">
-                                <Image src={doctor?.image?.replace("http", "https")} />
+                                <Image src={doctor?.image?.replace("http://", "https://")} />
                                 {topRatedBadge()}
                                 <div className="doctor-rate">
                                     {[1, 2, 3, 4, 5].map(r =>

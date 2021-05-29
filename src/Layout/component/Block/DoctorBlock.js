@@ -9,7 +9,7 @@ export default function DoctorBlock(props)
         <div id="doctors-block">
             <div className="doctors-card">
                 <div className="doc-img">
-                    <img src={props.image.includes("https") ? props.image : props.image?.replace("http", "https")} alt={props.alter}/>
+                    <img src={props.image.includes("https") ? props.image : props.image?.replace("http://", "https://")} alt={props.alter}/>
                     <a href={`/doctor/${props.name}`} className="overlay">+</a>
                 </div>
                 <div className="content">

@@ -31,23 +31,26 @@ export default function Shop() {
         setError("");
     }
 
-    useEffect(() => {
+    const loadProducts = () => {
         API(`medicines/?page=${pageNumber}`)
-            .then(({data, status}) => {
-                if (status === 200) {
-                    setPagination({page: data?.page, pages: data?.pages, results: data?.results});
-                    setProducts(data?.products);
-                    setLoading(false);
+        .then(({data, status}) => {
+            if (status === 200) {
+                setPagination({page: data?.page, pages: data?.pages, results: data?.results});
+                setProducts(data?.products);
+                setLoading(false);
 
-                    if (data?.products?.length < 1) {
-                        setError("There are no products found");
-                    }
-                } else {
-                    setError(data.message);
-                    setLoading(false);
+                if (data?.products?.length < 1) {
+                    setError("There are no products found");
                 }
-            })
+            } else {
+                setError(data.message);
+                setLoading(false);
+            }
+        })
+    }
 
+    useEffect(() => {
+        loadProducts();
         API("category")
             .then(({ data, status}) => {
                 if (status === 200) {
@@ -76,7 +79,7 @@ export default function Shop() {
         }
 
 
-    }, [categories]);
+    }, []);
 
     function filters() {
         setLoading(true);
@@ -86,7 +89,7 @@ export default function Shop() {
                 if (status === 200) {
                     setLoading(false);
                     setProducts(data?.product);
-                    console.log(data?.product)
+                    console.log(data)
                 } else {
                     setLoading(false);
                     setError(data?.message);
@@ -131,7 +134,7 @@ export default function Shop() {
                             <input value={value} onChange={(e) => {
                                 setValue(e.target.value);
                                 filters();
-                            }} type="text" placeholder="Product Name ..."/>
+                            }} onKeyUp={(e) => e.keyCode === 8 && e.target.value.length === 0 ? loadProducts() : null} type="text" placeholder="Product Name ..."/>
                             <i className="flaticon-search"> </i>
                         </div>
                         <div className="search mt-5">
