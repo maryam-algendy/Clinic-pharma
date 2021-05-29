@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactPaginate from 'react-paginate';
-import {Button} from "react-bootstrap";
+import {Button, Image} from "react-bootstrap";
 import API from "../utilize/API";
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
