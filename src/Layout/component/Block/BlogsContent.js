@@ -37,7 +37,7 @@ export default function BlogsContent() {
                         return(
                             <div className="blog-item" key={blog._id}>
                                 <div className="img-side">
-                                    <img alt="not found" className="img-fluid" src={blog.thumbnail.includes("https") ? blog.thumbnail : blog.thumbnail?.replace("http", "https")}/>
+                                    <img alt="not found" className="img-fluid" src={blog.thumbnail.includes("https") ? blog.thumbnail : blog.thumbnail?.replace("http://", "https://")}/>
                                     <span className="date">{dateConverter(blog?.created_at).replace("-", "").substr(0, 7)}</span>
                                 </div>
                                 <div className="content">

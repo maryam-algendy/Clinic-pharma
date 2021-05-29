@@ -37,7 +37,7 @@ export default function MedicineDetails(props) {
             .then(({data, status}) => {
                 if (status === 200) {
                     setProduct(data?.product);
-                    setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http", "https")}`);
+                    setDisplayedImage(`${data?.product?.photos[0]?.photo?.replace("http://", "https://")}`);
                     setLoading(false);
                 } else {
                     setProduct(data.message);
@@ -114,29 +114,34 @@ export default function MedicineDetails(props) {
             </Modal>
             {
                 !loading ? <>
-                        <PageHeader title="Medical Product Title" firstLocation="Shop" secondLocation="Medical Product Title"/>
+                        <PageHeader title={product?.name} firstLocation="Shop" secondLocation={product?.name} />
                         <div className="container">
                             <div className="row">
-                                <div className={related ? `col-12 col-md-9 col-lg-9 order-2 order-md-1 pr-lg-4` : `col-12`}>
-                                    <div className="row">
-                                        <div className="col-12 col-lg-6">
-                                            <div className="img-view">
-                                                <img className="active" src={displayedImage} alt="Active"/>
-                                            </div>
-                                            <div className="sub-img">
-                                                {
-                                                    product?.photos?.map((photo, id) => {
-                                                        return (
-                                                            <div key={id}
-                                                                 onClick={() => setDisplayedImage(`${photo.photo}`)}
-                                                                 className="img">
-                                                                <img src={photo?.photo?.replace("http", "https")}
-                                                                     alt="Shop"/>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
+                                <div className="col-12 col-lg-6">
+                                    <div className="img-view">
+                                        <img className="active" src={displayedImage}  alt="Active"/>
+                                    </div>
+                                    <div className="sub-img">
+                                        {
+                                            product?.photos?.map((photo,id)=>{
+                                                return(
+                                                    <div key={id} onClick={() => setDisplayedImage(`${photo.photo}`)} className="img">
+                                                        <img src={photo?.photo?.replace("http://", "https://")} alt="Shop"/>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                <div className="col-12 col-lg-6">
+                                    <div className="content">
+                                        <h5 className="title">{product.name}</h5>
+                                        <div className="icons">
+                                            <i className="fas fa-star"> </i>
+                                            <i className="fas fa-star"> </i>
+                                            <i className="fas fa-star"> </i>
+                                            <i className="fas fa-star"> </i>
+                                            <i className="fas fa-star"> </i>
                                         </div>
                                         <div className="col-12 col-lg-6">
                                             <div className="content">
