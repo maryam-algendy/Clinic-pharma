@@ -216,6 +216,10 @@
                 font-family: "SemiBold", sans-serif;
                 transition: .3s ease-in-out;
 
+                &:last-of-type {
+                    margin: 0;
+                }
+
                 @media (max-width: 768px) {
                     margin: 0 10px 10px 0;
                 }
@@ -278,6 +282,53 @@
                 border: 1px solid $mainColor;
                 border-radius: 5px;
             }
+        }
+    }
+  
+    .related-products
+    {
+        h3
+        {
+            font-size: 20px;
+            font-family: "SemiBold", sans-serif;
+
+            &::after {
+                display: block;
+                width: 45px;
+                height: 3px;
+                margin-top: 15px;
+                background: $mainColor;
+                content: '';
+            }
+        }
+        .product{
+            margin:15px 5px 0;
+            .lhs,.rhs{
+                padding:0 5px;
+            }
+        }
+        img{
+            width: 100%;
+        }
+        p{
+            font-size: 14px;
+            margin-bottom: 4px;
+
+        }
+        .icons
+        {
+
+            .fas
+            {
+                color: #ffd700;
+                font-size: 12px;
+                padding-right: 5px;
+                cursor: pointer;
+            }
+        }
+        .cost{
+            font-size: 14px;
+            color: $mainColor;
         }
     }
 }
