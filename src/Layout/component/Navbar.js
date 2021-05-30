@@ -26,6 +26,15 @@ export default function MainNavbar()
         });
     }, [userSection, searchBar]);
 
+    /**
+     * A function that simulates scrolling behavior to selected block by it's ID.
+     * @param elementId
+     */
+    function scrollSmoothTo(elementId) {
+        let element = document.getElementById(elementId);
+        element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+
     return(
         <div id="navbar">
             <Navbar expand="lg">
@@ -43,7 +52,10 @@ export default function MainNavbar()
                         <div className="blocks">
                             <ul className="nav-list">
                                 <li><Link to="/">Home</Link></li>
-                                <li><Link to="/about">About</Link></li>
+                                <li><Link to="" onClick={(e) => {
+                                    e.stopPropagation();
+                                    scrollSmoothTo("benefits");
+                                }}>About</Link></li>
                                 <li className="dropdown">
                                     <Dropdown>
                                         <Dropdown.Toggle>Doctors & Appointments<i className="fas fa-angle-down dropdown-icon"> </i></Dropdown.Toggle>

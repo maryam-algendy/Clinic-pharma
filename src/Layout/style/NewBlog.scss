@@ -1,111 +1,146 @@
 @import "../variables.scss";
-#new-blog{
 
-  h3{
-    font-size: 24px;
-    text-transform: capitalize;
-    font-family: "SemiBold", sans-serif;
-    margin: 40px 0 25px;
-    &::after {
-      content: '';
-      width: 45px;
-      height: 3px;
-      background: $mainColor;
-      display: block;
-      margin-top: 15px;
+#new-blog
+{
+    h3
+    {
+        font-size: 24px;
+        text-transform: capitalize;
+        font-family: "SemiBold", sans-serif;
+        margin: 40px 0 25px;
+
+        &::after {
+            content: '';
+            width: 45px;
+            height: 3px;
+            background: $mainColor;
+            display: block;
+            margin-top: 15px;
+        }
     }
-  }
-  input,select{
-    height: 50px;
-    background: #f2f7fb;
-    border-radius: 4px;
-    width: 100%;
-    &:focus{
-      box-shadow: none;
-      border: 1px solid #ced4da;
+
+    input,
+    select
+    {
+        height: 50px;
+        background: #f2f7fb;
+        border-radius: 4px;
+        width: 100%;
+
+        &:focus {
+            box-shadow: none;
+            border: 1px solid #ced4da;
+        }
     }
-  }
-  input[type="file"] {
-    display: none;
-  }
 
-  .upload
-  {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    margin: 0 0 35px 0;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-family: "Regular", sans-serif;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    cursor: pointer;
-    background: #f2f7fb;
-
-    span {
-      white-space: nowrap;
-      width: 40%;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    input[type="file"] {
+        display: none;
     }
-  }
-.post{
-  button{
-    background: $mainColor;
-    border: 2px solid $mainColor;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-family: "SemiBold", sans-serif;
-    font-size: 14px;
-    padding: 8px 30px;
-    &:hover{
-      background: $lightColor;
-      color: $mainColor;
-      border: 2px solid $mainColor;
-      transition: .3s ease-in-out;
 
+    .upload
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        margin: 0 0 35px 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-family: "Regular", sans-serif;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        cursor: pointer;
+        background: #f2f7fb;
+
+        span {
+            white-space: nowrap;
+            width: 40%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
-    &:focus{
-      box-shadow: none;
+
+    .post
+    {
+        button
+        {
+            background: $mainColor;
+            border: 2px solid $mainColor;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-family: "SemiBold", sans-serif;
+            font-size: 14px;
+            padding: 8px 30px;
+
+            &:hover {
+                background: $lightColor;
+                color: $mainColor;
+                border: 2px solid $mainColor;
+                transition: .3s ease-in-out;
+
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
     }
-  }
 
-}
+    .rdw-editor-toolbar {
+        margin: 0;
+    }
 
-  #text-editor{
     .editor-class {
-      background-color: #fff!important;
-      border-radius: 4px;
-
-    }
-    .rdw-dropdown-selectedtext{
-      color: $mainColor;
-      &:hover{
-        text-decoration: none;
-      }
+        background: #f2f7fb;
+        padding: 10px;
+        border: 1px solid #F1F1F1;
+        border-top: 0;
     }
 
-    .wrapper-class {
-      padding: 1rem;
-      border: 1px solid #ccc;
-      background: #f2f7fb;
+    .rdw-embedded-modal,
+    .rdw-link-modal {
+        height: auto;
     }
-    .editor-class {
-      background-color:lightgray;
-      padding: 1rem;
-      border: 1px solid #ccc;
+
+    #text-editor
+    {
+        .editor-class {
+            background-color: #fff !important;
+            border-radius: 4px;
+        }
+
+        .rdw-dropdown-selectedtext {
+            color: $mainColor;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .wrapper-class {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            background: #f2f7fb;
+        }
+
+        .editor-class {
+            background-color: lightgray;
+            padding: 1rem;
+            border: 1px solid #ccc;
+        }
+
+        .toolbar-class {
+            border: 1px solid #ccc;
+        }
+
+        .rdw-option-wrapper[title="Indent"],
+        .rdw-option-wrapper[title="Outdent"] {
+            display: none;
+        }
+
+        .rdw-text-align-wrapper {
+            display: none;
+        }
     }
-    .toolbar-class {
-      border: 1px solid #ccc;
-    }
-    .rdw-option-wrapper[title="Indent"],.rdw-option-wrapper[title="Outdent"]{
-      display: none;
-    }
-    .rdw-text-align-wrapper{
-      display: none;
-    }
-  }
 }

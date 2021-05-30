@@ -2,70 +2,80 @@
 
 #benefits
 {
-  .row {
-    margin: 0;
-  }
+    .row {
+        margin: 0;
+    }
 
-  .text-side
-  {
-    padding: 0;
-    background: $mainColor;
-    color: $lightColor;
-    min-height: 350px;
-
-    .inner-text
+    .text-side
     {
-      position: absolute;
-      margin: auto;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%;
+        padding: 0;
+        background: $mainColor;
+        color: $lightColor;
+        min-height: 350px;
 
-      @media (max-width: 992px) {
-        width: 80%;
-      }
-
-      @media (max-width: 768px) {
-        position: relative;
-        padding: 30px;
-        width: 100%;
-      }
-
-      h2 {
-        font-family: "SemiBold", sans-serif;
-      }
-
-      p {
-        font-size: 14px;
-        text-transform: none;
-      }
-
-      ul
-      {
-        li
+        .inner-text
         {
-          font-size: 13px;
-          margin-bottom: 12px;
+            position: absolute;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
 
-          i {
-            margin-right: 15px;
-            padding: 5px 8px;
-            border-radius: 50%;
-            background: #fff;
-            color: $darkColor;
-            font-size: 11px;
-          }
+            @media (max-width: 992px) {
+                width: 80%;
+            }
+
+            @media (max-width: 768px) {
+                position: relative;
+                padding: 30px;
+                width: 100%;
+            }
+
+            h2 {
+                font-family: "SemiBold", sans-serif;
+            }
+
+            p {
+                font-size: 14px;
+                text-transform: none;
+            }
+
+            ul
+            {
+                li
+                {
+                    font-size: 13px;
+                    margin-bottom: 12px;
+
+                    i {
+                        margin-right: 15px;
+                        padding: 5px 8px;
+                        border-radius: 50%;
+                        background: #fff;
+                        color: $darkColor;
+                        font-size: 11px;
+                    }
+                }
+            }
+
+            .btn {
+                display: block;
+                margin: 20px 0;
+                background: transparent;
+                border-color: $lightColor;
+                width: 150px;
+                box-shadow: none;
+            }
         }
-      }
     }
-  }
 
-  .img-side {
-    padding: 0;
+    .img-side
+    {
+        padding: 0;
 
-    img {
-      width: 100%;
+        img {
+            width: 100%;
+        }
     }
-  }
 }

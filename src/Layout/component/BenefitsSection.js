@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Image} from "react-bootstrap";
+import { Image, Nav } from "react-bootstrap";
 
 //style
 import "./style/BenefitsSection.scss";
@@ -36,6 +36,8 @@ export default function BenefitsSection() {
                                 })
                             }
                         </ul>
+
+                        <Nav.Link className="btn btn-primary" href="/about">Know More</Nav.Link>
                     </div>
                 </div>
                 <div className="col-md-6 img-side">
