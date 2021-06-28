@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactPaginate from 'react-paginate';
-import {Button, Image} from "react-bootstrap";
+import {Button, Accordion} from "react-bootstrap";
 import API from "../utilize/API";
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
@@ -33,59 +33,40 @@ export default function Shop() {
 
     const loadProducts = () => {
         API(`medicines/?page=${pageNumber}`)
-        .then(({data, status}) => {
-            if (status === 200) {
-                setPagination({page: data?.page, pages: data?.pages, results: data?.results});
-                setProducts(data?.products);
-                setLoading(false);
+            .then(({data, status}) => {
+                if (status === 200) {
+                    setPagination({page: data?.page, pages: data?.pages, results: data?.results});
+                    setProducts(data?.products);
+                    setLoading(false);
 
-                if (data?.products?.length < 1) {
-                    setError("There are no products found");
+                    if (data?.products?.length < 1) {
+                        setError("There are no products found");
+                    }
+                } else {
+                    setError(data.message);
+                    setLoading(false);
                 }
-            } else {
-                setError(data.message);
-                setLoading(false);
-            }
-        })
+            })
     }
 
     useEffect(() => {
         loadProducts();
         API("category")
-            .then(({ data, status}) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     setCategories(data?.categories);
                 } else {
                     setError(data?.error);
                 }
-        });
+            });
 
-        const accordionTitle=document.querySelectorAll("#accordion-title");
-        for (let l = 0; l < accordionTitle.length; l++) {
-            accordionTitle[l].addEventListener('click',toggleAccordion);
-        }
-
-        function toggleAccordion(e){
-            accordionTitle?.forEach((title)=>{
-                if(title===e.target){
-                    title.nextSibling.classList.remove("d-none");
-                    title.classList.add("active-title");
-                }
-                else {
-                    title.nextSibling.classList.add("d-none");
-                    title.classList.remove("active-title");
-                }
-            })
-        }
-
-
-    }, []);
+    },);
 
     function filters() {
         setLoading(true);
         setError("");
         API(`medicines/find/?name=${value}&minPrice=${price[0]}&maxPrice=${price[1]}&category=${category}&pharmacy=${pharmacy}`, "POST")
-            .then(({ data, status }) => {
+            .then(({data, status}) => {
                 if (status === 200) {
                     setLoading(false);
                     setProducts(data?.product);
@@ -94,7 +75,7 @@ export default function Shop() {
                     setLoading(false);
                     setError(data?.message);
                 }
-        })
+            })
     }
 
     return (
@@ -106,25 +87,26 @@ export default function Shop() {
                     <div className="col-12 col-md-9 col-lg-9 order-2 order-md-1">
                         <div className="row">
                             {!loading ? products?.length >= 1 ? products?.map((medicine, id) => {
-                                return (
-                                    <div key={id} className="col-12 col-md-4 col-lg-4">
-                                        <Medicine medicine={id} image={medicine.thumbnail} alt={medicine.about} title={medicine.name} price={medicine.price} slug={medicine.slug} />
+                                    return (
+                                        <div key={id} className="col-12 col-md-4 col-lg-4">
+                                            <Medicine medicine={id} image={medicine.thumbnail} alt={medicine.about}
+                                                      title={medicine.name} price={medicine.price} slug={medicine.slug}/>
+                                        </div>
+                                    );
+                                }) : <div className="alert-danger">
+                                    There are no products found,
+                                    <button onClick={() => {
+                                        setPrice([0, 500]);
+                                        setValue("");
+                                        setCategory("");
+                                        filters();
+                                    }}>CLEAR FILTERS!</button>
+                                </div> :
+                                <div id="loading">
+                                    <div className="spinner-border text-primary m-auto" role="status">
+                                        <span className="visually-hidden sr-only">Loading...</span>
                                     </div>
-                                );
-                            }) : <div className="alert-danger">
-                                There are no products found,
-                                <button onClick={() => {
-                                    setPrice([0, 500]);
-                                    setValue("");
-                                    setCategory("");
-                                    filters();
-                                }}>CLEAR FILTERS!</button>
-                            </div> :
-                            <div id="loading">
-                                <div className="spinner-border text-primary m-auto" role="status">
-                                    <span className="visually-hidden sr-only">Loading...</span>
-                                </div>
-                            </div>}
+                                </div>}
                         </div>
                     </div>
 
@@ -134,7 +116,8 @@ export default function Shop() {
                             <input value={value} onChange={(e) => {
                                 setValue(e.target.value);
                                 filters();
-                            }} onKeyUp={(e) => e.keyCode === 8 && e.target.value.length === 0 ? loadProducts() : null} type="text" placeholder="Product Name ..."/>
+                            }} onKeyUp={(e) => e.keyCode === 8 && e.target.value.length === 0 ? loadProducts() : null}
+                                   type="text" placeholder="Product Name ..."/>
                             <i className="flaticon-search"> </i>
                         </div>
                         <div className="search mt-5">
@@ -149,41 +132,46 @@ export default function Shop() {
                         <div className="categories">
                             <h3>Categories</h3>
                             <ul>
-                                {categories?.map(category => {
-                                    return <li key={category?._id}>
-                                        <button id="accordion-title" onClick={() => {
-                                            setCategory(category?.slug);
-                                            filters();
-                                        }}>
-                                            <i className="fas fa-chevron-right"> </i>
-                                            {category?.name}
-                                        </button>
-                                        {/*{category?.sub_categories && todo: loop through sub_categories, then put onClick here instead of parent category}*/}
+                                <Accordion>
+                                    {categories?.map(category => {
+                                        return <li key={category?._id}>
+                                            <Accordion.Toggle as={Button} variant="link" eventKey={category._id}>
+                                                <button id="accordion-title" onClick={() => {
+                                                    setCategory(category?.slug);
+                                                    filters();
+                                                }}>
+                                                    <i className="fas fa-chevron-right"> </i>
+                                                    {category?.name}
+                                                </button>
+                                            </Accordion.Toggle>
+                                            <Accordion.Collapse eventKey={category._id}>
+                                                <ul className="sub-category pl-3">
+                                                    {
+                                                        category?.sub_categories?.map(item => {
+                                                            return <li key={item._id}>
+                                                                <Button onClick={() => {
+                                                                    setCategory(item?.slug);
+                                                                    filters();
+                                                                }}>
+                                                                    <i className="fas fa-chevron-right"> </i>
+                                                                    {item.name}
+                                                                </Button>
+                                                            </li>
+                                                        })
+                                                    }
+                                                </ul>
+                                            </Accordion.Collapse>
+                                        </li>
+                                    })}
+                                </Accordion>
 
-                                    <ul className="sub-category pl-2 d-none">
-                                        {
-                                            category?.sub_categories?.map(item=>{
-                                                return <li key={item._id}>
-                                                    <Button onClick={() => {
-                                                        setCategory(item?.slug);
-                                                        filters();
-                                                    }}>
-                                                        <i className="fas fa-chevron-right"> </i>
-                                                        {item.name}
-                                                    </Button>
-                                                </li>
-                                            })
-                                        }
-                                    </ul>
-
-                                    </li>
-                                })}
                             </ul>
                         </div>
 
                         <div className="price-range">
                             <h3>Price</h3>
-                            <Slider max={500} value={price} onChange={(e, newVal) => setPrice(newVal)} valueLabelDisplay="auto" aria-labelledby="range-slider" />
+                            <Slider max={500} value={price} onChange={(e, newVal) => setPrice(newVal)}
+                                    valueLabelDisplay="auto" aria-labelledby="range-slider"/>
                             <div className="price-data">
                                 <span>Price ${price[0]} - ${price[1]}</span>
                                 <button onClick={() => filters()}>Filter</button>
