@@ -61,7 +61,7 @@ export default function MainNavbar()
                                         <Dropdown.Toggle>Doctors & Appointments<i className="fas fa-angle-down dropdown-icon"> </i></Dropdown.Toggle>
                                         <Dropdown.Menu>
                                            <Nav.Link href="/doctors">Find a doctor</Nav.Link>
-                                           <Nav.Link href="/appointment">Request an appointment</Nav.Link>
+                                           <Nav.Link href="/appointment/request">Request an appointment</Nav.Link>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </li>
