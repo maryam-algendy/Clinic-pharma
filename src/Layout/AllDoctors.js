@@ -143,7 +143,7 @@ export default function AllDoctor()
                         </div>
                     </div>
                     <div className="row">
-                        {data.length >= 1 ? data?.map((doctors, i) => {
+                        {data?.length >= 1 ? data?.map((doctors, i) => {
                             return (
                                 <div key={i} className="col-12 col-md-6 col-lg-3">
                                     <DoctorBlock doctors={i + 1} image={doctors.image} alt={doctors.alter}
