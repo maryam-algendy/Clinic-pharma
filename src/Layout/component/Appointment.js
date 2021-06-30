@@ -59,7 +59,6 @@ export default function Appointment () {
         fetchAppointments();
     }, [])
 
-
     function modal () {
         return (
             <Modal show={show} onHide={() => setShow(false)} animation={false}>
@@ -105,13 +104,13 @@ export default function Appointment () {
                 <div className="appointment-btn">
                     <button onClick={() => {
                         if (storage("role") === "patient") {
-                            window.location.href = "/appointment/reserve";
+                            window.location.href = "/appointment/request";
                         } else {
                             setShow(true);
                             setAction("add");
                         }
                     }}>
-                        <i className="fas fa-plus"> </i> Add Appointment
+                        <i className="fas fa-plus"> </i> {storage("role") === "patient" ? "Request Appointment" : "Add Appointment"}
                     </button>
                 </div>
 

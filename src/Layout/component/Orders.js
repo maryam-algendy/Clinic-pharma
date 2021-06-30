@@ -12,7 +12,7 @@ export default function Orders() {
     const [error, setError] = useState();
 
     useEffect(() => {
-        API("orders", "GET")
+        API("orders/user", "GET")
             .then(({data, status}) => {
                 if (status === 200) {
                     setOrders(data?.orders);

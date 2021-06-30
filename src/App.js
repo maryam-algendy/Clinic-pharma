@@ -84,7 +84,7 @@ export default function App () {
                     <Route path="/" exact component={Home}/>
                     <Route path="/account/:page" exact component={GitAuthenticate}/>
                     <Route path="/doctors" exact component={AllDoctors}/>
-                    <Route path="/appointment" exact component={Appointment}/>
+                    <Route path="/appointment/request" exact component={Appointment}/>
                     <Route path="/shop/:slug" exact component={MedicineDetails}/>
                     <Route path="/shop" exact component={Shop}/>
                     <Route path="/doctor/:doc" exact component={SingleDoctor}/>

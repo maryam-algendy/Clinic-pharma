@@ -22,9 +22,10 @@ export default function GitAuthenticate() {
         pharmacyName: "",
         height:"",
         weight:"",
-        blood_type:""
+        blood_type:"",
+        officeNumber: ""
     });
-    
+
     const [error, setError] = useState();
 
     function handleLogin() {
@@ -73,7 +74,8 @@ export default function GitAuthenticate() {
                 if (status === 200) {
                     console.log(data)
                     setError("Account created successfully, you will be redirected in moments");
-                    document.querySelector("#create-patient").innerHTML = `Login`
+                    document.querySelector("#create-patient").innerHTML = `Login`;
+                    window.scrollTo(0, 0);
                     setTimeout(() => {
                         window.location.replace("/account/login");
                     }, 1000);
@@ -289,6 +291,11 @@ export default function GitAuthenticate() {
                                                     <input type="text" name="phone" placeholder="Enter phone"
                                                            id="phone" inputMode="tel" value={form.phone}
                                                            onChange={(e) => setForm({...form, phone: e.target.value})}/>
+
+                                                    <label htmlFor="phone">Office Number*</label>
+                                                    <input type="text" name="phone" placeholder="Enter phone"
+                                                           id="phone" inputMode="tel" value={form.officeNumber}
+                                                           onChange={(e) => setForm({...form, officeNumber: e.target.value})}/>
 
 
                                                     <label htmlFor="address">Address*</label>

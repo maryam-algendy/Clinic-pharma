@@ -57,19 +57,13 @@ export default function Settings()
                                     </Nav.Item>
                                     <Nav.Item>
                                         <Nav.Link eventKey="payments">
-                                            Payments
+                                            Payment Methods
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
                                         <Nav.Link eventKey="orders">
                                             Orders
-                                            <i className="fas fa-chevron-right"> </i>
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="social">
-                                            Social Media
                                             <i className="fas fa-chevron-right"> </i>
                                         </Nav.Link>
                                     </Nav.Item>

@@ -49,10 +49,11 @@ export default function Profile()
             .then(({ data, status }) => {
                 if (status === 200) {
                     storage("user", data?.user);
-                    document.getElementById("update-profile").innerHTML = 'Saved'
+                    document.getElementById("update-profile").innerHTML = 'Saved';
+                    swal({ icon: 'success', text: "Updated Successfully", button: false });
                     setTimeout(() => {
                         window.location.reload();
-                    }, 700)
+                    }, 1500)
                 } else {
                     setError(data?.message);
                     document.getElementById("update-profile").innerHTML = 'Save'
