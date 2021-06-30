@@ -12,11 +12,18 @@ import API from "../utilize/API";
 
 export default function AllDoctor()
 {
+    const [selectedSpecialization, setSelectedSpecialization] = useState("All");
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
     const [error, setError] = useState();
 
     useEffect(() => {
+        if (selectedSpecialization === "All"){
+            loadDoctors()
+        }
+    }, [selectedSpecialization])
+
+    function loadDoctors() {
         API("doctors", "GET")
             .then(({data, status}) => {
                 if (status === 200) {
@@ -27,7 +34,30 @@ export default function AllDoctor()
                     setLoading(false);
                 }
             })
-    }, [])
+    }
+
+    function customSpecializations(specialization) {
+        setSelectedSpecialization(specialization);
+        if (specialization === "All") {
+            loadDoctors();
+        } else {
+            API(`doctors/?specialization=${specialization}`, "GET")
+                .then(({data, status}) => {
+                    if (status === 200) {
+                        console.log(data)
+                        setData(data?.doctor);
+                        setLoading(false);
+                    } else {
+                        setError(data?.message);
+                        setLoading(false);
+                    }
+                })
+        }
+    }
+
+    function activeSpecialization(specialization) {
+        return selectedSpecialization === specialization ? "active" : "";
+    }
 
     return(
         <div id="all-doctors">
@@ -42,31 +72,31 @@ export default function AllDoctor()
                     <div className="department">
                         <ul className="department-list">
                             <li>
-                                <button className="active">All</button>
+                                <button onClick={(e) => customSpecializations("All")} className={activeSpecialization("All")}>All</button>
                             </li>
                             <li>
-                                <button>Dental</button>
+                                <button onClick={(e) => customSpecializations("Dental")} className={activeSpecialization("Dental")}>Dental</button>
                             </li>
                             <li>
-                                <button>Gynaecology</button>
+                                <button onClick={(e) => customSpecializations("Gynaecology")} className={activeSpecialization("Gynaecology")}>Gynaecology</button>
                             </li>
                             <li>
-                                <button>Eye</button>
+                                <button onClick={(e) => customSpecializations("Eye")} className={activeSpecialization("Eye")}>Eye</button>
                             </li>
                             <li>
-                                <button>Cardiology</button>
+                                <button onClick={(e) => customSpecializations("Cardiology")} className={activeSpecialization("Cardiology")}>Cardiology</button>
                             </li>
                             <li>
-                                <button>Orthopaedics</button>
+                                <button onClick={(e) => customSpecializations("Orthopaedics")} className={activeSpecialization("Orthopaedics")}>Orthopaedics</button>
                             </li>
                             <li>
-                                <button>Gastroenterology</button>
+                                <button onClick={(e) => customSpecializations("Gastroenterology")} className={activeSpecialization("Gastroenterology")}>Gastroenterology</button>
                             </li>
                             <li>
-                                <button>Neurology</button>
+                                <button onClick={(e) => customSpecializations("Neurology")} className={activeSpecialization("Neurology")}>Neurology</button>
                             </li>
                             <li>
-                                <button>Medicine</button>
+                                <button onClick={(e) => customSpecializations("Medicine")} className={activeSpecialization("Medicine")}>Medicine</button>
                             </li>
                         </ul>
                         <div className="sidebar">
@@ -113,14 +143,17 @@ export default function AllDoctor()
                         </div>
                     </div>
                     <div className="row">
-                        {data?.map((doctors, i) => {
+                        {data.length >= 1 ? data?.map((doctors, i) => {
                             return (
                                 <div key={i} className="col-12 col-md-6 col-lg-3">
                                     <DoctorBlock doctors={i + 1} image={doctors.image} alt={doctors.alter}
                                                  name={doctors.name} specialization={doctors.specialization}/>
                                 </div>
                             );
-                        })}
+                        }) : <div className="alert-danger w-100 d-flex align-items-center">
+                            <h6 className="p-0 m-0">There is no doctor with this specialization yet!</h6>
+                            <button onClick={(e) => customSpecializations("All")} className="text-primary p-0 m-0 ml-2 border-0" style={{ background: "transparent" }}>Get All doctors.</button>
+                        </div>}
                     </div>
                 </>  :<div id="loading">
                     <div className="spinner-border text-primary m-auto" role="status">
